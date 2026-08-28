@@ -20,6 +20,13 @@
     "writer_context_packs": 1,
     "reviewer_skills": 0
   },
+  "review_policy": {
+    "pm_review_rounds_per_phase": 1,
+    "automatic_repair_rounds_per_phase": 1,
+    "recheck_rounds_after_repair": 1,
+    "non_blocking_issues_deferred_to": "P6_real_task_validation",
+    "second_automatic_repair_allowed": false
+  },
   "frozen_decisions": [
     "one_shared_engine_with_runtime_knowledge_base_and_ip_injection",
     "same_knowledge_base_may_contain_multiple_ip_profiles",
@@ -31,7 +38,8 @@
     "quality_review_removed_from_main_chain",
     "save_target_may_be_feishu_or_obsidian",
     "distribution_pack_is_optional_after_save",
-    "legacy_v1_remains_untouched"
+    "legacy_v1_remains_untouched",
+    "complete_p1_to_p6_before_non_blocking_bug_polish",
+    "one_repair_round_maximum_per_phase_review"
   ]
 }
-
