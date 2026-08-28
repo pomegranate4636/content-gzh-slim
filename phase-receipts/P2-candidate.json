@@ -1,6 +1,6 @@
 {
   "phase": "P2",
-  "status": "pm_review_pass_awaiting_user_authorized_real_gate_a_sample",
+  "status": "completed",
   "candidate_date": "2026-08-28",
   "branch": "feature/content-gzh-slim",
   "scope": [
@@ -31,7 +31,16 @@
     "maximum_after_pm_review": 1,
     "repair_budget_used": false
   },
-  "current_wait": "user_authorization_for_real_gate_a_sample",
+  "human_validation": {
+    "status": "pass",
+    "run_id": "run_83d6bb91813c2cca73f93656",
+    "decision": "确认方向",
+    "decision_interface": "dedicated_gate_a_approval",
+    "resulting_state": "direction_approved",
+    "gate_receipt_present": true,
+    "content_mode": "real_content_temporary_bundle",
+    "obsidian_or_feishu_backend_integration_test": false
+  },
   "deferred_issues": [],
   "carried_deferred_issues_unchanged": [
     "P1-D01",
@@ -41,7 +50,7 @@
   "boundaries": {
     "real_knowledge_base_accessed": false,
     "real_customer_data_committed": false,
-    "gate_a_approved": false,
+    "gate_a_approved": true,
     "article_context_created": false,
     "writer_or_headline_created": false,
     "save_or_distribution_created": false,

@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：PM Review PASS；等待用户授权真实 Gate A 样本
+- 当前：Completed
 - 授权：`EXECUTE_PHASE: P2`
 - 上游 Gate：P1 PASS
 
@@ -50,6 +50,7 @@
 - Skill 校验：`content-gzh-slim`、`content-gzh-analyzer` 均通过
 - PM Review：总控已执行 1 次，结论 PASS
 - P2 修复轮：0 次，未使用修复预算
-- Gate A：仅生成 fixture 预览，未批准
-- 真实 Gate A 样本：等待用户明确授权
-- P3：未授权、未执行
+- Gate A：真实 WorkBuddy 内容样本已通过专用接口批准，精确决定为 `确认方向`
+- 真实 Gate A 样本：PASS；Run `run_83d6bb91813c2cca73f93656` 已进入 `direction_approved`
+- 验证边界：这是用真实内容临时 bundle 完成的 human validation，不是 Obsidian/飞书真实后端集成测试
+- P3：本轮已获 `EXECUTE_PHASE: P3` 授权，尚未在本收口步骤实现
