@@ -13,3 +13,5 @@ build/
 runs/
 fixtures/private/
 evidence/private/
+.agents/
+.p7-test-host/

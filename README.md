@@ -2,14 +2,14 @@
 
 `content-gzh-slim` 是一套面向多知识库、多项目和多 IP 的微信公众号内容生产系统。
 
-当前仓库已形成 **P3 开发候选**：在精确 Gate A 批准后，直接从冻结的 05/03/04/reference 投影唯一 `article_context_v1.json`，并把读取收据更新为最终选择状态。尚未实现正文、标题或保存能力。
+当前仓库已形成 **P7 开发候选**：P1—P6 主链、两次真人 Gate、唯一 Context Pack、正文与 Top 3 标题、Obsidian/飞书注入式保存、可选分发包均已实现；P7 正在执行自包含构建、项目级安装和两次真实 Host 验收。
 
 ## 当前真相源
 
 1. `CONTENT-GZH-SLIM-SPEC.md`：Master SPEC，产品与开发的最高真相源。
 2. `SLIM-COMPASS.md`：每次执行前的轻量入口，不得新增 Master SPEC 中不存在的要求。
 3. `project-state.json`：当前阶段和授权状态。
-4. `PHASE-P1.md`：下一阶段实施卡；只有用户明确授权后才能执行。
+4. `PHASE-P7.md`：当前阶段实施卡；记录授权、安装、真实 Run 和 Review 边界。
 
 ## 核心结论
 
@@ -25,8 +25,8 @@
 ## 仓库状态
 
 - Repository visibility：Private
-- Implementation：P3 development candidate; PM Review pending
-- Current phase：P3 single Article Context Pack
-- Next phase：P4（未授权、未执行）
+- Implementation：P7 development candidate; 63 tests passed
+- Current phase：P7 build and project-level installed-host validation
+- Next action：构建并安装到本仓库 `.agents/skills`，随后逐次执行两条真人 Gate Run
 - Installed：No
 - Published：No

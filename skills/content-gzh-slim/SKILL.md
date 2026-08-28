@@ -1,37 +1,42 @@
 ---
 name: content-gzh-slim
-description: Start or resume a content-gzh-slim公众号 Run from an explicit knowledge-base reference, IP name or none, and article task input, then coordinate its human Gates. P3 can build one fixture-backed Article Context Pack after exact Gate A approval; do not use it yet for writing, titles, saving, distribution, or publishing.
+description: Start, resume, or inspect one content-gzh-slim微信公众号 Run from an explicit Obsidian or Feishu knowledge base, one IP name or none, and article inputs; coordinate deep benchmark analysis, bounded 05→03→04 retrieval, two human Gates, article and title generation, verified save, and an optional distribution pack. Never draft, save, or publish outside this Run.
 ---
 
 # Content GZH Slim
 
-Use this entry only to create or resume the deterministic Run that owns one article task.
+Use this as the only public entry. It orchestrates one deterministic Run and delegates analysis, Context selection, body writing, headline generation, and optional distribution to the five internal Skills.
 
 ## Required input
 
 - `knowledge_base`: one explicit knowledge-base name, link, or path reference.
 - `ip`: one explicit IP name, `none`, or `无IP`. Never guess it.
-- Optional task fields follow `schemas/task_input.schema.json`.
+- Optional fields follow the bundled `schemas/task_input.schema.json`.
 
-## Current workflow
+## Installed workflow
 
-1. Validate and normalize the input with `runtime.contracts.validate_task_input`.
-2. Resolve only synthetic fixture metadata with `runtime.fixture_adapter.FixtureAdapter`.
-3. Call `runtime.run_store.RunStore.create_or_resume`.
-4. For P2 Gate A preparation, dispatch `content-gzh-analyzer` only after Runtime has prepared bounded 05/03/04 candidates and complete reference snapshots.
-5. Display the returned Gate A card and stop at `waiting_direction` for a real user decision.
-6. Only after the dedicated Gate A interface records the exact decision `确认方向`, dispatch `content-gzh-context-retriever` to build one `article_context_v1.json`.
-7. Stop at `context_ready`. P3 has no Writer or headline capability.
+1. Run the bundled `probe` described in [references/runtime-commands.md](references/runtime-commands.md).
+2. Resolve exactly the knowledge base and IP named by the user. Do not scan another customer, another knowledge base, or every file.
+3. In a private temporary Run workspace outside this repository, prepare a fixture-compatible catalog from authorized source fragments. The internal `fixture://` refs are isolation handles, not claims that the source is synthetic.
+4. With an IP, read bounded 05 first, then up to 5 relevant 03 candidates, then up to 3 peer and 2 method candidates from 04. Without an IP, skip 05. Record counts and characters.
+5. Prepare full snapshots for 0–5 explicit benchmarks. Never call an abstract or snippet a full article.
+6. Invoke `content-gzh-analyzer`, validate its deep analysis, prepare Gate A, show it, and stop.
+7. After the user selects an option when needed and replies exactly `确认方向`, record the approval and invoke `content-gzh-context-retriever` once. Runtime creates exactly one `article_context_v1.json`.
+8. Invoke `content-gzh-writer` with only that Context, then `content-gzh-headline` with the same Context and current draft. Show Gate B and stop.
+9. Only after `确认正文和标题` or an exact `使用标题：...` approval, save through the matching Obsidian or Feishu adapter and verify readback.
+10. End the main chain at `saved`. Only an exact later request `生成分发包` may invoke `content-gzh-distribution-pack`; it still does not publish.
 
-The Run freezes one knowledge base and one primary IP or `none`. Changing the knowledge base, IP, original task input, or reference set creates a different Run. A mechanical retry of identical normalized input resumes the existing Run without redoing retrieval after the Gate A card exists.
+The Run freezes one knowledge base, one primary IP or `none`, the task input, and the reference set. Changing any of them creates a different Run. Identical input resumes without repeating completed retrieval or writes.
 
 ## Gate boundary
 
-The state machine contains exactly two human waiting states: `waiting_direction` and `waiting_final`. Never bypass either state. For Gate A, only the exact reply `确认方向` approves; `需要修改：<具体意见>` requests revision, `不采用` rejects, and all other replies remain unapproved. P2 only prepares the Gate A card and does not approve it.
+The state machine contains exactly two human waiting states: `waiting_direction` and `waiting_final`. Never bypass either. Ambiguous replies do not approve, generate downstream work, or save. Gate A accepts exact `确认方向`; Gate B accepts exact `确认正文和标题` or `使用标题：<明确标题>`.
 
 ## Hard boundaries
 
-- Use fixture data or an explicitly authorized temporary real-content bundle only. Do not treat that bundle as a real Obsidian or Feishu backend integration.
-- Do not write an article, create titles, save, distribute, or publish.
+- Keep temporary catalogs, source snapshots, Run artifacts, and client idempotency state outside this Git repository.
+- The Writer reads one Context Pack and performs zero knowledge-base searches. Do not call a Reviewer, quality checker, old Writer, or title arbitration chain.
+- Limited or unavailable IP material never blocks the Run, but must be disclosed; do not invent personal facts, cases, outcomes, or numbers.
+- Save is create-only and must pass remote or local readback. Saved never means draft box or published.
 - Do not call legacy V1, Content V2, or ZSK.
-- Do not install this Skill from the repository.
+- Do not copy credentials into the candidate, replace `shu-gongzhonghao-v1`, enter a draft box, or publish.

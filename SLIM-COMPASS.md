@@ -92,4 +92,4 @@ IP：
 
 ## 8. 当前阶段
 
-P6 已按治理完成唯一 PM Review、一次最小修复和唯一 Recheck。59 项测试与 6 个 Skill 校验通过；3 个授权真实选题派生 5 个 `/tmp` 隔离 Run，覆盖 full / none / limited、同库多 IP 和有/无对标，均保存回读一致且未生成分发。飞书按用户授权范围仅使用 fake client，真实飞书证据留作 P7 最终 Definition of Done 前置条件。P7 尚未授权、未安装、未合并、未发布。
+P7 已获得 `EXECUTE_PHASE: P7` 与完整隔离测试授权。自包含候选代码和 4 项 P7 自动测试已完成，当前总计 63 项测试与 6 个 Skill 校验通过；下一步只安装到本仓库 `.agents/skills`，再逐次执行两条真实 Run 的 Gate A / Gate B。允许创建一个飞书测试文档；不写全局 Skill、不复制凭据、不替换 V1、不合并、不发布。
