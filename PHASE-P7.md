@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：项目级安装 PASS；真实 Run 1 等待用户 Gate B 确认
+- 当前：项目级安装 PASS；真实 Run 1 已经 Gate B 确认、隔离 Obsidian 保存并回读通过；准备启动真实 Run 2
 - 授权：`EXECUTE_PHASE: P7`
 - 用户边界：允许构建、项目级安装、一个真实飞书测试文档和两次真实 Run；每次 Gate 逐次人工确认；Review 后停止，不合并、不发布
 - 上游 Gate：P6 PM Recheck PASS，3 个授权样本派生 5 个隔离 Run 全部通过
@@ -48,5 +48,5 @@
 - 候选包黑盒：完整 fixture 链经 bundled launcher 保存到隔离 Obsidian 并回读通过
 - 真实飞书：CLI 1.0.91、user 身份和文档读写权限已只读核验；尚未创建测试文档
 - 项目级安装：候选 `b188329` 已安装到仓库级 `.agents/skills`，隐私扫描与 manifest probe 通过
-- 真实 Run 1：Gate A 已由用户确认；已生成 1 Context、5452 字符正文和 Top 3，停在 `waiting_final`；0 Reviewer、0 保存，等待用户 Gate B
+- 真实 Run 1：两次 Gate 均由用户逐次确认；1 Run、1 Context、Writer 0 次知识库搜索、0 Reviewer；已 create-only 保存到隔离 Obsidian，并回读确认标题、正文、版本和摘要一致；0 分发、0 草稿箱、0 发布
 - 真实 Run 2、PM Review：尚未执行
