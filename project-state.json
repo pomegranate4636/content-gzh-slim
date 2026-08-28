@@ -3,7 +3,7 @@
   "schema_version": 1,
   "repository_visibility": "private",
   "current_phase": "P7",
-  "current_status": "p7_run1_waiting_gate_a_user_confirmation",
+  "current_status": "p7_run1_waiting_gate_b_user_confirmation",
   "implementation_started": true,
   "installed": true,
   "published": false,
@@ -36,7 +36,8 @@
     "phase-receipts/P6-candidate.json",
     "phase-receipts/P6-real-matrix.json",
     "phase-receipts/P7-candidate.json",
-    "phase-receipts/P7-install.json"
+    "phase-receipts/P7-install.json",
+    "phase-receipts/P7-run1-gate-b.json"
   ],
   "gate_a_status": "real_content_direction_approved",
   "p2_pm_review_status": "pass",
@@ -80,7 +81,7 @@
   "p7_skill_validation": "6_passed",
   "p7_candidate_build_status": "built_from_b188329_privacy_scan_and_probe_passed",
   "p7_project_install_status": "installed_repository_level_agents_skills",
-  "p7_real_run_status": "run1_waiting_gate_a_user_confirmation",
+  "p7_real_run_status": "run1_waiting_gate_b_user_confirmation",
   "p7_pm_review_status": "not_started",
   "p7_pm_review_rounds": 0,
   "p7_repair_rounds_used": 0,
