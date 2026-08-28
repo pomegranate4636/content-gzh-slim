@@ -1,6 +1,6 @@
 {
   "phase": "P3",
-  "status": "development_candidate_pm_review_pending",
+  "status": "completed",
   "candidate_date": "2026-08-28",
   "branch": "feature/content-gzh-slim",
   "scope": [
@@ -40,13 +40,15 @@
     "repository_contains_temporary_bundle": false
   },
   "pm_review": {
-    "status": "pending_total_controller_review",
-    "rounds_used": 0,
+    "status": "pass",
+    "conclusion": "PASS",
+    "rounds_used": 1,
     "development_self_check_counted_as_pm_review": false
   },
   "repair": {
     "rounds_used": 0,
-    "maximum_after_pm_review": 1
+    "maximum_after_pm_review": 1,
+    "repair_budget_used": false
   },
   "deferred_issues": [
     {
@@ -71,6 +73,7 @@
     "skill_installed": false,
     "main_merged": false,
     "p4_started": false,
+    "p4_authorized": true,
     "version_published": false
   }
 }

@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：Development candidate ready; PM Review pending
+- 当前：Completed
 - 授权：`EXECUTE_PHASE: P3`
 - 上游 Gate：P2 completed，真实 Gate A 已以精确决定 `确认方向` 批准
 
@@ -46,7 +46,7 @@
 - 开发测试：30 项通过（10 项 P1、11 项 P2、9 项 P3）
 - Skill 校验：`content-gzh-context-retriever` 通过
 - 临时真实内容验证：已在获批 WorkBuddy Run 生成唯一 Context Pack，并停在 `context_ready`
-- PM Review：待总控执行，开发自检不计入 PM Review
-- P3 修复轮：0 次
-- P4：未授权、未执行
+- PM Review：总控已执行唯一 1 次，结论 PASS；开发自检不计入 PM Review
+- P3 修复轮：0 次，未使用修复预算
+- P4：本轮已获 `EXECUTE_PHASE: P4` 授权，尚未在本收口步骤实现
 - deferred issue：P3-D01，多方向 Gate 收据未绑定具体 option 时安全拒绝，不猜选项
