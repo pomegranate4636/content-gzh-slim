@@ -2,7 +2,7 @@
 
 `content-gzh-slim` 是一套面向多知识库、多项目和多 IP 的微信公众号内容生产系统。
 
-当前仓库已形成 **P7 开发候选**：P1—P6 主链、两次真人 Gate、唯一 Context Pack、正文与 Top 3 标题、Obsidian/飞书注入式保存、可选分发包均已实现；P7 正在执行自包含构建、项目级安装和两次真实 Host 验收。
+当前仓库已完成 **P7 候选验收**：P1—P6 主链、两次真人 Gate、唯一 Context Pack、正文与 Top 3 标题、Obsidian/飞书注入式保存、可选分发包均已实现；自包含构建、项目级安装、两次真实 Host Run 和唯一独立 PM Review 均已通过。当前按授权停止，未合并、未发布。
 
 ## 当前真相源
 
@@ -25,8 +25,8 @@
 ## 仓库状态
 
 - Repository visibility：Private
-- Implementation：P7 development candidate; 63 tests passed
-- Current phase：P7 build and project-level installed-host validation
-- Next action：等待真实 Run 1 的 Gate B 确认，随后保存到 `/tmp` 隔离 Obsidian 并回读
+- Implementation：P7 candidate verified; 63 tests passed
+- Current phase：P7 complete; stopped after independent PM Review
+- Next action：无；按 P7 授权在独立 Review 后停止，等待用户决定是否另行授权合并或发布
 - Installed：Yes，项目级测试 Host；未写入全局 Skill
 - Published：No
