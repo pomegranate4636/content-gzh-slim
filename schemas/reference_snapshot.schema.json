@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReferenceSnapshotV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "references"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "references": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference_ref", "title", "source_type", "source_completeness", "content", "character_count"],
+        "properties": {
+          "reference_ref": {"type": "string", "minLength": 1},
+          "title": {"type": "string"},
+          "source_type": {"type": "string", "minLength": 1},
+          "source_completeness": {"const": "full"},
+          "content": {"type": "string", "minLength": 1},
+          "character_count": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  }
+}

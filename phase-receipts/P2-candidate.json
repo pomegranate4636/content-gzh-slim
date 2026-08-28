@@ -1,0 +1,50 @@
+{
+  "phase": "P2",
+  "status": "development_candidate_pm_review_pending",
+  "candidate_date": "2026-08-28",
+  "branch": "feature/content-gzh-slim",
+  "scope": [
+    "content-gzh-analyzer internal Skill with progressive disclosure",
+    "fixture-only 05 then 03 then 04 bounded retrieval",
+    "independent complete reference preparation for zero to five sources",
+    "deep per-reference Analyzer output contract and multi-reference synthesis",
+    "candidate versus Gate A proposal versus final selection separation",
+    "retrieval_receipt.json operational evidence",
+    "readable unapproved Gate A direction card",
+    "documented future real Gate A test entry conditions"
+  ],
+  "development_validation": {
+    "unit_tests": "21 passed including 10 P1 regression tests",
+    "skill_creator_validation": "content-gzh-slim and content-gzh-analyzer passed",
+    "python_compile": "passed",
+    "json_syntax": "passed",
+    "fixture_gate_a_smoke": "passed and stopped at waiting_direction"
+  },
+  "pm_review": {
+    "status": "pending_total_controller_review",
+    "rounds_used": 0,
+    "development_self_check_counted_as_pm_review": false
+  },
+  "repair": {
+    "rounds_used": 0,
+    "maximum_after_pm_review": 1
+  },
+  "deferred_issues": [],
+  "carried_deferred_issues_unchanged": [
+    "P1-D01",
+    "P1-D02"
+  ],
+  "blocking_issues": [],
+  "boundaries": {
+    "real_knowledge_base_accessed": false,
+    "real_customer_data_committed": false,
+    "gate_a_approved": false,
+    "article_context_created": false,
+    "writer_or_headline_created": false,
+    "save_or_distribution_created": false,
+    "skill_installed": false,
+    "main_merged": false,
+    "p3_started": false,
+    "version_published": false
+  }
+}

@@ -2,13 +2,13 @@
   "project": "content-gzh-slim",
   "schema_version": 1,
   "repository_visibility": "private",
-  "current_phase": "P1",
-  "current_status": "p1_complete_review_passed",
+  "current_phase": "P2",
+  "current_status": "p2_development_candidate_pm_review_pending",
   "implementation_started": true,
   "installed": false,
   "published": false,
-  "authorized_phase": "P1",
-  "next_phase": "P2",
+  "authorized_phase": "P2",
+  "next_phase": "P3",
   "next_phase_authorized": false,
   "master_spec": "CONTENT-GZH-SLIM-SPEC.md",
   "entry_skill": "content-gzh-slim",
@@ -28,8 +28,11 @@
     "second_automatic_repair_allowed": false
   },
   "phase_receipts": [
-    "phase-receipts/P1.json"
+    "phase-receipts/P1.json",
+    "phase-receipts/P2-candidate.json"
   ],
+  "gate_a_status": "fixture_preview_ready_unapproved",
+  "p2_pm_review_status": "pending",
   "deferred_issues": [
     {
       "id": "P1-D01",

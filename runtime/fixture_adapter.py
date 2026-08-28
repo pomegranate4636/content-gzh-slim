@@ -53,7 +53,18 @@ class FixtureAdapter:
             }
 
         ips = entry.get("ips", {})
-        resolved_ref = ips.get(ip_name) if isinstance(ips, dict) else None
+        resolved_value = ips.get(ip_name) if isinstance(ips, dict) else None
+        if isinstance(resolved_value, str):
+            resolved_ref = resolved_value
+            status = "full"
+        elif isinstance(resolved_value, dict):
+            resolved_ref = resolved_value.get("ref")
+            status = resolved_value.get("status")
+            if status not in {"full", "limited"}:
+                raise FixtureResolutionError("fixture IP status must be full or limited")
+        else:
+            resolved_ref = None
+            status = "unused"
         if resolved_ref is not None and (
             not isinstance(resolved_ref, str) or not resolved_ref.startswith("fixture://")
         ):
@@ -61,6 +72,6 @@ class FixtureAdapter:
         return knowledge_base_identity, {
             "requested_name": ip_name,
             "resolved_ref": resolved_ref,
-            "status": "full" if resolved_ref else "unused",
+            "status": status,
         }
 

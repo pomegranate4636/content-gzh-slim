@@ -92,4 +92,4 @@ IP：
 
 ## 8. 当前阶段
 
-P0 只冻结 SPEC 和建立私有规划仓库。下一阶段 P1 尚未获得执行授权。
+P2 开发候选已完成，当前停在 fixture Gate A 与总控 PM Review 之前。P2 不读取真实知识库、不批准 Gate A，也不创建 Article Context Pack。P3 未授权、未执行。

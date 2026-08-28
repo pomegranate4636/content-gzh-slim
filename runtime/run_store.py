@@ -57,6 +57,12 @@ class RunStore:
     def _run_file(self, run_id: str) -> Path:
         return self.boundary.child("runs", run_id, "run.json")
 
+    def load(self, run_id: str) -> dict[str, Any]:
+        run = self._read_json(self._run_file(run_id))
+        if run.get("run_id") != run_id:
+            raise RunStoreError("Run identity mismatch; refusing to load")
+        return run
+
     @staticmethod
     def _read_json(path: Path) -> dict[str, Any]:
         try:
