@@ -9,8 +9,12 @@ def classify_gate_b_decision(reply: str) -> str:
     normalized = reply.strip() if isinstance(reply, str) else ""
     if normalized == "确认正文和标题":
         return "approve"
-    if normalized.startswith("需要修改：") and normalized.removeprefix("需要修改：").strip():
-        return "revise"
+    if normalized.startswith("需要修改正文：") and normalized.removeprefix("需要修改正文：").strip():
+        return "revise_body"
+    if normalized.startswith("只修改标题：") and normalized.removeprefix("只修改标题：").strip():
+        return "revise_headline"
+    if normalized.startswith("使用标题：") and normalized.removeprefix("使用标题：").strip():
+        return "select_headline"
     if normalized == "不采用":
         return "reject"
     return "ambiguous"
@@ -39,6 +43,8 @@ def render_gate_b(
         f"- 状态：{save.get('status', '')}\n\n"
         "## 事实缺口\n\n"
         f"{gap_text}\n\n"
-        "合法决定仅为：`确认正文和标题`、`需要修改：<具体意见>`、`不采用`。"
+        "合法决定为：`确认正文和标题`、`需要修改正文：<具体意见>`、"
+        "`只修改标题：<具体意见>`、`使用标题：<当前候选或用户明确标题>`。"
+        "`不采用`表示明确拒绝。"
         "其他模糊回复不会批准，也不会保存。"
     )

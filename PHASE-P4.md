@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：Development candidate ready; PM Review pending
+- 当前：唯一修复轮已完成；PM Recheck pending
 - 授权：`EXECUTE_PHASE: P4`
 - 上游 Gate：P3 completed，唯一 Article Context Pack 已通过 PM Review
 
@@ -33,7 +33,7 @@
 - 正文遵守 `must_keep`、`must_avoid` 和事实缺口，不把候选或缺失证据写成完成事实。
 - 标题在正文后生成，正好 Top 3；推荐标题必须来自 Top 3。
 - Gate B 一次展示完整正文、Top 3、推荐标题、保存预览和事实缺口。
-- 只有精确决定可分类；本候选不批准 Gate B，Run 停在 `waiting_final`。
+- 只有 SPEC 13.3 的四类精确决定可分类；`不采用`可明确拒绝，泛化修改和空意见 fail-closed。本候选不批准 Gate B，Run 停在 `waiting_final`。
 
 ## 开发候选回执
 
@@ -43,7 +43,7 @@
 - 开发测试：39 项通过（10 项 P1、11 项 P2、9 项 P3、9 项 P4）
 - Skill 校验：`content-gzh-writer`、`content-gzh-headline` 均通过
 - 临时真实内容验证：已从唯一 WorkBuddy Context Pack 生成正文、Top 3 和 Gate B，Run 停在 `waiting_final`
-- PM Review：待总控执行，开发自检不计入 PM Review
-- P4 修复轮：0 次
+- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED；待唯一 Recheck，不得写为 PASS
+- P4 修复轮：1 次，已用完修复预算；只修复 Gate B 决策合同与 SPEC 13.3 不一致
 - Gate B：未批准；未保存、未写回知识库、未生成分发包
 - P5：未授权、未执行

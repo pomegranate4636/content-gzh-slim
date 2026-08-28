@@ -142,9 +142,22 @@ class P4RuntimeTests(unittest.TestCase):
 
     def test_gate_b_decision_is_fail_closed(self) -> None:
         self.assertEqual(classify_gate_b_decision("确认正文和标题"), "approve")
-        self.assertEqual(classify_gate_b_decision("需要修改：开头更直接"), "revise")
+        self.assertEqual(
+            classify_gate_b_decision("需要修改正文：开头更直接"), "revise_body"
+        )
+        self.assertEqual(
+            classify_gate_b_decision("只修改标题：第二个更具体"), "revise_headline"
+        )
+        self.assertEqual(
+            classify_gate_b_decision("使用标题：智能客服上线了，转化为什么没有跟着来？"),
+            "select_headline",
+        )
         self.assertEqual(classify_gate_b_decision("不采用"), "reject")
+        self.assertEqual(classify_gate_b_decision("需要修改正文："), "ambiguous")
+        self.assertEqual(classify_gate_b_decision("只修改标题："), "ambiguous")
+        self.assertEqual(classify_gate_b_decision("使用标题："), "ambiguous")
         self.assertEqual(classify_gate_b_decision("需要修改："), "ambiguous")
+        self.assertEqual(classify_gate_b_decision("需要修改：开头更直接"), "ambiguous")
         self.assertEqual(classify_gate_b_decision("可以"), "ambiguous")
         self.assertEqual(classify_gate_b_decision("继续"), "ambiguous")
 
