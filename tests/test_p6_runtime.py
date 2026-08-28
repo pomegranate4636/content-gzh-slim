@@ -203,6 +203,58 @@ class P6RuntimeTests(unittest.TestCase):
                         run_id, explicit_request="生成分发包", candidate=candidate
                     )
 
+        forbidden_candidates = []
+        xhs_title = read_json("p6_distribution.json")
+        xhs_title["xiaohongshu"]["title"] = "未经验证的增长数字"
+        forbidden_candidates.append(xhs_title)
+        channels_intro = read_json("p6_distribution.json")
+        channels_intro["wechat_channels"]["intro"] += " 不写未经验证的增长数字。"
+        forbidden_candidates.append(channels_intro)
+        douyin_tag = read_json("p6_distribution.json")
+        douyin_tag["douyin"]["tags"].append("未经验证的增长数字")
+        forbidden_candidates.append(douyin_tag)
+        moments_copy = read_json("p6_distribution.json")
+        moments_copy["moments"]["copy"] += " 未经验证的增长数字。"
+        forbidden_candidates.append(moments_copy)
+        for candidate in forbidden_candidates:
+            with self.subTest(forbidden=candidate), tempfile.TemporaryDirectory() as temporary:
+                run_id, _ = self._saved_run(temporary)
+                with self.assertRaisesRegex(DistributionContractError, "must_avoid"):
+                    DistributionService(temporary).generate(
+                        run_id, explicit_request="生成分发包", candidate=candidate
+                    )
+
+    def test_distribution_rejects_any_save_receipt_misbinding(self) -> None:
+        mutations = {
+            "title": lambda receipt: receipt.update({"title": "错绑标题"}),
+            "body_digest": lambda receipt: receipt.update({"body_digest": "0" * 64}),
+            "context_digest": lambda receipt: receipt.update({"context_digest": "0" * 64}),
+            "version": lambda receipt: receipt.update({"version": 99}),
+            "published": lambda receipt: receipt["semantics"].update({"published": True}),
+        }
+        for field, mutate in mutations.items():
+            with self.subTest(field=field), tempfile.TemporaryDirectory() as temporary:
+                run_id, _ = self._saved_run(temporary)
+                receipt_path = Path(temporary) / "runs" / run_id / "save_receipt.json"
+                receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+                mutate(receipt)
+                receipt_path.write_text(
+                    json.dumps(receipt, ensure_ascii=False), encoding="utf-8"
+                )
+                with self.assertRaisesRegex(DistributionContractError, "save receipt"):
+                    DistributionService(temporary).generate(
+                        run_id,
+                        explicit_request="生成分发包",
+                        candidate=read_json("p6_distribution.json"),
+                    )
+                self.assertFalse(
+                    any(
+                        (Path(temporary) / "runs" / run_id).glob(
+                            "distribution_v*.json"
+                        )
+                    )
+                )
+
     def test_three_option_gate_a_binds_selected_option_before_exact_approval(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             run_id, store, artifacts = self._three_option_run(temporary)

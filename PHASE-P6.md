@@ -39,12 +39,12 @@
 - 候选日期：2026-08-28
 - 分支：`feature/content-gzh-slim`
 - 候选收据：`phase-receipts/P6-candidate.json`
-- 开发测试：58 项通过（P1—P5 49 项回归，P6 9 项）
+- 开发测试：59 项通过（P1—P5 49 项回归，P6 10 项）
 - Skill 校验：6 个 Skill 全部通过，未超预算
 - 分发验证：仅受控 fixture 在精确请求后生成；真实 WorkBuddy Run 未生成分发文件
 - P3-D01：已通过可复现三选一 fixture 最小闭环关闭
 - P1-D01 / P1-D02：无主链真实失败，未安装依赖、未做审美修复，原样保留
-- PM Review：待总控执行，开发自检不计入 PM Review
-- P6 修复轮：0 次
+- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED；待唯一 Recheck，不得写为 PASS
+- P6 修复轮：1 次，已用完修复预算；只修 must_avoid 执行与 save receipt 全字段绑定
 - 真实矩阵缺口：仅一条 WorkBuddy 样本获授权；无 IP、limited、多 IP、Feishu 等真实样本仍待用户授权，不冒充 fixture 为真实
 - P7：未授权、未执行

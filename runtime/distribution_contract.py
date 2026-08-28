@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from .approved_direction import canonical_digest
+
 
 class DistributionContractError(ValueError):
     """Raised when distribution output changes the article or misses platform fields."""
@@ -27,13 +29,35 @@ def frozen_distribution_constraints(context: dict[str, Any]) -> dict[str, Any]:
 
 
 def validate_distribution_candidate(
-    candidate: Any, approved_final: dict[str, Any]
+    candidate: Any,
+    approved_final: dict[str, Any],
+    forbidden_phrases: list[str],
 ) -> dict[str, Any]:
     if not isinstance(candidate, dict) or set(candidate) != _ROOT_FIELDS:
         raise DistributionContractError("distribution output fields are invalid")
     final_title = approved_final["headline"]["final_title"]
     if candidate.get("wechat_final_title") != final_title:
         raise DistributionContractError("distribution may not change the WeChat final title")
+    external_texts = []
+
+    def collect_text(value: Any) -> None:
+        if isinstance(value, str):
+            external_texts.append(value)
+        elif isinstance(value, dict):
+            for nested in value.values():
+                collect_text(nested)
+        elif isinstance(value, list):
+            for nested in value:
+                collect_text(nested)
+
+    collect_text(candidate)
+    for phrase in forbidden_phrases:
+        if isinstance(phrase, str) and phrase.strip() and any(
+            phrase.strip().casefold() in text.casefold() for text in external_texts
+        ):
+            raise DistributionContractError(
+                f"distribution text contains must_avoid phrase: {phrase.strip()}"
+            )
 
     normalized: dict[str, Any] = {"wechat_final_title": final_title}
     for platform in ("xiaohongshu", "wechat_channels", "douyin"):
@@ -67,3 +91,54 @@ def validate_distribution_candidate(
         raise DistributionContractError("moments copy is empty")
     normalized["moments"] = {"copy": copy_value.strip()}
     return normalized
+
+
+def validate_saved_receipt(
+    run: dict[str, Any], approved: dict[str, Any], receipt: dict[str, Any]
+) -> None:
+    semantics = receipt.get("semantics", {})
+    expected_backend = approved.get("knowledge_base_identity", {}).get("backend")
+    checks = (
+        (approved.get("run_id") == run.get("run_id"), "approved_final run_id mismatch"),
+        (
+            expected_backend == run.get("knowledge_base_identity", {}).get("backend"),
+            "approved_final backend mismatch",
+        ),
+        (
+            approved.get("save_target", {}).get("backend") == expected_backend,
+            "approved_final save target backend mismatch",
+        ),
+        (receipt.get("run_id") == run.get("run_id"), "save receipt run_id mismatch"),
+        (
+            receipt.get("approved_final_digest") == canonical_digest(approved),
+            "save receipt approved_final digest mismatch",
+        ),
+        (receipt.get("backend") == expected_backend, "save receipt backend mismatch"),
+        (
+            receipt.get("version") == approved.get("draft", {}).get("version"),
+            "save receipt draft version mismatch",
+        ),
+        (
+            receipt.get("title") == approved.get("headline", {}).get("final_title"),
+            "save receipt final title mismatch",
+        ),
+        (
+            receipt.get("body_digest") == approved.get("draft", {}).get("digest"),
+            "save receipt body digest mismatch",
+        ),
+        (
+            receipt.get("context_digest") == approved.get("context_digest"),
+            "save receipt Context digest mismatch",
+        ),
+        (receipt.get("readback_status") == "verified", "save receipt readback is not verified"),
+        (semantics.get("saved") is True, "save receipt does not confirm saved"),
+        (semantics.get("draftbox") is False, "save receipt incorrectly claims draftbox"),
+        (semantics.get("published") is False, "save receipt incorrectly claims published"),
+        (
+            semantics.get("distribution_generated") is False,
+            "save receipt already claims distribution generated",
+        ),
+    )
+    for valid, message in checks:
+        if not valid:
+            raise DistributionContractError(message)

@@ -12,6 +12,7 @@ from .distribution_contract import (
     DistributionContractError,
     frozen_distribution_constraints,
     validate_distribution_candidate,
+    validate_saved_receipt,
 )
 from .run_store import RunStore, RunStoreError
 
@@ -54,17 +55,13 @@ class DistributionService:
         receipt = self.artifacts.read_json(run_id, "save_receipt.json")
         context = self.artifacts.read_json(run_id, "article_context_v1.json")
         approved_digest = canonical_digest(approved)
-        if approved.get("run_id") != run_id or receipt.get("run_id") != run_id:
-            raise DistributionContractError("distribution inputs belong to another Run")
-        if receipt.get("approved_final_digest") != approved_digest:
-            raise DistributionContractError("save receipt does not bind approved_final")
-        if receipt.get("readback_status") != "verified" or not receipt.get("semantics", {}).get(
-            "saved"
-        ):
-            raise DistributionContractError("distribution requires verified saved content")
+        validate_saved_receipt(run, approved, receipt)
         if approved.get("context_digest") != canonical_digest(context):
             raise DistributionContractError("distribution Context digest mismatch")
-        normalized = validate_distribution_candidate(candidate, approved)
+        constraints = frozen_distribution_constraints(context)
+        normalized = validate_distribution_candidate(
+            candidate, approved, constraints["must_avoid"]
+        )
         versions = self._versions(run_id)
         if versions:
             latest = self.artifacts.read_json(run_id, f"distribution_v{versions[-1]}.json")
@@ -86,7 +83,7 @@ class DistributionService:
             "approved_final_digest": approved_digest,
             "save_receipt_digest": canonical_digest(receipt),
             "body_digest": approved["draft"]["digest"],
-            "frozen_distribution_constraints": frozen_distribution_constraints(context),
+            "frozen_distribution_constraints": constraints,
             **normalized,
             "semantics": {
                 "article_body_modified": False,
