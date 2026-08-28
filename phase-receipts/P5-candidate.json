@@ -1,6 +1,6 @@
 {
   "phase": "P5",
-  "status": "development_candidate_pm_review_pending",
+  "status": "changes_requested_then_repaired_pm_recheck_pending",
   "candidate_date": "2026-08-28",
   "branch": "feature/content-gzh-slim",
   "scope": [
@@ -44,13 +44,17 @@
     "distribution_generated": false
   },
   "pm_review": {
-    "status": "pending_total_controller_review",
-    "rounds_used": 0,
+    "status": "changes_requested",
+    "conclusion": "CHANGES REQUESTED",
+    "rounds_used": 1,
     "development_self_check_counted_as_pm_review": false
   },
   "repair": {
-    "rounds_used": 0,
-    "maximum_after_pm_review": 1
+    "rounds_used": 1,
+    "maximum_after_pm_review": 1,
+    "repair_budget_used": true,
+    "status": "completed_pm_recheck_pending",
+    "scope": "Lock confirmed Gate B to recommended title and share protected 01-05 segment matching"
   },
   "deferred_issues": [],
   "carried_deferred_issues_unchanged": [

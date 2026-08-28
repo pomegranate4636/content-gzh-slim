@@ -28,7 +28,12 @@ _PLACEHOLDERS = (
     "示例占位",
     "fixture://",
 )
-_PROTECTED_ROOTS = {"01", "02", "03", "04", "05"}
+
+
+def is_protected_segment(value: str) -> bool:
+    """Match 01-05 roots with common separators, without blocking names such as 051."""
+
+    return bool(re.match(r"^0[1-5](?:$|[ ._\-])", value))
 
 
 def validate_target_preview(
@@ -53,7 +58,7 @@ def validate_target_preview(
     parts = [part for part in urlsplit(target_ref).path.split("/") if part]
     if ".." in parts:
         raise SaveContractError("save target escapes its controlled boundary")
-    if any(part in _PROTECTED_ROOTS for part in parts):
+    if any(is_protected_segment(part) for part in parts):
         raise SaveContractError("save target may not write 01-05")
     return {"backend": backend, "target_ref": target_ref, "status": status}
 
@@ -127,9 +132,12 @@ def build_approved_final(
         raise SaveContractError("stored headline does not contain exact Top 3")
 
     if decision == "确认正文和标题":
-        selected_title = final_title or headline.get("recommended")
-        if selected_title not in top3:
-            raise SaveContractError("final title must come from the displayed Top 3")
+        recommended = headline.get("recommended")
+        if recommended not in top3:
+            raise SaveContractError("recommended title is not in the displayed Top 3")
+        if final_title is not None and final_title != recommended:
+            raise SaveContractError("confirmed Gate B locks the displayed recommended title")
+        selected_title = recommended
         title_source = "displayed_top3"
     else:
         explicit_title = decision.removeprefix("使用标题：").strip()

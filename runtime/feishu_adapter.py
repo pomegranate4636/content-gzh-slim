@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any, Protocol
 
 from .obsidian_adapter import SaveAdapterError
+from .save_contract import is_protected_segment
 
 
 class FeishuClient(Protocol):
@@ -27,7 +28,7 @@ class FeishuAdapter:
         parent_ref = self.target_map.get(target_ref)
         if not isinstance(parent_ref, str) or not parent_ref.strip():
             raise SaveAdapterError("Feishu target ref is not in the injected target map")
-        if any(part in {"01", "02", "03", "04", "05"} for part in parent_ref.split("/")):
+        if any(is_protected_segment(part) for part in parent_ref.split("/")):
             raise SaveAdapterError("Feishu target map may not write 01-05")
         metadata = {
             "version": approved["draft"]["version"],

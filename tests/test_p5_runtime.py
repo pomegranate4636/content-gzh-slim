@@ -220,9 +220,13 @@ class P5RuntimeTests(unittest.TestCase):
             result = service.save(run_id)
             resumed = service.save(run_id)
             status = store.load(run_id)["status"]
-            protected = FeishuAdapter(client, {target_ref: "03"})
-            with self.assertRaisesRegex(SaveAdapterError, "01-05"):
-                protected.write_create_only(result["approved_final"])
+            for protected_parent in ("05 IP", "03-业务库", "04_内容方法"):
+                protected = FeishuAdapter(client, {target_ref: protected_parent})
+                with self.assertRaisesRegex(SaveAdapterError, "01-05"):
+                    protected.write_create_only(result["approved_final"])
+            safe_client = FakeFeishuClient()
+            safe = FeishuAdapter(safe_client, {target_ref: "051资料"})
+            safe.write_create_only(result["approved_final"])
 
         self.assertEqual(status, "saved")
         self.assertEqual(result["save_receipt"]["backend"], "feishu")
@@ -233,11 +237,17 @@ class P5RuntimeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             run_id, store = self._final_approved_run(temporary)
             adapter = self._obsidian_adapter(temporary, run_id)
-            with self.assertRaisesRegex(SaveContractError, "displayed Top 3"):
+            alternate_top3_title = read_json("p4_headline.json")["top3"][0]["title"]
+            with self.assertRaisesRegex(SaveContractError, "recommended title"):
                 SaveService(temporary, {"obsidian": adapter}).save(
-                    run_id, final_title="没有展示过的标题"
+                    run_id, final_title=alternate_top3_title
                 )
             self.assertEqual(store.load(run_id)["status"], "final_approved")
+            confirmed = SaveService(temporary, {"obsidian": adapter}).save(run_id)
+            self.assertEqual(
+                confirmed["approved_final"]["headline"]["final_title"],
+                read_json("p4_headline.json")["recommended"],
+            )
 
         with tempfile.TemporaryDirectory() as temporary:
             explicit = "用户现场明确输入的新标题"
@@ -272,13 +282,26 @@ class P5RuntimeTests(unittest.TestCase):
                 "status": "preview_only_not_writable",
             },
         }
-        bad_refs = ["/absolute/articles", "fixture://obsidian/kb/../articles", "fixture://obsidian/kb/03/articles"]
+        bad_refs = [
+            "/absolute/articles",
+            "fixture://obsidian/kb/../articles",
+            "fixture://obsidian/kb/05 IP/articles",
+            "fixture://obsidian/kb/03-业务库/articles",
+            "fixture://obsidian/kb/04_内容方法/articles",
+        ]
         for target_ref in bad_refs:
             with self.subTest(target_ref=target_ref):
                 context = copy.deepcopy(base)
                 context["save_target_preview"]["target_ref"] = target_ref
                 with self.assertRaises(SaveContractError):
                     validate_target_preview(context, "obsidian")
+        safe_numbered = copy.deepcopy(base)
+        safe_numbered["save_target_preview"]["target_ref"] = (
+            "fixture://obsidian/kb/051资料/articles"
+        )
+        self.assertEqual(
+            validate_target_preview(safe_numbered, "obsidian")["backend"], "obsidian"
+        )
         backend_mismatch = copy.deepcopy(base)
         backend_mismatch["save_target_preview"]["backend"] = "feishu"
         with self.assertRaisesRegex(SaveContractError, "frozen knowledge base"):
@@ -293,6 +316,18 @@ class P5RuntimeTests(unittest.TestCase):
             )
             with self.assertRaisesRegex(SaveAdapterError, "escapes"):
                 SaveService(temporary, {"obsidian": adapter}).save(run_id)
+
+            target_ref = context["save_target_preview"]["target_ref"]
+            for protected_relative in ("05 IP/articles", "03-业务库", "04_内容方法"):
+                protected = ObsidianAdapter(
+                    Path(temporary) / "isolated", {target_ref: protected_relative}
+                )
+                with self.assertRaisesRegex(SaveAdapterError, "01-05"):
+                    protected._directory(target_ref)
+            safe = ObsidianAdapter(
+                Path(temporary) / "isolated", {target_ref: "051资料/articles"}
+            )
+            self.assertTrue(str(safe._directory(target_ref)).endswith("051资料/articles"))
 
     def test_placeholder_or_fixture_residue_blocks_save(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

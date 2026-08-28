@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：Development candidate ready; PM Review pending
+- 当前：唯一修复轮已完成；PM Recheck pending
 - 授权：`EXECUTE_PHASE: P5`
 - 上游 Gate：P4 completed，用户以精确决定 `确认正文和标题` 批准 Gate B
 
@@ -30,7 +30,7 @@
 
 - 同一 Run 必须有唯一精确 Gate B 批准收据并处于 `final_approved`。
 - 锁定当前匹配的 `draft_vN.md`、`headline_vN.json`、正文 digest、Context digest 与最终标题。
-- `确认正文和标题` 只能选择已展示 Top 3；`使用标题：...` 只能使用该明确标题。
+- `确认正文和标题` 锁定 Gate B 展示的推荐标题；只有 `使用标题：...` 才能改选另一候选或用户新标题。
 - backend 与冻结知识库、保存预览和注入 Adapter 完全一致。
 - create-only 写入后回读标题、正文、目标、版本和 digest；一致后才进入 `saved`。
 - `saved` 明确不等于草稿箱、发布或分发。
@@ -43,6 +43,6 @@
 - 开发测试：49 项通过（P1—P4 39 项回归，P5 10 项）
 - 后端验证：Obsidian 注入隔离根与 Feishu fake client 均通过 create-only / 回读
 - 临时真实验证：WorkBuddy 成稿只保存到 `/tmp` 隔离 Obsidian 映射，回读一致，Run 为 `saved`
-- PM Review：待总控执行，开发自检不计入 PM Review
-- P5 修复轮：0 次
+- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED；待唯一 Recheck，不得写为 PASS
+- P5 修复轮：1 次，已用完修复预算；只修推荐标题授权与 01—05 分隔目录保护
 - P6：未授权、未执行

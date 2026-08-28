@@ -8,13 +8,11 @@ from pathlib import Path
 from typing import Any
 
 from .path_boundary import PathBoundary, PathBoundaryError
+from .save_contract import is_protected_segment
 
 
 class SaveAdapterError(RuntimeError):
     """Raised when a backend write, conflict, or readback cannot be verified."""
-
-
-_PROTECTED_ROOTS = {"01", "02", "03", "04", "05"}
 
 
 def _slug(title: str) -> str:
@@ -35,7 +33,7 @@ class ObsidianAdapter:
         if not isinstance(relative, str) or not relative.strip():
             raise SaveAdapterError("Obsidian target ref is not in the injected target map")
         parts = Path(relative).parts
-        if any(part in _PROTECTED_ROOTS for part in parts):
+        if any(is_protected_segment(part) for part in parts):
             raise SaveAdapterError("Obsidian target map may not write 01-05")
         try:
             return self.boundary.child(relative)
