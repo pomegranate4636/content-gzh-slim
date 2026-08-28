@@ -1,0 +1,113 @@
+{
+  "phase": "P6",
+  "status": "development_candidate_pm_review_pending",
+  "candidate_date": "2026-08-28",
+  "branch": "feature/content-gzh-slim",
+  "scope": [
+    "sixth and final content-gzh-distribution-pack internal Skill",
+    "exact explicit distribution request after verified saved state",
+    "create-only versioned distribution_vN.json bound to saved body and title",
+    "controlled Gate A option_id selection before exact direction approval",
+    "SPEC 25 core, negative, and anti-bloat fixture matrix"
+  ],
+  "development_validation": {
+    "unit_tests": "58 passed: 49 P1-P5 regression, 9 P6",
+    "skill_creator_validation": "all 6 repository Skills passed",
+    "python_compile": "passed",
+    "json_syntax": "passed",
+    "complexity_and_artifact_scan": "passed",
+    "distribution_exact_trigger": "passed",
+    "distribution_create_only_and_versioning": "passed",
+    "body_and_wechat_title_immutability": "passed",
+    "three_option_gate_a_binding": "passed_without_defaulting_first_option"
+  },
+  "controlled_fixture_matrix": {
+    "core_scenarios": {
+      "ip_topic_1_to_5_references": "passed",
+      "ip_no_reference_with_user_thought": "passed",
+      "ip_no_direction_three_options": "passed",
+      "no_ip_with_topic": "passed",
+      "no_ip_no_direction": "passed",
+      "limited_ip_without_invented_first_person": "passed",
+      "same_kb_ip_a_then_ip_b_isolated": "passed",
+      "different_kb_same_ip_name_isolated": "passed",
+      "obsidian_save_readback": "passed",
+      "feishu_fake_save_readback": "passed",
+      "explicit_distribution_preserves_body_and_main_title": "passed"
+    },
+    "negative_scenarios": {
+      "same_name_resolution_conflict": "passed",
+      "03_04_05_boundary": "passed",
+      "post_gate_a_04_research": "passed",
+      "writer_search_capability": "absent_and_tested",
+      "candidate_promoted_to_fact": "rejected",
+      "summary_claimed_as_full_reference": "rejected",
+      "revision_switches_kb_or_ip": "rejected",
+      "save_before_gate_b": "rejected",
+      "partial_save_or_readback_failure": "not_reported_saved",
+      "saved_claimed_as_draftbox_or_published": "false_by_contract",
+      "distribution_changes_body_or_main_title": "rejected"
+    },
+    "anti_bloat": {
+      "runs_per_normal_task": 1,
+      "writer_context_packs": 1,
+      "human_gates": 2,
+      "writer_knowledge_searches": 0,
+      "reviewers": 0,
+      "reference_limit": 5,
+      "business_03_limit": 5,
+      "peer_04_limit": 3,
+      "method_04_limit": 2,
+      "primary_ip_limit": "1_or_none",
+      "skill_total": 6,
+      "image_audio_draftbox_publish_artifacts": 0
+    }
+  },
+  "temporary_real_validation": {
+    "authorized_sample_count": 1,
+    "sample": "WorkBuddy",
+    "covers": ["full_ip", "explicit_reference", "obsidian_isolated_save_readback"],
+    "distribution_requested": false,
+    "distribution_artifact_created": false,
+    "existing_real_artifacts_modified": false,
+    "other_desktop_samples_read_or_executed": false,
+    "real_knowledge_base_or_feishu_accessed": false
+  },
+  "resolved_issues": [
+    {
+      "id": "P3-D01",
+      "resolution": "Record one explicit option_id in waiting_direction, then preserve exact Gate A approval and freeze that full option; missing selection rejects."
+    }
+  ],
+  "deferred_issues": [
+    {
+      "id": "P6-D01",
+      "blocking_for_development_candidate": false,
+      "blocks_final_real_matrix_gate": true,
+      "summary": "Only the authorized WorkBuddy real sample is available; real no-IP, limited-IP, multi-IP, and Feishu scenarios require additional user authorization.",
+      "next_action": "Request explicit isolated-sample authorization before claiming the final real matrix Gate."
+    }
+  ],
+  "carried_deferred_issues_unchanged": ["P1-D01", "P1-D02"],
+  "blocking_issues": [],
+  "pm_review": {
+    "status": "pending_total_controller_review",
+    "rounds_used": 0,
+    "development_self_check_counted_as_pm_review": false
+  },
+  "repair": {
+    "rounds_used": 0,
+    "maximum_after_pm_review": 1
+  },
+  "boundaries": {
+    "skill_total": 6,
+    "new_reviewer_or_gate_created": false,
+    "real_content_committed": false,
+    "real_distribution_created": false,
+    "real_backend_accessed": false,
+    "skill_installed": false,
+    "main_merged": false,
+    "p7_started": false,
+    "version_published": false
+  }
+}

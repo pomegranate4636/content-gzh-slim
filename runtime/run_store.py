@@ -192,3 +192,23 @@ class RunStore:
         ]
         self._replace(run_file, run)
         return run
+
+    def select_gate_a_option(self, run_id: str, option_id: str) -> dict[str, Any]:
+        if not isinstance(option_id, str) or not option_id.strip():
+            raise RunStoreError("Gate A option_id must be explicit")
+        run_file = self._run_file(run_id)
+        run = self._read_json(run_file)
+        if run.get("run_id") != run_id:
+            raise RunStoreError("Run identity mismatch; refusing to update")
+        if run.get("status") != "waiting_direction":
+            raise RunStoreError("Gate A option selection requires waiting_direction")
+        existing = run.get("gate_a_selection")
+        if existing is not None:
+            if existing.get("option_id") != option_id.strip():
+                raise RunStoreError("Gate A option is already bound and cannot be replaced")
+            return run
+        now = _utc_now()
+        run["updated_at"] = now
+        run["gate_a_selection"] = {"option_id": option_id.strip(), "at": now}
+        self._replace(run_file, run)
+        return run

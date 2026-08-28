@@ -92,4 +92,4 @@ IP：
 
 ## 8. 当前阶段
 
-P4 已通过唯一 PM Review、一次最小修复和唯一 Recheck，用户以精确决定批准 Gate B。P5 开发候选已完成：两个后端均通过注入式隔离测试，真实临时 Run 只保存到 `/tmp` 隔离 Obsidian 映射并回读一致。当前等待 P5 PM Review；P6 未授权、未执行。
+P5 已通过唯一 PM Review、一次最小修复和唯一 Recheck。P6 开发候选已完成：第 6 个 Skill 只在保存后精确请求时生成版本化分发，三选一方向已受控绑定 option_id，58 项测试与反膨胀扫描通过。当前等待 P6 PM Review；真实矩阵除 WorkBuddy 外仍待授权，P7 未授权、未执行。

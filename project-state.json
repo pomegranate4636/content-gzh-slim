@@ -3,7 +3,7 @@
   "schema_version": 1,
   "repository_visibility": "private",
   "current_phase": "P6",
-  "current_status": "p5_pm_recheck_pass_p6_authorized",
+  "current_status": "p6_development_candidate_pm_review_pending",
   "implementation_started": true,
   "installed": false,
   "published": false,
@@ -32,7 +32,8 @@
     "phase-receipts/P2-candidate.json",
     "phase-receipts/P3-candidate.json",
     "phase-receipts/P4-candidate.json",
-    "phase-receipts/P5-candidate.json"
+    "phase-receipts/P5-candidate.json",
+    "phase-receipts/P6-candidate.json"
   ],
   "gate_a_status": "real_content_direction_approved",
   "p2_pm_review_status": "pass",
@@ -62,6 +63,12 @@
   "real_save_status": "saved_to_temporary_isolated_obsidian_mapping_and_readback_verified",
   "real_save_run_id": "run_83d6bb91813c2cca73f93656",
   "real_save_backend": "obsidian_test_mapping",
+  "p6_pm_review_status": "pending",
+  "p6_pm_review_rounds": 0,
+  "p6_repair_rounds_used": 0,
+  "distribution_status": "controlled_fixture_only_real_workbuddy_not_requested",
+  "skill_total_actual": 6,
+  "p3_d01_status": "resolved_by_explicit_option_id_binding",
   "deferred_issues": [
     {
       "id": "P1-D01",
@@ -78,11 +85,19 @@
       "deferred_to": "P6_real_task_validation"
     },
     {
-      "id": "P3-D01",
-      "phase": "P3",
+      "id": "P6-D01",
+      "phase": "P6",
       "blocking": false,
-      "summary": "A multi-option Gate A receipt currently lacks an approved option id, so P3 safely rejects it instead of guessing.",
-      "deferred_to": "P6_real_task_validation"
+      "blocks_final_real_matrix_gate": true,
+      "summary": "Only WorkBuddy is authorized as a real sample; real no-IP, limited-IP, multi-IP, and Feishu scenarios remain unauthorized.",
+      "deferred_to": "user_authorized_isolated_real_matrix_validation"
+    }
+  ],
+  "resolved_issues": [
+    {
+      "id": "P3-D01",
+      "resolved_in": "P6",
+      "summary": "Gate A options now require an explicit option_id selection before exact direction approval; missing selection never defaults."
     }
   ],
   "frozen_decisions": [

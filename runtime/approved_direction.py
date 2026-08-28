@@ -35,10 +35,23 @@ def materialize_approved_direction(
         raise ApprovedDirectionError("direction IP does not match Run")
     if direction.get("task_input") != run.get("task_input"):
         raise ApprovedDirectionError("direction task input does not match Run")
-    if direction.get("mode") != "single" or len(direction.get("options", [])) != 1:
-        raise ApprovedDirectionError(
-            "Gate receipt does not bind one option; refusing to guess among multiple directions"
-        )
+    options = direction.get("options", [])
+    if direction.get("mode") == "single" and len(options) == 1:
+        approved_option = options[0]
+    elif direction.get("mode") == "options":
+        if len(options) != 3:
+            raise ApprovedDirectionError(
+                "Gate receipt does not bind one option; refusing to guess among multiple directions"
+            )
+        selected_option_id = run.get("gate_a_selection", {}).get("option_id")
+        matches = [option for option in options if option.get("option_id") == selected_option_id]
+        if len(matches) != 1:
+            raise ApprovedDirectionError(
+                "Gate receipt does not bind one option; refusing to guess among multiple directions"
+            )
+        approved_option = matches[0]
+    else:
+        raise ApprovedDirectionError("direction mode or option count is invalid")
 
     if retrieval_receipt.get("run_id") != run.get("run_id"):
         raise ApprovedDirectionError("retrieval receipt run_id does not match Run")
@@ -66,7 +79,6 @@ def materialize_approved_direction(
             item["source_ref"] for item in entries if item.get("role") == "reference"
         },
     }
-    approved_option = direction["options"][0]
     selected_sources = approved_option.get("selected_sources", {})
     for key, available in role_refs.items():
         selected = selected_sources.get(key)
