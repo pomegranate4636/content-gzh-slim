@@ -27,6 +27,6 @@
 - Repository visibility：Private
 - Implementation：P7 development candidate; 63 tests passed
 - Current phase：P7 build and project-level installed-host validation
-- Next action：构建并安装到本仓库 `.agents/skills`，随后逐次执行两条真人 Gate Run
-- Installed：No
+- Next action：等待真实 Run 1 的 Gate A 确认，随后继续同一 Run 到 Gate B
+- Installed：Yes，项目级测试 Host；未写入全局 Skill
 - Published：No

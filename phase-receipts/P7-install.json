@@ -1,0 +1,41 @@
+{
+  "phase": "P7",
+  "status": "project_install_pass_run1_waiting_gate_a",
+  "date": "2026-08-28",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "installation": {
+    "scope": "repository_level_agents_skills",
+    "skill_count": 6,
+    "manifest_probe": "pass",
+    "privacy_scan": "pass",
+    "credentials_copied": false,
+    "global_skill_directory_written": false,
+    "legacy_v1_replaced": false
+  },
+  "real_run_1": {
+    "status": "waiting_direction",
+    "run_id_sha256_prefix": "ed01aa6fd07e",
+    "ip_status": "full",
+    "05_profiles_read": 1,
+    "03_candidates": 5,
+    "04_peer_candidates": 0,
+    "04_method_candidates": 2,
+    "references_prepared": 0,
+    "characters_in_runtime_receipt": 922,
+    "context_packs": 0,
+    "gate_approvals": 0,
+    "writer_searches": 0,
+    "reviewers": 0,
+    "saved_files": 0,
+    "draftbox": false,
+    "published": false,
+    "git_worktree_changed_by_run": false
+  },
+  "privacy": {
+    "topic_committed": false,
+    "source_paths_committed": false,
+    "source_fragments_committed": false,
+    "run_artifacts_committed": false
+  },
+  "next_action": "wait_for_exact_human_gate_a_decision"
+}

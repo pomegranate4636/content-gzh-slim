@@ -92,4 +92,4 @@ IP：
 
 ## 8. 当前阶段
 
-P7 已获得 `EXECUTE_PHASE: P7` 与完整隔离测试授权。自包含候选代码和 4 项 P7 自动测试已完成，当前总计 63 项测试与 6 个 Skill 校验通过；下一步只安装到本仓库 `.agents/skills`，再逐次执行两条真实 Run 的 Gate A / Gate B。允许创建一个飞书测试文档；不写全局 Skill、不复制凭据、不替换 V1、不合并、不发布。
+P7 候选 `b188329` 已安装到本仓库 `.agents/skills`，隐私扫描、manifest probe、63 项测试与 6 个 Skill 校验通过。真实 Run 1 已停在 `waiting_direction`：0 Context、0 Writer、0 Reviewer、0 保存，正等待用户 Gate A。允许后续创建一个飞书测试文档；不写全局 Skill、不复制凭据、不替换 V1、不合并、不发布。
