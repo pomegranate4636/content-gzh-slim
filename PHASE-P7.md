@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：真实 Run 1 已完成隔离 Obsidian 保存回读；原 Run 2 已保留为 fail-closed 证据；替代 Run 2 已完成 Gate A、唯一 Context、正文与 Top 3，等待真人 Gate B
+- 当前：真实 Run 1 已完成隔离 Obsidian 保存回读；原 Run 2 已保留为 fail-closed 证据；替代 Run 2 已完成两次真人 Gate、唯一 Context，并完成真实飞书 create-only 保存与回读；等待唯一 PM Review
 - 授权：`EXECUTE_PHASE: P7`
 - 用户边界：允许构建、项目级安装、一个真实飞书测试文档和两次真实 Run；每次 Gate 逐次人工确认；Review 后停止，不合并、不发布
 - 上游 Gate：P6 PM Recheck PASS，3 个授权样本派生 5 个隔离 Run 全部通过
@@ -46,9 +46,9 @@
 - 自动测试：63 项通过（P1—P6 59 项回归，P7 4 项）
 - Skill 校验：6 个 Skill 全部通过
 - 候选包黑盒：完整 fixture 链经 bundled launcher 保存到隔离 Obsidian 并回读通过
-- 真实飞书：CLI 1.0.91、user 身份和文档读写权限已只读核验；尚未创建测试文档
+- 真实飞书：CLI 1.0.91、user 身份和文档读写权限已核验；仅创建 1 个测试文档，标题、正文、版本和摘要已远端回读一致，未复制登录凭据
 - 项目级安装：候选 `b188329` 已安装到仓库级 `.agents/skills`，隐私扫描与 manifest probe 通过
 - 真实 Run 1：两次 Gate 均由用户逐次确认；1 Run、1 Context、Writer 0 次知识库搜索、0 Reviewer；已 create-only 保存到隔离 Obsidian，并回读确认标题、正文、版本和摘要一致；0 分发、0 草稿箱、0 发布
 - 真实 Run 2：Gate A 已由用户精确确认；首次且唯一一次 Context 构建因方向中的 `must_keep/must_avoid` 未逐项等于冻结任务而被 Runtime 拒绝；当前 0 Context、0 Writer、0 Headline、0 保存、0 分发、0 Reviewer、0 飞书文档，未重试、未改冻结方向、未绕过合同
-- 替代 Run 2：用户已精确确认 Gate A；唯一 Context 一次构建成功，Writer 只读该 Context 且 0 次知识库搜索；2914 字符正文与 Top 3 通过合同，当前停在 `waiting_final`；0 Reviewer、0 保存、0 飞书文档、0 分发
+- 替代 Run 2：用户已精确确认 Gate A 与 Gate B；唯一 Context 一次构建成功，Writer 只读该 Context 且 0 次知识库搜索；2914 字符正文与 Top 3 通过合同；真实飞书 create-only 保存和远端回读通过；当前 `saved`，0 Reviewer、0 分发、0 草稿箱、0 发布
 - PM Review：尚未执行

@@ -1,0 +1,45 @@
+{
+  "phase": "P7",
+  "status": "replacement_run2_pass_real_feishu_saved_and_readback_verified",
+  "date": "2026-08-28",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "run_id_sha256_prefix": "d35986c12bf8",
+  "human_gates": {
+    "direction": "confirmed_by_user",
+    "body_and_headline": "confirmed_by_user",
+    "count": 2
+  },
+  "runtime": {
+    "state": "saved",
+    "context_packs": 1,
+    "writer_knowledge_base_searches": 0,
+    "reviewers": 0,
+    "save_backend": "feishu",
+    "write_status": "created",
+    "readback_status": "verified",
+    "feishu_documents_created": 1,
+    "distribution_artifacts": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "integrity": {
+    "approved_final_digest_match": true,
+    "body_digest_match": true,
+    "context_digest_match": true,
+    "version_binding": true,
+    "title_from_displayed_top3": true,
+    "client_state_document_count": 1,
+    "client_state_credential_like_keys": 0,
+    "object_ref_sha256_prefix": "85135f71bbc9",
+    "legacy_v1_unchanged": true,
+    "git_worktree_changed_by_run": false
+  },
+  "privacy": {
+    "actual_content_committed": false,
+    "document_url_committed": false,
+    "document_token_committed": false,
+    "run_artifacts_committed": false,
+    "credentials_committed": false
+  },
+  "next_action": "perform_single_p7_independent_pm_review"
+}

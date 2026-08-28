@@ -3,7 +3,7 @@
   "schema_version": 1,
   "repository_visibility": "private",
   "current_phase": "P7",
-  "current_status": "p7_replacement_run2_waiting_gate_b_user_confirmation",
+  "current_status": "p7_real_runs_pass_pending_pm_review",
   "implementation_started": true,
   "installed": true,
   "published": false,
@@ -42,7 +42,8 @@
     "phase-receipts/P7-run2-gate-a.json",
     "phase-receipts/P7-run2-context-blocked.json",
     "phase-receipts/P7-run2-replacement-gate-a.json",
-    "phase-receipts/P7-run2-replacement-gate-b.json"
+    "phase-receipts/P7-run2-replacement-gate-b.json",
+    "phase-receipts/P7-run2-feishu-save.json"
   ],
   "gate_a_status": "real_content_direction_approved",
   "p2_pm_review_status": "pass",
@@ -86,7 +87,7 @@
   "p7_skill_validation": "6_passed",
   "p7_candidate_build_status": "built_from_b188329_privacy_scan_and_probe_passed",
   "p7_project_install_status": "installed_repository_level_agents_skills",
-  "p7_real_run_status": "run1_pass_original_run2_blocked_replacement_run2_waiting_gate_b",
+  "p7_real_run_status": "run1_obsidian_pass_original_run2_blocked_replacement_run2_feishu_pass",
   "p7_real_run1_context_packs": 1,
   "p7_real_run1_human_gates": 2,
   "p7_real_run1_writer_knowledge_base_searches": 0,
@@ -105,15 +106,19 @@
   "p7_real_run2_context_blocker": "approved_direction_must_keep_mismatch",
   "p7_real_run2_context_attempts": 1,
   "p7_replacement_run_authorized": true,
-  "p7_replacement_run2_status": "waiting_final",
+  "p7_replacement_run2_status": "saved",
   "p7_replacement_run2_must_keep_exact": true,
   "p7_replacement_run2_must_avoid_exact": true,
   "p7_replacement_run2_context_packs": 1,
-  "p7_replacement_run2_human_gates": 1,
+  "p7_replacement_run2_human_gates": 2,
   "p7_replacement_run2_writer_knowledge_base_searches": 0,
   "p7_replacement_run2_headline_candidates": 3,
   "p7_replacement_run2_body_characters": 2914,
-  "p7_replacement_run2_feishu_documents_created": 0,
+  "p7_replacement_run2_feishu_documents_created": 1,
+  "p7_replacement_run2_write_status": "created",
+  "p7_replacement_run2_readback_status": "verified",
+  "p7_replacement_run2_distribution_generated": false,
+  "p7_feishu_status": "real_create_only_save_and_readback_verified",
   "p7_pm_review_status": "not_started",
   "p7_pm_review_rounds": 0,
   "p7_repair_rounds_used": 0,
@@ -141,13 +146,6 @@
       "blocking": false,
       "summary": "A sample requesting about 5000 Chinese characters produced approximately 3868 / 3366 characters in full-IP / no-IP variants.",
       "deferred_to": "p7_installed_host_real_run_validation"
-    },
-    {
-      "id": "P7-D01",
-      "phase": "P7",
-      "blocking": true,
-      "summary": "Final Definition of Done still requires one explicitly authorized real Feishu save/readback.",
-      "deferred_to": "p7_user_authorization_and_controlled_feishu_target"
     }
   ],
   "resolved_issues": [
@@ -160,6 +158,11 @@
       "id": "P6-D01",
       "resolved_in": "P6",
       "summary": "The user authorized the two remaining samples; isolated no-IP, limited-IP, and same-KB multi-IP runs passed without real backend writes."
+    },
+    {
+      "id": "P7-D01",
+      "resolved_in": "P7",
+      "summary": "The user authorized one real Feishu test document; create-only save and remote readback were verified."
     }
   ],
   "frozen_decisions": [
