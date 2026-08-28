@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：唯一修复轮已完成；PM Recheck pending
+- 当前：PM Recheck PASS；等待 Gate B 真人决定
 - 授权：`EXECUTE_PHASE: P4`
 - 上游 Gate：P3 completed，唯一 Article Context Pack 已通过 PM Review
 
@@ -43,7 +43,8 @@
 - 开发测试：39 项通过（10 项 P1、11 项 P2、9 项 P3、9 项 P4）
 - Skill 校验：`content-gzh-writer`、`content-gzh-headline` 均通过
 - 临时真实内容验证：已从唯一 WorkBuddy Context Pack 生成正文、Top 3 和 Gate B，Run 停在 `waiting_final`
-- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED；待唯一 Recheck，不得写为 PASS
+- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED
 - P4 修复轮：1 次，已用完修复预算；只修复 Gate B 决策合同与 SPEC 13.3 不一致
+- PM Recheck：唯一 1 次，结论 PASS；39 项回归与两个 Skill 校验通过
 - Gate B：未批准；未保存、未写回知识库、未生成分发包
 - P5：未授权、未执行
