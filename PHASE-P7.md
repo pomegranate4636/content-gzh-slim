@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：真实 Run 1 已完成隔离 Obsidian 保存回读；真实 Run 2 的 Gate A 已确认，但 Context 构建因冻结字段不一致 fail-closed，等待用户授权替代 Run
+- 当前：真实 Run 1 已完成隔离 Obsidian 保存回读；原 Run 2 已保留为 fail-closed 证据；替代 Run 2 已通过冻结字段预检并等待真人 Gate A
 - 授权：`EXECUTE_PHASE: P7`
 - 用户边界：允许构建、项目级安装、一个真实飞书测试文档和两次真实 Run；每次 Gate 逐次人工确认；Review 后停止，不合并、不发布
 - 上游 Gate：P6 PM Recheck PASS，3 个授权样本派生 5 个隔离 Run 全部通过
@@ -50,4 +50,5 @@
 - 项目级安装：候选 `b188329` 已安装到仓库级 `.agents/skills`，隐私扫描与 manifest probe 通过
 - 真实 Run 1：两次 Gate 均由用户逐次确认；1 Run、1 Context、Writer 0 次知识库搜索、0 Reviewer；已 create-only 保存到隔离 Obsidian，并回读确认标题、正文、版本和摘要一致；0 分发、0 草稿箱、0 发布
 - 真实 Run 2：Gate A 已由用户精确确认；首次且唯一一次 Context 构建因方向中的 `must_keep/must_avoid` 未逐项等于冻结任务而被 Runtime 拒绝；当前 0 Context、0 Writer、0 Headline、0 保存、0 分发、0 Reviewer、0 飞书文档，未重试、未改冻结方向、未绕过合同
+- 替代 Run 2：用户已授权技术恢复；全新 Run 在启动前与存储后均验证 `must_keep/must_avoid` 逐项逐字且顺序一致，当前停在 `waiting_direction`；未复用旧 Run 批准，所有下游仍为 0
 - PM Review：尚未执行
