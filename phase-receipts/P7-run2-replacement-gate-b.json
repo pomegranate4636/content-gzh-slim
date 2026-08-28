@@ -1,0 +1,50 @@
+{
+  "phase": "P7",
+  "status": "replacement_run2_waiting_gate_b_user_confirmation",
+  "date": "2026-08-28",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "run_id_sha256_prefix": "d35986c12bf8",
+  "gate_a": {
+    "option_id": "faq-nine-questions",
+    "exact_human_decision_confirmed": true,
+    "approval_count": 1
+  },
+  "runtime": {
+    "state": "waiting_final",
+    "context_packs": 1,
+    "context_build_attempts": 1,
+    "writer_formal_inputs": 1,
+    "writer_knowledge_base_searches": 0,
+    "post_gate_a_03_searches": 0,
+    "post_gate_a_04_searches": 0,
+    "reviewers": 0,
+    "headline_candidates": 3,
+    "recommended_headline_from_top3": true,
+    "normalized_body_characters": 2914,
+    "saved_files": 0,
+    "save_receipts": 0,
+    "feishu_documents_created": 0,
+    "distribution_artifacts": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "artifact_digests": {
+    "article_context_v1_sha256": "0cbc52e094d6497c8c1376a33259d90ce2d3f3b567b1230aa824aa40ab46da7b",
+    "draft_v1_sha256": "a26da51b93ab4d22b9ffa4248a177f7544806e012d1f05d8ad05a9bd555baf0b",
+    "headline_v1_sha256": "7d27f61d29cc6cb2da05a312c00665eaadfaea02ee48165c1cbaddcd397d1fb8"
+  },
+  "feishu_boundary": {
+    "parent_ref_bound": false,
+    "create_permitted": false,
+    "client_state_created": false,
+    "documents_created": 0
+  },
+  "privacy": {
+    "article_body_committed": false,
+    "headline_text_committed": false,
+    "source_paths_committed": false,
+    "run_artifacts_committed": false,
+    "feishu_token_committed": false
+  },
+  "next_action": "wait_for_exact_human_gate_b_decision"
+}
