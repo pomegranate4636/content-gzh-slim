@@ -1,6 +1,6 @@
 {
   "phase": "P6",
-  "status": "pm_recheck_pass_real_matrix_gate_pending",
+  "status": "completed_user_authorized_isolated_matrix_pass",
   "candidate_date": "2026-08-28",
   "branch": "feature/content-gzh-slim",
   "scope": [
@@ -66,35 +66,50 @@
     }
   },
   "temporary_real_validation": {
-    "authorized_sample_count": 1,
-    "sample": "WorkBuddy",
-    "covers": ["full_ip", "explicit_reference", "obsidian_isolated_save_readback"],
+    "authorized_sample_count": 3,
+    "isolated_run_count": 5,
+    "samples": ["WorkBuddy", "Agent concepts without benchmark", "Enterprise Agent FAQ with Xiaohongshu benchmark"],
+    "covers": ["full_ip", "no_ip", "limited_ip", "same_kb_multi_ip", "explicit_reference", "no_reference", "obsidian_isolated_save_readback"],
+    "all_runs_saved_and_readback_verified": true,
+    "context_packs_per_run": 1,
+    "test_gates_per_run": 2,
+    "writer_searches_per_run": 0,
     "distribution_requested": false,
     "distribution_artifact_created": false,
     "existing_real_artifacts_modified": false,
-    "other_desktop_samples_read_or_executed": false,
-    "real_knowledge_base_or_feishu_accessed": false
+    "authorized_remaining_desktop_samples_executed": true,
+    "real_knowledge_base_written": false,
+    "feishu_validation": "fake_client_only_per_user_authorized_isolation_scope"
   },
   "resolved_issues": [
     {
       "id": "P3-D01",
       "resolution": "Record one explicit option_id in waiting_direction, then preserve exact Gate A approval and freeze that full option; missing selection rejects."
+    },
+    {
+      "id": "P6-D01",
+      "resolution": "User authorized the remaining two samples for isolated validation; no-IP, limited-IP, and same-KB multi-IP runs passed. Feishu remained fake-only by the authorized scope."
     }
   ],
   "deferred_issues": [
     {
-      "id": "P6-D01",
-      "blocking_for_development_candidate": false,
-      "blocks_final_real_matrix_gate": true,
-      "summary": "Only the authorized WorkBuddy real sample is available; real no-IP, limited-IP, multi-IP, and Feishu scenarios require additional user authorization.",
-      "next_action": "Request explicit isolated-sample authorization before claiming the final real matrix Gate."
+      "id": "P6-D02",
+      "blocking_for_p6": false,
+      "summary": "The sample requesting about 5000 Chinese characters produced approximately 3868 / 3366 characters in full-IP / no-IP variants.",
+      "next_action": "Evaluate length adherence on the P7 installed test Host; do not add a second P6 repair round."
+    },
+    {
+      "id": "P7-D01",
+      "blocking_for_final_definition_of_done": true,
+      "summary": "Feishu save/readback is verified only with an injected fake client under the user-authorized P6 isolation scope.",
+      "next_action": "Obtain explicit P7 authorization and a controlled Feishu test target before claiming final Definition of Done."
     }
   ],
   "carried_deferred_issues_unchanged": ["P1-D01", "P1-D02"],
   "blocking_issues": [],
   "pm_review": {
     "status": "changes_requested_then_recheck_pass",
-    "conclusion": "PASS_AFTER_ONE_MINIMAL_REPAIR_REAL_MATRIX_PENDING",
+    "conclusion": "PASS_AFTER_ONE_MINIMAL_REPAIR_AND_USER_AUTHORIZED_ISOLATED_MATRIX",
     "rounds_used": 1,
     "recheck_rounds_used": 1,
     "development_self_check_counted_as_pm_review": false

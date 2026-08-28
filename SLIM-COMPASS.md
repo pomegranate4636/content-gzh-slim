@@ -92,4 +92,4 @@ IP：
 
 ## 8. 当前阶段
 
-P5 已通过唯一 PM Review、一次最小修复和唯一 Recheck。P6 开发候选已完成：第 6 个 Skill 只在保存后精确请求时生成版本化分发，三选一方向已受控绑定 option_id，58 项测试与反膨胀扫描通过。当前等待 P6 PM Review；真实矩阵除 WorkBuddy 外仍待授权，P7 未授权、未执行。
+P6 已按治理完成唯一 PM Review、一次最小修复和唯一 Recheck。59 项测试与 6 个 Skill 校验通过；3 个授权真实选题派生 5 个 `/tmp` 隔离 Run，覆盖 full / none / limited、同库多 IP 和有/无对标，均保存回读一致且未生成分发。飞书按用户授权范围仅使用 fake client，真实飞书证据留作 P7 最终 Definition of Done 前置条件。P7 尚未授权、未安装、未合并、未发布。

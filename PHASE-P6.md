@@ -47,5 +47,8 @@
 - PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED
 - P6 修复轮：1 次，已用完修复预算；只修 must_avoid 执行与 save receipt 全字段绑定
 - PM Recheck：唯一 1 次，代码结论 PASS；59 项回归与 6 个 Skill 校验通过
-- 真实矩阵缺口：仅一条 WorkBuddy 样本获授权；无 IP、limited、多 IP、Feishu 等真实样本仍待用户授权，不冒充 fixture 为真实
-- P7：未授权、未执行
+- 授权隔离矩阵：3 个真实选题、5 个隔离 Run；覆盖 full IP、有/无对标、none、limited、同库多 IP，全部保存到 `/tmp` 并回读一致
+- 反膨胀结果：每个 Run 仅 1 个 Context、2 个测试 Gate、Writer 0 次搜索、Reviewer 0、分发 0
+- 飞书边界：按用户授权范围继续使用 fake client；真实飞书保存回读仍是 P7 最终 Definition of Done 前置条件
+- 非阻断差异：5000 字偏好的两稿实际约 3868 / 3366 字；P6 不进行第二轮修复，交 P7 真实 Host 验收决定
+- P7：等待用户关键授权；未安装、未合并、未发布
