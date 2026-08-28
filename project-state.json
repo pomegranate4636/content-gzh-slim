@@ -1,0 +1,37 @@
+{
+  "project": "content-gzh-slim",
+  "schema_version": 1,
+  "repository_visibility": "private",
+  "current_phase": "P0",
+  "current_status": "spec_created_review_pending",
+  "implementation_started": false,
+  "installed": false,
+  "published": false,
+  "authorized_phase": "P0",
+  "next_phase": "P1",
+  "next_phase_authorized": false,
+  "master_spec": "CONTENT-GZH-SLIM-SPEC.md",
+  "entry_skill": "content-gzh-slim",
+  "skill_budget": {
+    "public_entry": 1,
+    "internal_ai_skills": 5,
+    "total_skills": 6,
+    "human_gates": 2,
+    "writer_context_packs": 1,
+    "reviewer_skills": 0
+  },
+  "frozen_decisions": [
+    "one_shared_engine_with_runtime_knowledge_base_and_ip_injection",
+    "same_knowledge_base_may_contain_multiple_ip_profiles",
+    "one_run_freezes_one_knowledge_base_and_one_primary_ip_or_none",
+    "selective_retrieval_order_05_then_03_then_04",
+    "deep_benchmark_analysis_is_required_when_references_exist",
+    "two_human_gates_only",
+    "writer_reads_one_article_context_pack_only",
+    "quality_review_removed_from_main_chain",
+    "save_target_may_be_feishu_or_obsidian",
+    "distribution_pack_is_optional_after_save",
+    "legacy_v1_remains_untouched"
+  ]
+}
+
