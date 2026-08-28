@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：Development candidate ready; PM Review pending
+- 当前：PM Recheck PASS；最终真实矩阵 Gate 待用户授权
 - 授权：`EXECUTE_PHASE: P6`
 - 上游 Gate：P5 PM Recheck PASS，临时 WorkBuddy Run 已隔离保存并回读
 
@@ -44,7 +44,8 @@
 - 分发验证：仅受控 fixture 在精确请求后生成；真实 WorkBuddy Run 未生成分发文件
 - P3-D01：已通过可复现三选一 fixture 最小闭环关闭
 - P1-D01 / P1-D02：无主链真实失败，未安装依赖、未做审美修复，原样保留
-- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED；待唯一 Recheck，不得写为 PASS
+- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED
 - P6 修复轮：1 次，已用完修复预算；只修 must_avoid 执行与 save receipt 全字段绑定
+- PM Recheck：唯一 1 次，代码结论 PASS；59 项回归与 6 个 Skill 校验通过
 - 真实矩阵缺口：仅一条 WorkBuddy 样本获授权；无 IP、limited、多 IP、Feishu 等真实样本仍待用户授权，不冒充 fixture 为真实
 - P7：未授权、未执行

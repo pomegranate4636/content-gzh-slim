@@ -1,6 +1,6 @@
 {
   "phase": "P6",
-  "status": "changes_requested_then_repaired_pm_recheck_pending",
+  "status": "pm_recheck_pass_real_matrix_gate_pending",
   "candidate_date": "2026-08-28",
   "branch": "feature/content-gzh-slim",
   "scope": [
@@ -93,16 +93,17 @@
   "carried_deferred_issues_unchanged": ["P1-D01", "P1-D02"],
   "blocking_issues": [],
   "pm_review": {
-    "status": "changes_requested",
-    "conclusion": "CHANGES REQUESTED",
+    "status": "changes_requested_then_recheck_pass",
+    "conclusion": "PASS_AFTER_ONE_MINIMAL_REPAIR_REAL_MATRIX_PENDING",
     "rounds_used": 1,
+    "recheck_rounds_used": 1,
     "development_self_check_counted_as_pm_review": false
   },
   "repair": {
     "rounds_used": 1,
     "maximum_after_pm_review": 1,
     "repair_budget_used": true,
-    "status": "completed_pm_recheck_pending",
+    "status": "completed_and_rechecked",
     "scope": "Enforce must_avoid across distribution text and fully bind save receipt fields"
   },
   "boundaries": {
