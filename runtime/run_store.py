@@ -152,14 +152,26 @@ class RunStore:
         return run
 
     def approve_gate(self, run_id: str, gate: str, decision: str) -> dict[str, Any]:
-        approvals = {
-            "A": ("waiting_direction", "direction_approved", "确认方向"),
-            "B": ("waiting_final", "final_approved", "确认正文和标题"),
+        transitions = {
+            "A": ("waiting_direction", "direction_approved"),
+            "B": ("waiting_final", "final_approved"),
         }
-        if gate not in approvals:
+        if gate not in transitions:
             raise RunStoreError("gate must be A or B")
-        current, target, required_decision = approvals[gate]
-        if decision != required_decision:
+        current, target = transitions[gate]
+        exact_approval = gate == "A" and decision == "确认方向"
+        exact_approval = exact_approval or (
+            gate == "B"
+            and isinstance(decision, str)
+            and (
+                decision == "确认正文和标题"
+                or (
+                    decision.startswith("使用标题：")
+                    and decision.removeprefix("使用标题：").strip()
+                )
+            )
+        )
+        if not exact_approval:
             raise RunStoreError("gate decision is not an explicit approval")
 
         run_file = self._run_file(run_id)

@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：PM Recheck PASS；等待 Gate B 真人决定
+- 当前：Completed；Gate B 已精确批准
 - 授权：`EXECUTE_PHASE: P4`
 - 上游 Gate：P3 completed，唯一 Article Context Pack 已通过 PM Review
 
@@ -46,5 +46,5 @@
 - PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED
 - P4 修复轮：1 次，已用完修复预算；只修复 Gate B 决策合同与 SPEC 13.3 不一致
 - PM Recheck：唯一 1 次，结论 PASS；39 项回归与两个 Skill 校验通过
-- Gate B：未批准；未保存、未写回知识库、未生成分发包
-- P5：未授权、未执行
+- Gate B：用户已精确回复 `确认正文和标题`；临时 WorkBuddy Run 已进入 `final_approved`
+- P5：本轮已获授权；P4 收口不把确认冒充保存

@@ -1,6 +1,6 @@
 {
   "phase": "P4",
-  "status": "pm_recheck_pass_waiting_gate_b",
+  "status": "completed_gate_b_approved",
   "candidate_date": "2026-08-28",
   "branch": "feature/content-gzh-slim",
   "scope": [
@@ -37,7 +37,9 @@
     "headline_candidate_count": 3,
     "recommended_from_top3": true,
     "gate_b_rendered": true,
-    "gate_b_approved": false,
+    "gate_b_approved": true,
+    "gate_b_decision": "确认正文和标题",
+    "gate_b_resulting_state": "final_approved",
     "save_artifacts": 0,
     "quality_review_artifacts": 0,
     "obsidian_or_feishu_backend_accessed": false,
@@ -69,11 +71,12 @@
     "real_customer_content_committed": false,
     "writer_context_files_per_run": 1,
     "reviewer_or_ai_flavor_check_created": false,
-    "gate_b_approved": false,
-    "save_or_distribution_created": false,
+    "gate_b_approved": true,
+    "save_created_by_p4": false,
+    "distribution_created_by_p4": false,
     "skill_installed": false,
     "main_merged": false,
-    "p5_started": false,
+    "p5_started": true,
     "version_published": false
   }
 }

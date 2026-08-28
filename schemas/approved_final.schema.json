@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ApprovedFinalV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "run_id", "input_digest", "knowledge_base_identity", "ip_identity",
+    "gate_b_receipt", "context_digest", "draft", "headline", "save_target"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "input_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "knowledge_base_identity": {"$ref": "knowledge_base_ref.schema.json"},
+    "ip_identity": {"$ref": "ip_ref.schema.json"},
+    "gate_b_receipt": {"type": "object"},
+    "context_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "draft": {"type": "object"},
+    "headline": {"type": "object"},
+    "save_target": {"type": "object"}
+  }
+}

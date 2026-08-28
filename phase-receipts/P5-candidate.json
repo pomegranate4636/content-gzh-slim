@@ -1,0 +1,75 @@
+{
+  "phase": "P5",
+  "status": "development_candidate_pm_review_pending",
+  "candidate_date": "2026-08-28",
+  "branch": "feature/content-gzh-slim",
+  "scope": [
+    "exact Gate B and current draft/headline version binding",
+    "approved_final.json create-only final lock",
+    "explicit-root Obsidian adapter with controlled target map",
+    "injected-client Feishu adapter with controlled target map",
+    "create-only backend write and full readback verification",
+    "save_receipt.json and final_approved to saving to saved state progression"
+  ],
+  "development_validation": {
+    "unit_tests": "49 passed: 39 P1-P4 regression, 10 P5",
+    "python_compile": "passed",
+    "json_syntax": "passed",
+    "gate_b_missing_or_wrong_binding_rejected": "passed",
+    "version_and_digest_binding": "passed",
+    "top3_or_explicit_title_only": "passed",
+    "obsidian_injected_root": "passed",
+    "feishu_fake_client": "passed",
+    "create_only_retry_and_conflict": "passed",
+    "absolute_parent_protected_and_unmapped_target_rejection": "passed",
+    "placeholder_and_fixture_residue_rejection": "passed",
+    "readback_mismatch_never_saved": "passed",
+    "saved_semantics_and_artifact_budget": "passed"
+  },
+  "temporary_real_content_validation": {
+    "status": "pass",
+    "run_id": "run_83d6bb91813c2cca73f93656",
+    "gate_b_decision": "确认正文和标题",
+    "resulting_state": "saved",
+    "backend": "obsidian_test_mapping",
+    "isolated_target_bundle": "p5-isolated-obsidian/articles",
+    "write_status": "created",
+    "readback_status": "verified",
+    "approved_final_files": 1,
+    "save_receipt_files": 1,
+    "real_obsidian_or_feishu_backend_accessed": false,
+    "repository_contains_temporary_content": false,
+    "published": false,
+    "draftbox": false,
+    "distribution_generated": false
+  },
+  "pm_review": {
+    "status": "pending_total_controller_review",
+    "rounds_used": 0,
+    "development_self_check_counted_as_pm_review": false
+  },
+  "repair": {
+    "rounds_used": 0,
+    "maximum_after_pm_review": 1
+  },
+  "deferred_issues": [],
+  "carried_deferred_issues_unchanged": [
+    "P1-D01",
+    "P1-D02",
+    "P3-D01"
+  ],
+  "blocking_issues": [],
+  "boundaries": {
+    "new_skill_created": false,
+    "real_knowledge_base_backend_accessed": false,
+    "real_customer_content_committed": false,
+    "p5_run_artifacts": ["approved_final.json", "save_receipt.json"],
+    "protected_01_05_modified": false,
+    "reviewer_or_quality_check_created": false,
+    "distribution_created": false,
+    "skill_installed": false,
+    "main_merged": false,
+    "p6_started": false,
+    "version_published": false
+  }
+}
