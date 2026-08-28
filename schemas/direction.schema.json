@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DirectionV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "run_id", "mode", "knowledge_base_identity", "ip_identity",
+    "task_input", "ip_notices", "options", "approval_status", "legal_decisions"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "pattern": "^run_[0-9a-f]{24}$"},
+    "mode": {"enum": ["single", "options"]},
+    "knowledge_base_identity": {"$ref": "knowledge_base_ref.schema.json"},
+    "ip_identity": {"$ref": "ip_ref.schema.json"},
+    "task_input": {"$ref": "task_input.schema.json"},
+    "ip_notices": {"type": "array", "items": {"type": "string"}},
+    "options": {"type": "array", "minItems": 1, "maxItems": 3, "items": {"type": "object"}},
+    "approval_status": {"const": "waiting"},
+    "legal_decisions": {
+      "const": ["确认方向", "需要修改：<具体意见>", "不采用"]
+    }
+  }
+}

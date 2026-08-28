@@ -1,0 +1,32 @@
+{
+  "phase": "P8",
+  "status": "synthetic_gate_and_distribution_pm_delegation_authorized",
+  "date": "2026-08-29",
+  "scope": "P8 synthetic non-customer acceptance only",
+  "delegation": {
+    "gate_a_exact_decision": "确认方向",
+    "gate_b_exact_decision": "确认正文和标题",
+    "distribution_exact_request": "生成分发包",
+    "decision_origin": "user_authorized_pm_delegation",
+    "runtime_waiting_states_required": ["waiting_direction", "waiting_final"],
+    "runtime_state_machine_bypass_allowed": false,
+    "direct_user_confirmation_claimed": false
+  },
+  "pm_acceptance_standard": {
+    "gate_a": ["same knowledge base and resolved IP", "no cross-knowledge-base fingerprint", "synthetic facts only", "ganhuo structure fits topic"],
+    "gate_b": ["frozen direction preserved", "no cross-knowledge-base fingerprint", "no placeholders or invented real-person experience", "headline is from Top 3", "save preview matches backend"],
+    "length": "record actual Chinese character count and deviation only; no endless repair",
+    "distribution": "only after saved; body and WeChat main-title digests must remain unchanged"
+  },
+  "product_boundary": {
+    "future_real_user_gate_policy_changed": false,
+    "p7_direct_user_gate_evidence_changed": false,
+    "main_merge_if_p8_independent_review_pass": true,
+    "tag_release_global_skill_install_v1_replacement_draftbox_publish": false
+  },
+  "privacy": {
+    "synthetic_content_or_paths_committed": false,
+    "run_artifacts_committed": false,
+    "credentials_committed": false
+  }
+}

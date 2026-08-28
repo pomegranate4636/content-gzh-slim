@@ -1,0 +1,28 @@
+{
+  "phase": "P8",
+  "status": "one_minimal_runtime_repair_then_two_fresh_recheck_runs_authorized",
+  "date": "2026-08-29",
+  "review_link": {
+    "review_receipt": "phase-receipts/P8-review.json",
+    "changes_requested_findings": ["P8-R01", "P8-R02"],
+    "repair_scope": "P8-R02 only: reproducible draft-contract false positive"
+  },
+  "preserved_first_attempt_failures": [
+    "P8 Run A context selection text mismatch",
+    "P8 Run B draft-contract status-marker false positive"
+  ],
+  "recheck": {
+    "runs": ["A2", "B2"],
+    "must_start_fresh": true,
+    "resume_or_retry_original_a_b": false,
+    "decision_origin": "user_authorized_pm_delegation",
+    "required_evidence": ["two continuous successful Runs", "isolated Obsidian readback", "one real Feishu create-only readback", "saved-after distribution preserving body and main title", "length diagnostic", "privacy and complexity boundaries"],
+    "if_recheck_fails": "stop_without_second_repair_or_main_merge"
+  },
+  "merge_condition": "only_after_recheck_pass_and_single_review_recheck_pass",
+  "privacy": {
+    "synthetic_content_or_paths_committed": false,
+    "run_artifacts_committed": false,
+    "credentials_committed": false
+  }
+}

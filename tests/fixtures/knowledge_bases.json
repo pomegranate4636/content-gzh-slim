@@ -1,0 +1,25 @@
+{
+  "fixture_version": 1,
+  "knowledge_bases": [
+    {
+      "alias": "fixture-kb-alpha",
+      "backend": "obsidian",
+      "ref": "fixture://obsidian/kb-alpha",
+      "manifest_revision": "fixture-alpha-r1",
+      "ips": {
+        "示例甲": "fixture://obsidian/kb-alpha/ip-a",
+        "示例乙": "fixture://obsidian/kb-alpha/ip-b"
+      }
+    },
+    {
+      "alias": "fixture-kb-beta",
+      "backend": "feishu",
+      "ref": "fixture://feishu/kb-beta",
+      "manifest_revision": "fixture-beta-r1",
+      "ips": {
+        "示例甲": "fixture://feishu/kb-beta/ip-a"
+      }
+    }
+  ]
+}
+

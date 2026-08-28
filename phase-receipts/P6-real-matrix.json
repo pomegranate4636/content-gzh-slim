@@ -1,0 +1,47 @@
+{
+  "phase": "P6",
+  "status": "pass_user_authorized_isolated_scope",
+  "date": "2026-08-28",
+  "authorization": "remaining two desktop samples authorized for P6 isolated validation",
+  "evidence": {
+    "authorized_topics": 3,
+    "isolated_runs": 5,
+    "saved_and_readback_verified": 5,
+    "full_ip_runs": 3,
+    "no_ip_runs": 1,
+    "limited_ip_runs": 1,
+    "same_kb_multi_ip": "passed",
+    "with_explicit_reference": "passed",
+    "without_reference": "passed",
+    "writer_context_packs_per_run": 1,
+    "test_gates_per_run": 2,
+    "writer_searches_per_run": 0,
+    "reviewers": 0,
+    "distribution_artifacts": 0,
+    "real_knowledge_base_writes": 0,
+    "regression_tests": "59 passed"
+  },
+  "source_boundaries": {
+    "official_concept_sources": "current OpenAI Developers pages only",
+    "xiaohongshu_reference": "full public post plus first publicly visible comment batch; not all 242 comments",
+    "ip_sources": "four explicitly listed read-only truth-source files per sample",
+    "other_vault_files_read": false
+  },
+  "feishu_scope": {
+    "p6_validation": "injected fake client only, as authorized",
+    "real_save_readback": "required before final P7 Definition of Done"
+  },
+  "non_blocking_observation": {
+    "id": "P6-D02",
+    "summary": "The approximately 5000-character sample produced 3868 / 3366 characters; retained for installed-host validation because the P6 repair budget is exhausted."
+  },
+  "boundaries": {
+    "legacy_v1_modified": false,
+    "real_customer_content_committed": false,
+    "real_obsidian_or_feishu_written": false,
+    "skill_installed": false,
+    "main_merged": false,
+    "p7_started": false,
+    "version_published": false
+  }
+}

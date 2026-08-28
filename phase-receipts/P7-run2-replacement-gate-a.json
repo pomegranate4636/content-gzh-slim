@@ -1,0 +1,55 @@
+{
+  "phase": "P7",
+  "status": "replacement_run2_waiting_gate_a_user_confirmation",
+  "date": "2026-08-28",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "run_id_sha256_prefix": "d35986c12bf8",
+  "replaces_blocked_run_id_sha256_prefix": "6ca8bc612297",
+  "preflight_repair": {
+    "must_keep_exact_text_and_order": true,
+    "must_avoid_exact_text_and_order": true,
+    "runtime_code_changed": false,
+    "blocked_run_mutated": false
+  },
+  "runtime": {
+    "state": "waiting_direction",
+    "ip_status": "full",
+    "05_profiles_read": 1,
+    "03_candidates": 0,
+    "04_peer_candidates": 0,
+    "04_method_candidates": 0,
+    "references_prepared": 1,
+    "context_packs": 0,
+    "writer_outputs": 0,
+    "headline_outputs": 0,
+    "save_receipts": 0,
+    "feishu_documents_created": 0,
+    "distribution_artifacts": 0,
+    "reviewers": 0,
+    "gate_approvals": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "gate_a": {
+    "direction_mode": "single",
+    "option_count": 1,
+    "option_id": "faq-nine-questions",
+    "approval_status": "waiting",
+    "exact_human_approval_required": true,
+    "prior_run_approval_reused": false
+  },
+  "artifact_digests": {
+    "analysis_v1_sha256": "78af159c67cd5f67305d6b4c4e87bde024bbc3fab3a10aaed190f103549e1549",
+    "direction_v1_sha256": "c403df103f4ff20306571b750bc2d08d7e51e2057158bb8f2cad06bb7077c110",
+    "reference_snapshot_v1_sha256": "c4c480ca67d6d1a0baadcb88cd9469e9bd39fc4285bf781d93918be966e8d826",
+    "retrieval_receipt_sha256": "82fa6f47ad99999f0e8f422f7358f0224574acb1f31d6f24dd49b23fb0f522d4"
+  },
+  "privacy": {
+    "article_body_committed": false,
+    "headline_text_committed": false,
+    "source_paths_committed": false,
+    "run_artifacts_committed": false,
+    "feishu_token_committed": false
+  },
+  "next_action": "wait_for_exact_human_gate_a_decision"
+}

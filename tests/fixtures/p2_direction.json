@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "mode": "single",
+  "options": [
+    {
+      "option_id": "direction-1",
+      "title": "智能客服没带来转化，先别急着怪模型",
+      "speaker": "只讨论可验证业务流程的虚构企业服务顾问",
+      "target_audience": "已经上线智能客服但业务结果没有明显变化的中小企业负责人",
+      "core_judgment": "智能客服只是流程中的一个节点，人工接手和知识维护没有闭环时，工具上线不会自动变成业务结果。",
+      "promise": "帮助读者用三个可观察节点定位问题，不承诺未经验证的增长。",
+      "why_now": "很多团队完成了工具采购，却还没有建立人机协同的日常维护责任。",
+      "writer_mode": "ganhuo",
+      "writer_mode_reason": "文章核心是三个流程检查点和对应动作，适合干货型推进。",
+      "structure": [
+        {"section": "上线不等于结果", "purpose": "用反差拆掉工具自动产生转化的假设。"},
+        {"section": "检查转人工", "purpose": "核对触发条件和上下文是否连续。"},
+        {"section": "检查知识维护", "purpose": "核对未命中问题是否进入固定复核。"},
+        {"section": "检查责任闭环", "purpose": "明确机器人、人工和业务负责人的边界。"},
+        {"section": "本周最小行动", "purpose": "让读者选择一个断点做真实验证。"}
+      ],
+      "selected_sources": {
+        "business_refs": [
+          "fixture://obsidian/kb-alpha/03/b1",
+          "fixture://obsidian/kb-alpha/03/b2",
+          "fixture://obsidian/kb-alpha/03/b3"
+        ],
+        "peer_refs": ["fixture://obsidian/kb-alpha/04/p1"],
+        "method_refs": ["fixture://obsidian/kb-alpha/04/m1"],
+        "reference_refs": ["fixture://reference/one"]
+      },
+      "benchmark_transfer": ["结果反差钩子", "现象—原因—动作结构", "三节点检查式结尾"],
+      "forbidden_transfer": ["对标作者身份", "投诉经历", "专属案例", "结果数字", "识别性原句"],
+      "knowledge_materials": ["转人工规则支撑接手检查", "指标口径支撑观察方式", "知识维护责任支撑闭环检查"],
+      "business_connection": "以流程诊断能力连接企业服务，但不承诺具体增长结果。",
+      "fact_boundaries": ["只使用 fixture 中标记为 confirmed 的 03 摘要", "候选增长说法不进入方向事实", "不把对标场景写成当前 IP 经历"],
+      "first_person_claims": [],
+      "must_keep": ["工具上线不等于业务结果"],
+      "must_avoid": ["未经验证的增长数字"]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HeadlineV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "run_id", "context_digest", "draft_version", "draft_digest",
+    "diagnosis", "top3", "recommended"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "context_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "draft_version": {"type": "integer", "minimum": 1},
+    "draft_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "diagnosis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_audience", "core_judgment", "click_tension"],
+      "properties": {
+        "target_audience": {"type": "string", "minLength": 1},
+        "core_judgment": {"type": "string", "minLength": 1},
+        "click_tension": {"type": "string", "minLength": 1}
+      }
+    },
+    "top3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "reason"],
+        "properties": {
+          "title": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "recommended": {"type": "string", "minLength": 1}
+  }
+}

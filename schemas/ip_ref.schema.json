@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-gzh-slim.invalid/schemas/ip_ref.schema.json",
+  "title": "IpRef",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["requested_name", "resolved_ref", "status"],
+  "properties": {
+    "requested_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resolved_ref": {
+      "type": ["string", "null"]
+    },
+    "status": {
+      "enum": ["full", "limited", "unused", "none"]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "none"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "requested_name": {"const": "none"},
+          "resolved_ref": {"type": "null"}
+        }
+      }
+    }
+  ]
+}
+

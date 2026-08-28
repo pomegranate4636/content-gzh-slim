@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SaveReceiptV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "run_id", "approved_final_digest", "backend", "target", "version",
+    "title", "body_digest", "context_digest", "write_status", "readback_status", "saved_at", "semantics"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "approved_final_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "backend": {"enum": ["obsidian", "feishu"]},
+    "target": {"type": "object"},
+    "version": {"type": "integer", "minimum": 1},
+    "title": {"type": "string", "minLength": 1},
+    "body_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "context_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "write_status": {"enum": ["created", "verified_existing"]},
+    "readback_status": {"const": "verified"},
+    "saved_at": {"type": "string", "minLength": 1},
+    "semantics": {"type": "object"}
+  }
+}

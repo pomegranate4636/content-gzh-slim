@@ -1,0 +1,41 @@
+{
+  "phase": "P7",
+  "status": "run1_pass_saved_and_readback_verified",
+  "date": "2026-08-28",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "run_id_sha256_prefix": "ed01aa6fd07e",
+  "human_gates": {
+    "gate_a_exact_decision_confirmed": true,
+    "gate_b_exact_decision_confirmed": true,
+    "approval_count": 2
+  },
+  "runtime": {
+    "state": "saved",
+    "context_packs": 1,
+    "writer_knowledge_base_searches": 0,
+    "reviewers": 0,
+    "saved_markdown_files": 1,
+    "save_backend": "isolated_obsidian",
+    "write_status": "created",
+    "readback_status": "verified",
+    "distribution_artifacts": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "integrity": {
+    "saved_body_matches_approved_draft": true,
+    "saved_title_is_from_displayed_top3": true,
+    "saved_version": 1,
+    "legacy_v1_digest_unchanged": true,
+    "candidate_probe_ready": true,
+    "git_worktree_changed_by_run": false
+  },
+  "privacy": {
+    "article_body_committed": false,
+    "headline_text_committed": false,
+    "source_paths_committed": false,
+    "run_artifacts_committed": false,
+    "save_target_committed": false
+  },
+  "next_action": "start_real_run_2_and_stop_at_gate_a"
+}

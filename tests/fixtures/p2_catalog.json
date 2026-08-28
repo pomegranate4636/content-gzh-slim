@@ -1,0 +1,183 @@
+{
+  "fixture_version": 2,
+  "knowledge_bases": [
+    {
+      "alias": "fixture-kb-alpha",
+      "backend": "obsidian",
+      "ref": "fixture://obsidian/kb-alpha",
+      "manifest_revision": "fixture-alpha-r2",
+      "ips": {
+        "示例甲": "fixture://obsidian/kb-alpha/ip-a",
+        "有限示例": {
+          "ref": "fixture://obsidian/kb-alpha/ip-limited",
+          "status": "limited"
+        }
+      },
+      "profiles": [
+        {
+          "name": "示例甲",
+          "ref": "fixture://obsidian/kb-alpha/ip-a",
+          "status": "full",
+          "anchors": {
+            "identity": "虚构的企业服务顾问",
+            "positioning": "只讨论可验证的业务流程",
+            "target_audience": "正在上线智能客服的中小企业负责人",
+            "core_stance": "工具上线不等于业务结果自动发生",
+            "style_boundary": "不承诺未经验证的增长数字",
+            "business_direction": "帮助企业梳理人机协同流程"
+          },
+          "confirmed_fragments": [
+            {
+              "fragment_id": "ip-a-judgment",
+              "fragment_type": "confirmed_judgment",
+              "text": "工具上线不等于业务结果自动发生，先把人机协同流程接起来。",
+              "status": "confirmed"
+            },
+            {
+              "fragment_id": "ip-a-action",
+              "fragment_type": "confirmed_action",
+              "text": "先选一个低风险流程跑最小闭环，再看哪里需要继续补。",
+              "status": "confirmed"
+            },
+            {
+              "fragment_id": "ip-a-boundary",
+              "fragment_type": "promise_boundary",
+              "text": "没有统一口径或证据的增长数字不写进文章。",
+              "status": "confirmed"
+            }
+          ]
+        },
+        {
+          "name": "有限示例",
+          "ref": "fixture://obsidian/kb-alpha/ip-limited",
+          "status": "limited",
+          "anchors": {
+            "identity": "虚构的流程顾问",
+            "target_audience": "需要改进服务流程的团队"
+          },
+          "confirmed_fragments": [
+            {
+              "fragment_id": "ip-limited-boundary",
+              "fragment_type": "promise_boundary",
+              "text": "当前只确认身份和受众，不补写个人经历。",
+              "status": "confirmed"
+            }
+          ]
+        }
+      ],
+      "business_assets": [
+        {
+          "ref": "fixture://obsidian/kb-alpha/03/b1",
+          "title": "智能客服转人工规则",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "已确认规则：连续两次无法识别意图时转人工，并保留会话上下文。",
+          "fact_status": "confirmed"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/03/b2",
+          "title": "上线前后流程指标",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "已确认指标口径：首响时长、转人工率和问题闭环率分别统计。",
+          "fact_status": "confirmed"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/03/b3",
+          "title": "知识维护责任",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "已确认流程：业务负责人每周标记高频未命中问题，知识维护人员复核后更新。",
+          "fact_status": "confirmed"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/03/b4",
+          "title": "服务流程边界",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "已确认边界：复杂报价和争议处理不得由机器人独立承诺。",
+          "fact_status": "confirmed"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/03/b5",
+          "title": "候选增长说法",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "候选素材：某次内部讨论提到转化可能提升，但没有统一口径或证据。",
+          "fact_status": "candidate"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/03/b6",
+          "title": "第六条相关元数据",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "已确认提醒：超过预算的第六项不应进入本次候选读取结果。",
+          "fact_status": "confirmed"
+        }
+      ],
+      "peer_content_assets": [
+        {
+          "ref": "fixture://obsidian/kb-alpha/04/p1",
+          "title": "工具上线后的落差",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "同行内容机制：从上线后的结果落差切入，再追问流程是否改变。"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/04/p2",
+          "title": "负责人常见误区",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "同行内容机制：把采购完成和业务闭环完成并列对照。"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/04/p3",
+          "title": "客服协作问题",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "同行内容机制：用机器人、人工和知识维护三方协作解释结果。"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/04/p4",
+          "title": "第四条同行元数据",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "超过预算的第四项不应进入本次同行内容候选。"
+        }
+      ],
+      "content_method_assets": [
+        {
+          "ref": "fixture://obsidian/kb-alpha/04/m1",
+          "title": "反常识开头法",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "方法：先否定工具即结果，再用三个流程检查点推进。"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/04/m2",
+          "title": "问题清单结构",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "方法：每节用一个可观察问题和一个可执行检查收束。"
+        },
+        {
+          "ref": "fixture://obsidian/kb-alpha/04/m3",
+          "title": "第三条方法元数据",
+          "keywords": ["智能客服", "转化"],
+          "excerpt": "超过预算的第三项不应进入本次方法候选。"
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "ref": "fixture://reference/one",
+      "title": "上线工具后，为什么问题反而更多",
+      "source_type": "fixture_text",
+      "completeness": "full",
+      "content": "标题先制造工具上线与问题增多的反差。开头用负责人连续收到投诉的虚构场景提出疑问。正文第一部分解释机器人没有接到清晰边界；第二部分说明转人工时上下文丢失；第三部分说明知识维护无人负责。每部分都用一个现象、一个原因和一个检查动作推进。中段从工具能力转向组织流程，形成转折。结尾把承诺收窄为先检查三个流程节点，并邀请读者列出自己的断点。"
+    },
+    {
+      "ref": "fixture://reference/two",
+      "title": "别急着换模型，先看这张协作清单",
+      "source_type": "fixture_text",
+      "completeness": "full",
+      "content": "标题用停止动作制造紧迫感。首屏直接给出协作清单的价值承诺。全文按意图识别、人工接手、知识复核三个环节展开，每段先列失败信号，再给检查问题。案例只承担说明流程的作用，不给虚构结果数字。结尾让读者选择一个环节本周验证。"
+    },
+    {
+      "ref": "fixture://reference/summary-only",
+      "title": "只有摘要的对标",
+      "source_type": "fixture_summary",
+      "completeness": "summary",
+      "content": "这只是摘要，不能冒充全文。"
+    }
+  ]
+}

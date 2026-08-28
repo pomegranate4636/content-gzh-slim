@@ -1,0 +1,9 @@
+{
+  "knowledge_base": "fixture-kb-alpha",
+  "ip": "示例甲",
+  "topic": "智能客服上线后，为什么转化没有自动提升",
+  "references": ["fixture://reference/one"],
+  "user_thoughts": "重点讲清工具、人工接手和知识维护之间的流程断点",
+  "must_keep": ["工具上线不等于业务结果"],
+  "must_avoid": ["未经验证的增长数字"]
+}

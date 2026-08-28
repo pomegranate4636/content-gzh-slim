@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "reference_analyses": [
+    {
+      "reference_ref": "fixture://reference/one",
+      "source_completeness": "full",
+      "title_mechanism": "用工具已经上线与问题反而增加的结果反差制造点击矛盾。",
+      "opening_hook": "第一屏给出负责人连续收到投诉的虚构场景，迅速把技术问题变成经营者能感知的损失。",
+      "target_reader_and_promise": "面向已经部署智能客服的负责人，承诺帮助定位流程断点，而不是推荐另一个工具。",
+      "sections": [
+        {"section": "反差开场", "function": "把上线成功和业务失败并置，建立问题。"},
+        {"section": "边界不清", "function": "解释机器人不知道何时停止。"},
+        {"section": "人工断点", "function": "解释上下文丢失如何放大客户重复表达。"},
+        {"section": "知识失养", "function": "解释高频问题没有进入维护闭环。"},
+        {"section": "三点检查", "function": "把观点收束成可执行动作。"}
+      ],
+      "conflict": "冲突来自采购完成的确定感与客户体验没有改善之间的落差。",
+      "argument_and_evidence": "先描述可观察现象，再逐层追到边界、接手和维护三个流程证据，最后给检查动作。",
+      "cases_numbers_details": "虚构投诉场景只负责让问题可见，不提供结果数字；三个流程节点提供具体性。",
+      "transitions": "用“问题可能不在模型”从工具能力转向组织流程，再用三个连续追问衔接各部分。",
+      "emotion_and_pacing": "开头焦虑，中段逐步拆因，结尾转为可控；每段保持现象—原因—动作节奏。",
+      "ending_and_cta": "把承诺收窄为检查三个节点，CTA 是让读者列出自己的一个断点。",
+      "transferable_mechanisms": ["结果反差钩子", "现象—原因—动作结构", "三节点检查式结尾"],
+      "forbidden_transfers": ["同行身份", "投诉经历", "专属案例", "结果数字", "识别性原句和承诺"]
+    }
+  ],
+  "multi_reference_synthesis": null
+}

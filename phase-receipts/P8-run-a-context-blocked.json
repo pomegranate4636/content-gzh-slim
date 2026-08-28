@@ -1,0 +1,41 @@
+{
+  "phase": "P8",
+  "status": "run_a_blocked_before_context_first_attempt_preserved",
+  "date": "2026-08-29",
+  "run_id_sha256_prefix": "d71647859854",
+  "decision_origin": "user_authorized_pm_delegation",
+  "gate_a": {
+    "runtime_waiting_state_reached": true,
+    "exact_contract_decision": "确认方向",
+    "approval_count": 1
+  },
+  "blocking_failure": {
+    "operation": "build-context",
+    "attempt_count": 1,
+    "error_code": "FORBIDDEN_BOUNDARY_NOT_PRESENT_IN_P2_ANALYSIS",
+    "summary": "A selected forbidden-transfer boundary was not byte-for-byte present in the frozen analysis.",
+    "context_created": false,
+    "downstream_started": false
+  },
+  "preservation": {
+    "run_mutated_after_failure": false,
+    "automatic_retry_performed": false,
+    "replacement_run_planned": false,
+    "may_not_be_counted_as_continuous_first_pass": true
+  },
+  "runtime": {
+    "context_packs": 0,
+    "writer_knowledge_base_searches": 0,
+    "reviewers": 0,
+    "save_receipts": 0,
+    "distribution_artifacts": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "privacy": {
+    "synthetic_content_committed": false,
+    "run_artifacts_committed": false,
+    "credentials_committed": false
+  },
+  "next_action": "execute_independent_run_b_once_without_representing_it_as_a_replacement"
+}

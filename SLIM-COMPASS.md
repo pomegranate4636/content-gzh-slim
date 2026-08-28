@@ -92,4 +92,4 @@ IP：
 
 ## 8. 当前阶段
 
-P0 只冻结 SPEC 和建立私有规划仓库。下一阶段 P1 尚未获得执行授权。
+P7 候选 `b188329` 已安装到本仓库 `.agents/skills`，隐私扫描、manifest probe、63 项测试与 6 个 Skill 校验通过。真实 Run 1 的 Gate A 已由用户确认；当前为 `waiting_final`，1 Context、1 Writer 输入、Writer 0 次搜索、0 Reviewer、0 保存，正等待 Gate B。允许后续创建一个飞书测试文档；不写全局 Skill、不复制凭据、不替换 V1、不合并、不发布。

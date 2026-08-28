@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RetrievalReceiptV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "knowledge_base_identity", "ip_identity", "access_log", "entries", "totals"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "pattern": "^run_[0-9a-f]{24}$"},
+    "knowledge_base_identity": {"$ref": "knowledge_base_ref.schema.json"},
+    "ip_identity": {"$ref": "ip_ref.schema.json"},
+    "access_log": {"type": "array", "minItems": 3, "items": {"type": "object"}},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role", "source_ref", "candidate_status", "gate_a_status",
+          "final_selection_status", "selected_use", "not_selected_reason",
+          "snippet_count", "character_count", "in_context_pack"
+        ],
+        "properties": {
+          "role": {"enum": ["05", "03", "04", "reference"]},
+          "source_ref": {"type": ["string", "null"]},
+          "candidate_status": {"type": "string"},
+          "gate_a_status": {"enum": ["proposed", "not_proposed"]},
+          "final_selection_status": {"enum": ["pending_gate_a", "selected", "not_selected"]},
+          "selected_use": {"type": ["string", "null"]},
+          "not_selected_reason": {"type": ["string", "null"]},
+          "snippet_count": {"type": "integer", "minimum": 0},
+          "character_count": {"type": "integer", "minimum": 0},
+          "in_context_pack": {"type": "boolean"}
+        }
+      }
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["05_profiles_read", "03_candidates", "04_peer_candidates", "04_method_candidates", "references_prepared", "characters_read", "context_packs"],
+      "properties": {
+        "05_profiles_read": {"type": "integer", "minimum": 0, "maximum": 1},
+        "03_candidates": {"type": "integer", "minimum": 0, "maximum": 5},
+        "04_peer_candidates": {"type": "integer", "minimum": 0, "maximum": 3},
+        "04_method_candidates": {"type": "integer", "minimum": 0, "maximum": 2},
+        "references_prepared": {"type": "integer", "minimum": 0, "maximum": 5},
+        "characters_read": {"type": "integer", "minimum": 0},
+        "context_packs": {"type": "integer", "minimum": 0, "maximum": 1}
+      }
+    }
+  }
+}

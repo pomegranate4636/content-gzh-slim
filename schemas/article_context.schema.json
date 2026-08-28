@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArticleContextV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "run_identity", "knowledge_base_identity", "ip_identity_and_status",
+    "task_input", "approved_direction", "writer_mode", "selected_05_profile_context",
+    "selected_03_business_context", "selected_04_content_assets", "selected_04_method_assets",
+    "selected_reference_mechanisms", "must_keep", "must_avoid",
+    "fact_and_candidate_boundaries", "business_link", "save_target_preview"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_identity": {"type": "object"},
+    "knowledge_base_identity": {"$ref": "knowledge_base_ref.schema.json"},
+    "ip_identity_and_status": {"$ref": "ip_ref.schema.json"},
+    "task_input": {"$ref": "task_input.schema.json"},
+    "approved_direction": {"type": "object"},
+    "writer_mode": {"enum": ["ganhuo", "huati"]},
+    "selected_05_profile_context": {"type": "object"},
+    "selected_03_business_context": {"type": "array", "maxItems": 5},
+    "selected_04_content_assets": {"type": "array", "maxItems": 3},
+    "selected_04_method_assets": {"type": "array", "maxItems": 2},
+    "selected_reference_mechanisms": {"type": "array", "maxItems": 5},
+    "must_keep": {"type": "array"},
+    "must_avoid": {"type": "array"},
+    "fact_and_candidate_boundaries": {"type": "object"},
+    "business_link": {"type": "string"},
+    "save_target_preview": {"type": "object"}
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "selected_05_fragment_ids": ["ip-a-judgment", "ip-a-action", "ip-a-boundary"],
+  "selected_03_refs": [
+    "fixture://obsidian/kb-alpha/03/b1",
+    "fixture://obsidian/kb-alpha/03/b2",
+    "fixture://obsidian/kb-alpha/03/b3"
+  ],
+  "selected_04_peer_refs": ["fixture://obsidian/kb-alpha/04/p1"],
+  "selected_04_method_refs": ["fixture://obsidian/kb-alpha/04/m1"],
+  "reference_mechanisms": [
+    {
+      "reference_ref": "fixture://reference/one",
+      "transferable_mechanisms": [
+        "结果反差钩子",
+        "现象—原因—动作结构",
+        "三节点检查式结尾"
+      ],
+      "forbidden_transfers": [
+        "同行身份",
+        "投诉经历",
+        "专属案例",
+        "结果数字",
+        "识别性原句和承诺"
+      ]
+    }
+  ],
+  "missing_evidence": ["没有可验证的增长结果，不得补写数字承诺。"],
+  "save_target_preview": {
+    "backend": "obsidian",
+    "target_ref": "fixture://obsidian/kb-alpha/articles",
+    "status": "preview_only_not_writable"
+  }
+}

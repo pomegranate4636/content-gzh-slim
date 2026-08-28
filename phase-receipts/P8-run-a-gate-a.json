@@ -1,0 +1,37 @@
+{
+  "phase": "P8",
+  "status": "run_a_waiting_gate_a_user_confirmation",
+  "date": "2026-08-29",
+  "run_id_sha256_prefix": "d71647859854",
+  "synthetic_scope": {
+    "knowledge_base": "A",
+    "shared_ip_name": "P8测试IP",
+    "data_classification": "synthetic_non_customer_non_private",
+    "different_fingerprint_from_b": true
+  },
+  "runtime": {
+    "state": "waiting_direction",
+    "context_packs": 0,
+    "writer_knowledge_base_searches": 0,
+    "reviewers": 0,
+    "gate_approvals": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "retrieval": {
+    "05_profiles_read": 1,
+    "03_candidates": 3,
+    "04_peer_candidates": 2,
+    "04_method_candidates": 2,
+    "references_prepared": 1,
+    "characters_read": 736,
+    "cross_knowledge_base_reads": 0
+  },
+  "privacy": {
+    "synthetic_source_text_committed": false,
+    "run_artifacts_committed": false,
+    "article_body_committed": false,
+    "credentials_committed": false
+  },
+  "next_action": "wait_for_current_task_user_exact_gate_a_decision"
+}

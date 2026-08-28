@@ -1,0 +1,47 @@
+{
+  "phase": "P8",
+  "status": "run_b_blocked_before_gate_b_first_attempt_preserved",
+  "date": "2026-08-29",
+  "run_id_sha256_prefix": "c102e916aab2",
+  "decision_origin": "user_authorized_pm_delegation",
+  "gate_a": {
+    "runtime_waiting_state_reached": true,
+    "exact_contract_decision": "确认方向",
+    "approval_count": 1
+  },
+  "context": {
+    "context_packs": 1,
+    "writer_knowledge_base_searches": 0,
+    "reviewers": 0,
+    "cross_knowledge_base_reads": 0
+  },
+  "blocking_failure": {
+    "operation": "prepare-gate-b",
+    "attempt_count": 1,
+    "error_code": "DRAFT_CONTRACT_BROAD_STATUS_MARKER_FALSE_POSITIVE",
+    "summary": "A normal body sentence containing a Chinese status-colon phrase was rejected as a forbidden status section.",
+    "draft_created": false,
+    "headline_created": false,
+    "waiting_final_reached": false,
+    "downstream_started": false
+  },
+  "preservation": {
+    "run_mutated_after_failure": false,
+    "automatic_retry_performed": false,
+    "replacement_run_planned": false,
+    "may_not_be_counted_as_continuous_first_pass": true
+  },
+  "runtime": {
+    "save_receipts": 0,
+    "distribution_artifacts": 0,
+    "feishu_documents_created": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "privacy": {
+    "synthetic_content_committed": false,
+    "run_artifacts_committed": false,
+    "credentials_committed": false
+  },
+  "next_action": "submit_the_single_p8_independent_review_with_both_first_attempt_failures_preserved"
+}

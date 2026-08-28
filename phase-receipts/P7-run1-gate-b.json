@@ -1,0 +1,40 @@
+{
+  "phase": "P7",
+  "status": "run1_waiting_gate_b_user_confirmation",
+  "date": "2026-08-28",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "run_id_sha256_prefix": "ed01aa6fd07e",
+  "gate_a": {
+    "option_bound": true,
+    "exact_human_decision": "confirmed",
+    "approval_count": 1
+  },
+  "runtime": {
+    "state": "waiting_final",
+    "context_packs": 1,
+    "writer_formal_inputs": 1,
+    "writer_knowledge_base_searches": 0,
+    "post_gate_a_04_searches": 0,
+    "reviewers": 0,
+    "headline_candidates": 3,
+    "recommended_headline_from_top3": true,
+    "normalized_body_characters": 5452,
+    "saved_files": 0,
+    "save_receipts": 0,
+    "distribution_artifacts": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "artifact_digests": {
+    "article_context_v1_sha256": "1312fb7ea748365f32726de37d18fe8e72adc9ae7d924007d802c170ff9df411",
+    "draft_v1_sha256": "ef5d08deecdad81196d2cf1683405643182cc6e6a8dcbabb0e1900d53230257a",
+    "headline_v1_sha256": "66501d2570b4abf6bdc75c0f40691d2efbf30290192f6b9898ab0b4b0f71fa83"
+  },
+  "privacy": {
+    "article_body_committed": false,
+    "headline_text_committed": false,
+    "source_paths_committed": false,
+    "run_artifacts_committed": false
+  },
+  "next_action": "wait_for_exact_human_gate_b_decision"
+}

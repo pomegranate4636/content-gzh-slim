@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DistributionV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "run_id", "distribution_version", "approved_final_digest",
+    "save_receipt_digest", "body_digest", "frozen_distribution_constraints",
+    "wechat_final_title", "xiaohongshu", "wechat_channels", "douyin", "moments", "semantics"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "distribution_version": {"type": "integer", "minimum": 1},
+    "approved_final_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "save_receipt_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "body_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "frozen_distribution_constraints": {"type": "object"},
+    "wechat_final_title": {"type": "string", "minLength": 1},
+    "xiaohongshu": {"type": "object"},
+    "wechat_channels": {"type": "object"},
+    "douyin": {"type": "object"},
+    "moments": {"type": "object"},
+    "semantics": {"type": "object"}
+  }
+}

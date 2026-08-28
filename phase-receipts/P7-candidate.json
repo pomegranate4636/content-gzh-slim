@@ -1,0 +1,60 @@
+{
+  "phase": "P7",
+  "status": "development_candidate_tests_passed_install_pending",
+  "candidate_date": "2026-08-28",
+  "baseline": "fef2205f175ff9492d3600aefb5487e6e99cceed",
+  "branch": "feature/content-gzh-slim",
+  "authorization": {
+    "execute_phase": "P7",
+    "project_level_install": true,
+    "credential_copy": false,
+    "replace_v1": false,
+    "one_real_feishu_test_document": true,
+    "two_real_runs_with_each_gate_confirmed": true,
+    "merge": false,
+    "publish": false
+  },
+  "scope": [
+    "self-contained six-Skill candidate package",
+    "single installed-host launcher",
+    "project-level .agents/skills installation",
+    "real lark-cli injected Feishu client without copied credentials",
+    "two consecutive real Runs and one PM Review"
+  ],
+  "development_validation": {
+    "unit_tests": "63 passed: 59 P1-P6 regression, 4 P7",
+    "skill_creator_validation": "all 6 repository Skills passed",
+    "python_compile": "passed",
+    "diff_check": "passed",
+    "candidate_privacy_scan": "passed in temporary build",
+    "candidate_manifest_probe": "passed",
+    "bundled_launcher_full_fixture_smoke": "passed through isolated Obsidian save/readback",
+    "internal_skills_explicit_only": "passed",
+    "feishu_client_state_contains_credentials": false
+  },
+  "boundaries": {
+    "skill_total": 6,
+    "public_entry": 1,
+    "internal_ai_skills": 5,
+    "human_gates": 2,
+    "writer_context_packs": 1,
+    "reviewers": 0,
+    "real_content_committed": false,
+    "global_skill_directory_written": false,
+    "project_skill_installed": false,
+    "real_feishu_document_created": false,
+    "legacy_v1_modified": false,
+    "main_merged": false,
+    "version_published": false
+  },
+  "pm_review": {
+    "status": "not_started",
+    "rounds_used": 0,
+    "maximum_rounds": 1
+  },
+  "repair": {
+    "rounds_used": 0,
+    "maximum_after_pm_review": 1
+  },
+  "blocking_before_final_definition_of_done": ["P7-D01 real Feishu save/readback"]
+}

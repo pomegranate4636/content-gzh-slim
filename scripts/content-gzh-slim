@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+"""Launch the bundled content-gzh-slim runtime from any working directory."""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+BUNDLE_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(BUNDLE_ROOT))
+
+from runtime.host_cli import main  # noqa: E402
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

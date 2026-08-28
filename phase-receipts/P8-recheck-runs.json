@@ -1,0 +1,69 @@
+{
+  "phase": "P8",
+  "status": "fresh_a2_b2_recheck_runs_passed_pending_review_recheck",
+  "date": "2026-08-29",
+  "candidate_revision": "528eab9beffefc81d6b3bb11e4eadbc8c92a9c34",
+  "repair_binding": {
+    "review_finding": "P8-R02",
+    "repair_rounds_used": 1,
+    "original_a_b_failures_preserved": true,
+    "original_a_b_resumed_or_retried": false
+  },
+  "recheck_runs": {
+    "a2": {
+      "fresh_isolated_run_store": true,
+      "different_store_instance_sha256_prefix": "3d61e6b5205c",
+      "decision_origin": "user_authorized_pm_delegation",
+      "state_after_completion": "saved",
+      "context_packs": 1,
+      "human_gate_decisions": 2,
+      "writer_knowledge_base_searches": 0,
+      "reviewers": 0,
+      "retrieval": {"05": 1, "03_candidates": 3, "04_peer_candidates": 2, "04_method_candidates": 2, "references": 1, "characters": 736},
+      "cross_knowledge_base_reads": 0,
+      "save": {"backend": "isolated_obsidian", "write_status": "created", "readback_status": "verified"},
+      "draftbox": false,
+      "published": false
+    },
+    "b2": {
+      "fresh_isolated_run_store": true,
+      "different_store_instance_sha256_prefix": "eae4b02ed72a",
+      "decision_origin": "user_authorized_pm_delegation",
+      "state_after_completion": "distribution_optional",
+      "context_packs": 1,
+      "human_gate_decisions": 2,
+      "writer_knowledge_base_searches": 0,
+      "reviewers": 0,
+      "retrieval": {"05": 1, "03_candidates": 3, "04_peer_candidates": 2, "04_method_candidates": 2, "references": 1, "characters": 709},
+      "cross_knowledge_base_reads": 0,
+      "save": {"backend": "feishu", "write_status": "created", "readback_status": "verified", "documents_created": 1},
+      "length": {"requested_chinese_characters": 5000, "actual_chinese_characters": 3097, "deviation": -1903, "diagnostic_only": true},
+      "draftbox": false,
+      "published": false
+    }
+  },
+  "same_name_ip_isolation": {
+    "shared_ip_name": "P8测试IP",
+    "different_knowledge_base_fingerprints": true,
+    "a_to_b_leakage": false,
+    "b_to_a_leakage": false
+  },
+  "distribution": {
+    "requested_by": "user_authorized_pm_delegation",
+    "exact_request": "生成分发包",
+    "saved_before_request": true,
+    "platform_outputs": ["wechat_final_title", "xiaohongshu", "wechat_channels", "douyin", "moments"],
+    "body_digest_unchanged": true,
+    "wechat_main_title_unchanged": true,
+    "saved_to_backend": false,
+    "draftbox": false,
+    "published": false
+  },
+  "privacy": {
+    "synthetic_content_or_paths_committed": false,
+    "run_artifacts_committed": false,
+    "feishu_url_or_token_committed": false,
+    "credentials_committed": false
+  },
+  "next_action": "perform_the_single_review_recheck_without_a_second_repair"
+}

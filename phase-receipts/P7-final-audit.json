@@ -1,0 +1,28 @@
+{
+  "phase": "P7",
+  "status": "complete_stopped_no_merge_no_publish",
+  "date": "2026-08-28",
+  "reviewed_revision": "0d64c71a5560e68acc6a80d0dbd77b82a4b1fae3",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "verification": {
+    "automated_tests_passed": 63,
+    "skill_validations_passed": 6,
+    "candidate_probe": "ready",
+    "candidate_credentials_copied": false,
+    "candidate_legacy_v1_replaced": false,
+    "legacy_v1_skill_sha256": "25b2267863c6ccbd7c6492192c7208c3b85250c1995d96c0202ec96b94bccd44",
+    "repository_visibility": "private",
+    "pull_request_count": 0,
+    "release_count": 0,
+    "tag_count": 0,
+    "diff_check": "passed"
+  },
+  "delivery": {
+    "project_level_candidate_installed": true,
+    "global_skill_directory_written": false,
+    "main_merged": false,
+    "release_published": false,
+    "content_published": false
+  },
+  "stop_reason": "P7 independent PM Review passed and the user authorized stop after Review."
+}

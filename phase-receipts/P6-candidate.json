@@ -1,0 +1,135 @@
+{
+  "phase": "P6",
+  "status": "completed_user_authorized_isolated_matrix_pass",
+  "candidate_date": "2026-08-28",
+  "branch": "feature/content-gzh-slim",
+  "scope": [
+    "sixth and final content-gzh-distribution-pack internal Skill",
+    "exact explicit distribution request after verified saved state",
+    "create-only versioned distribution_vN.json bound to saved body and title",
+    "controlled Gate A option_id selection before exact direction approval",
+    "SPEC 25 core, negative, and anti-bloat fixture matrix"
+  ],
+  "development_validation": {
+    "unit_tests": "59 passed: 49 P1-P5 regression, 10 P6",
+    "skill_creator_validation": "all 6 repository Skills passed",
+    "python_compile": "passed",
+    "json_syntax": "passed",
+    "complexity_and_artifact_scan": "passed",
+    "distribution_exact_trigger": "passed",
+    "distribution_create_only_and_versioning": "passed",
+    "body_and_wechat_title_immutability": "passed",
+    "three_option_gate_a_binding": "passed_without_defaulting_first_option",
+    "must_avoid_enforced_across_distribution_text": "passed",
+    "save_receipt_full_binding": "passed"
+  },
+  "controlled_fixture_matrix": {
+    "core_scenarios": {
+      "ip_topic_1_to_5_references": "passed",
+      "ip_no_reference_with_user_thought": "passed",
+      "ip_no_direction_three_options": "passed",
+      "no_ip_with_topic": "passed",
+      "no_ip_no_direction": "passed",
+      "limited_ip_without_invented_first_person": "passed",
+      "same_kb_ip_a_then_ip_b_isolated": "passed",
+      "different_kb_same_ip_name_isolated": "passed",
+      "obsidian_save_readback": "passed",
+      "feishu_fake_save_readback": "passed",
+      "explicit_distribution_preserves_body_and_main_title": "passed"
+    },
+    "negative_scenarios": {
+      "same_name_resolution_conflict": "passed",
+      "03_04_05_boundary": "passed",
+      "post_gate_a_04_research": "passed",
+      "writer_search_capability": "absent_and_tested",
+      "candidate_promoted_to_fact": "rejected",
+      "summary_claimed_as_full_reference": "rejected",
+      "revision_switches_kb_or_ip": "rejected",
+      "save_before_gate_b": "rejected",
+      "partial_save_or_readback_failure": "not_reported_saved",
+      "saved_claimed_as_draftbox_or_published": "false_by_contract",
+      "distribution_changes_body_or_main_title": "rejected"
+    },
+    "anti_bloat": {
+      "runs_per_normal_task": 1,
+      "writer_context_packs": 1,
+      "human_gates": 2,
+      "writer_knowledge_searches": 0,
+      "reviewers": 0,
+      "reference_limit": 5,
+      "business_03_limit": 5,
+      "peer_04_limit": 3,
+      "method_04_limit": 2,
+      "primary_ip_limit": "1_or_none",
+      "skill_total": 6,
+      "image_audio_draftbox_publish_artifacts": 0
+    }
+  },
+  "temporary_real_validation": {
+    "authorized_sample_count": 3,
+    "isolated_run_count": 5,
+    "samples": ["WorkBuddy", "Agent concepts without benchmark", "Enterprise Agent FAQ with Xiaohongshu benchmark"],
+    "covers": ["full_ip", "no_ip", "limited_ip", "same_kb_multi_ip", "explicit_reference", "no_reference", "obsidian_isolated_save_readback"],
+    "all_runs_saved_and_readback_verified": true,
+    "context_packs_per_run": 1,
+    "test_gates_per_run": 2,
+    "writer_searches_per_run": 0,
+    "distribution_requested": false,
+    "distribution_artifact_created": false,
+    "existing_real_artifacts_modified": false,
+    "authorized_remaining_desktop_samples_executed": true,
+    "real_knowledge_base_written": false,
+    "feishu_validation": "fake_client_only_per_user_authorized_isolation_scope"
+  },
+  "resolved_issues": [
+    {
+      "id": "P3-D01",
+      "resolution": "Record one explicit option_id in waiting_direction, then preserve exact Gate A approval and freeze that full option; missing selection rejects."
+    },
+    {
+      "id": "P6-D01",
+      "resolution": "User authorized the remaining two samples for isolated validation; no-IP, limited-IP, and same-KB multi-IP runs passed. Feishu remained fake-only by the authorized scope."
+    }
+  ],
+  "deferred_issues": [
+    {
+      "id": "P6-D02",
+      "blocking_for_p6": false,
+      "summary": "The sample requesting about 5000 Chinese characters produced approximately 3868 / 3366 characters in full-IP / no-IP variants.",
+      "next_action": "Evaluate length adherence on the P7 installed test Host; do not add a second P6 repair round."
+    },
+    {
+      "id": "P7-D01",
+      "blocking_for_final_definition_of_done": true,
+      "summary": "Feishu save/readback is verified only with an injected fake client under the user-authorized P6 isolation scope.",
+      "next_action": "Obtain explicit P7 authorization and a controlled Feishu test target before claiming final Definition of Done."
+    }
+  ],
+  "carried_deferred_issues_unchanged": ["P1-D01", "P1-D02"],
+  "blocking_issues": [],
+  "pm_review": {
+    "status": "changes_requested_then_recheck_pass",
+    "conclusion": "PASS_AFTER_ONE_MINIMAL_REPAIR_AND_USER_AUTHORIZED_ISOLATED_MATRIX",
+    "rounds_used": 1,
+    "recheck_rounds_used": 1,
+    "development_self_check_counted_as_pm_review": false
+  },
+  "repair": {
+    "rounds_used": 1,
+    "maximum_after_pm_review": 1,
+    "repair_budget_used": true,
+    "status": "completed_and_rechecked",
+    "scope": "Enforce must_avoid across distribution text and fully bind save receipt fields"
+  },
+  "boundaries": {
+    "skill_total": 6,
+    "new_reviewer_or_gate_created": false,
+    "real_content_committed": false,
+    "real_distribution_created": false,
+    "real_backend_accessed": false,
+    "skill_installed": false,
+    "main_merged": false,
+    "p7_started": false,
+    "version_published": false
+  }
+}

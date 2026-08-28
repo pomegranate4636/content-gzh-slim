@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AnalysisV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "reference_analyses", "multi_reference_synthesis"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "reference_analyses": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference_ref", "source_completeness", "title_mechanism", "opening_hook",
+          "target_reader_and_promise", "sections", "conflict", "argument_and_evidence",
+          "cases_numbers_details", "transitions", "emotion_and_pacing", "ending_and_cta",
+          "transferable_mechanisms", "forbidden_transfers"
+        ],
+        "properties": {
+          "reference_ref": {"type": "string", "minLength": 1},
+          "source_completeness": {"const": "full"},
+          "title_mechanism": {"type": "string", "minLength": 1},
+          "opening_hook": {"type": "string", "minLength": 1},
+          "target_reader_and_promise": {"type": "string", "minLength": 1},
+          "sections": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["section", "function"],
+              "properties": {
+                "section": {"type": "string", "minLength": 1},
+                "function": {"type": "string", "minLength": 1}
+              }
+            }
+          },
+          "conflict": {"type": "string", "minLength": 1},
+          "argument_and_evidence": {"type": "string", "minLength": 1},
+          "cases_numbers_details": {"type": "string", "minLength": 1},
+          "transitions": {"type": "string", "minLength": 1},
+          "emotion_and_pacing": {"type": "string", "minLength": 1},
+          "ending_and_cta": {"type": "string", "minLength": 1},
+          "transferable_mechanisms": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "forbidden_transfers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "multi_reference_synthesis": {
+      "type": ["object", "null"],
+      "properties": {
+        "common_mechanisms": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "differences": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "conflict_resolution": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
