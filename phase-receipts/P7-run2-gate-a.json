@@ -1,0 +1,56 @@
+{
+  "phase": "P7",
+  "status": "run2_waiting_gate_a_user_confirmation",
+  "date": "2026-08-28",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "run_id_sha256_prefix": "6ca8bc612297",
+  "runtime": {
+    "state": "waiting_direction",
+    "ip_status": "full",
+    "05_profiles_read": 1,
+    "03_candidates": 0,
+    "04_peer_candidates": 0,
+    "04_method_candidates": 0,
+    "references_prepared": 1,
+    "context_packs": 0,
+    "writer_outputs": 0,
+    "headline_outputs": 0,
+    "save_receipts": 0,
+    "distribution_artifacts": 0,
+    "reviewers": 0,
+    "gate_approvals": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "gate_a": {
+    "direction_mode": "single",
+    "option_count": 1,
+    "benchmark_analysis_count": 1,
+    "benchmark_section_count": 5,
+    "faq_section_count": 9,
+    "approval_status": "waiting",
+    "exact_approval_required": true
+  },
+  "feishu_boundary": {
+    "backend_preselected": true,
+    "parent_ref_bound": false,
+    "create_permitted": false,
+    "documents_created": 0,
+    "credentials_copied": false
+  },
+  "artifact_digests": {
+    "analysis_v1_sha256": "78af159c67cd5f67305d6b4c4e87bde024bbc3fab3a10aaed190f103549e1549",
+    "direction_v1_sha256": "7039f377763c1ecfa53a26ae7bc8572ce1903ece928af70269439282dd3b11eb",
+    "reference_snapshot_v1_sha256": "c4c480ca67d6d1a0baadcb88cd9469e9bd39fc4285bf781d93918be966e8d826",
+    "retrieval_receipt_sha256": "cf2a97827d9e10e6809410048993a789e1550250e030f67734159c569fe972db"
+  },
+  "privacy": {
+    "topic_committed": false,
+    "article_body_committed": false,
+    "headline_text_committed": false,
+    "source_paths_committed": false,
+    "run_artifacts_committed": false,
+    "feishu_token_committed": false
+  },
+  "next_action": "wait_for_exact_human_gate_a_decision"
+}
