@@ -1,0 +1,46 @@
+{
+  "phase": "P7",
+  "status": "run2_blocked_before_context",
+  "date": "2026-08-28",
+  "candidate_revision": "b188329cd29c698692de82a29cd3295781fda771",
+  "run_id_sha256_prefix": "6ca8bc612297",
+  "gate_a": {
+    "option_id": "faq-nine-questions",
+    "exact_human_decision_confirmed": true,
+    "approval_count": 1
+  },
+  "blocking_failure": {
+    "operation": "build-context",
+    "attempt_count": 1,
+    "error_code": "APPROVED_DIRECTION_MUST_KEEP_MISMATCH",
+    "summary": "Gate A direction paraphrased must_keep and must_avoid instead of preserving the frozen task sets exactly.",
+    "context_created": false,
+    "downstream_started": false
+  },
+  "fail_closed_result": {
+    "run_state": "direction_approved",
+    "context_packs": 0,
+    "writer_outputs": 0,
+    "headline_outputs": 0,
+    "reviewers": 0,
+    "save_receipts": 0,
+    "feishu_documents_created": 0,
+    "distribution_artifacts": 0,
+    "draftbox": false,
+    "published": false
+  },
+  "repair_policy": {
+    "approved_direction_mutated": false,
+    "runtime_contract_bypassed": false,
+    "automatic_retry_performed": false,
+    "replacement_run_requires_user_authorization": true
+  },
+  "privacy": {
+    "article_body_committed": false,
+    "headline_text_committed": false,
+    "source_paths_committed": false,
+    "run_artifacts_committed": false,
+    "feishu_token_committed": false
+  },
+  "next_action": "wait_for_user_authorization_to_create_replacement_run2_and_repeat_gate_a"
+}
