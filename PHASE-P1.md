@@ -2,8 +2,8 @@
 
 ## 状态
 
-- 当前：Pending
-- 授权：未授权
+- 当前：Completed
+- 授权：已由用户明确授权并完成
 - 启动口令：`EXECUTE_PHASE: P1`
 
 ## 唯一目标
@@ -37,3 +37,15 @@
 - 两次 Gate 的状态存在，但不可跳过。
 - fixture 不含真实客户资料和绝对客户路径。
 - 没有越过 Skill 数量和 Runtime 模块预算。
+
+## 完成回执
+
+- 完成日期：2026-08-28
+- 分支：`feature/content-gzh-slim`
+- 阶段收据：`phase-receipts/P1.json`
+- PM Review：1 次
+- 最小修复：1 次，修复 Gate 可经通用状态推进绕过的问题
+- 复核：1 次；核心行为测试、Skill 校验、入口 create/resume 冒烟测试通过
+- 阻断项：无
+- 非阻断项：JSON Schema 语义校验工具未安装；12 个新文件末尾多一个空行。均已登记到 `deferred_issues`
+- P2：未授权、未执行

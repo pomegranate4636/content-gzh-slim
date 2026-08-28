@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-gzh-slim.invalid/schemas/task_input.schema.json",
+  "title": "ContentGzhSlimTaskInput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["knowledge_base", "ip"],
+  "properties": {
+    "knowledge_base": {"type": "string", "minLength": 1},
+    "ip": {"type": "string", "minLength": 1},
+    "topic": {"type": "string"},
+    "references": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "user_thoughts": {"type": "string"},
+    "must_keep": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "must_avoid": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "target_audience_override": {"type": "string"},
+    "article_length_preference": {"type": "string"}
+  }
+}
+

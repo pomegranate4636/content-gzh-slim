@@ -2,13 +2,13 @@
   "project": "content-gzh-slim",
   "schema_version": 1,
   "repository_visibility": "private",
-  "current_phase": "P0",
-  "current_status": "spec_created_review_pending",
-  "implementation_started": false,
+  "current_phase": "P1",
+  "current_status": "p1_complete_review_passed",
+  "implementation_started": true,
   "installed": false,
   "published": false,
-  "authorized_phase": "P0",
-  "next_phase": "P1",
+  "authorized_phase": "P1",
+  "next_phase": "P2",
   "next_phase_authorized": false,
   "master_spec": "CONTENT-GZH-SLIM-SPEC.md",
   "entry_skill": "content-gzh-slim",
@@ -27,6 +27,25 @@
     "non_blocking_issues_deferred_to": "P6_real_task_validation",
     "second_automatic_repair_allowed": false
   },
+  "phase_receipts": [
+    "phase-receipts/P1.json"
+  ],
+  "deferred_issues": [
+    {
+      "id": "P1-D01",
+      "phase": "P1",
+      "blocking": false,
+      "summary": "Draft 2020-12 JSON Schema semantic validation was not run because the optional jsonschema package is absent.",
+      "deferred_to": "P6_real_task_validation"
+    },
+    {
+      "id": "P1-D02",
+      "phase": "P1",
+      "blocking": false,
+      "summary": "Twelve new text files contain one extra blank line at end of file.",
+      "deferred_to": "P6_real_task_validation"
+    }
+  ],
   "frozen_decisions": [
     "one_shared_engine_with_runtime_knowledge_base_and_ip_injection",
     "same_knowledge_base_may_contain_multiple_ip_profiles",

@@ -1,0 +1,8 @@
+{
+  "knowledge_base": "fixture-kb-alpha",
+  "ip": "示例甲",
+  "topic": "纯虚构 fixture 选题",
+  "references": ["fixture://reference/example-one"],
+  "user_thoughts": "只验证 Run 身份，不生成内容"
+}
+

@@ -2,7 +2,7 @@
 
 `content-gzh-slim` 是一套面向多知识库、多项目和多 IP 的微信公众号内容生产系统。
 
-当前仓库处于 **SPEC 冻结阶段**：只保存产品边界、Skill 架构、Runtime 设计、阶段计划和测试标准；尚未实现、构建或安装任何正式 Skill。
+当前仓库已完成 **P1 Runtime 基座与唯一入口候选**：包含未安装的入口 Skill 骨架、输入合同、确定性 RunStore、状态机、路径边界和纯 fixture adapter。尚未读取真实知识库，也未实现内容生产或保存能力。
 
 ## 当前真相源
 
@@ -25,6 +25,8 @@
 ## 仓库状态
 
 - Repository visibility：Private
-- Implementation：Not started
-- Current phase：P0 SPEC / repository bootstrap
-- Next phase：P1 Runtime foundation and entry Skill
+- Implementation：P1 complete and reviewed
+- Current phase：P1 Runtime foundation and entry Skill
+- Next phase：P2（未授权、未执行）
+- Installed：No
+- Published：No

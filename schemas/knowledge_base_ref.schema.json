@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-gzh-slim.invalid/schemas/knowledge_base_ref.schema.json",
+  "title": "KnowledgeBaseRef",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["backend", "ref", "manifest_revision"],
+  "properties": {
+    "backend": {
+      "enum": ["obsidian", "feishu"]
+    },
+    "ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "manifest_revision": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
+
