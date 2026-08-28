@@ -1,0 +1,56 @@
+{
+  "phase": "P8",
+  "status": "complete_review_recheck_pass_main_merged_stopped",
+  "date": "2026-08-29",
+  "review": {
+    "initial_result": "CHANGES_REQUESTED",
+    "initial_reviewed_revision": "a1022f22e7fd757315437dc3e3a1ec324228fe9d",
+    "finding_repaired": "P8-R02 draft-contract false positive only",
+    "repair_rounds_used": 1,
+    "fresh_recheck_runs": ["A2", "B2"],
+    "recheck_reviewed_revision": "4de3e3075c186b41f7439dba1922b47ca252705f",
+    "recheck_result": "PASS",
+    "recheck_rounds_used": 1,
+    "second_repair_used": false
+  },
+  "preserved_first_attempt_failures": [
+    "Run A context selection text mismatch",
+    "Run B draft-contract status-marker false positive"
+  ],
+  "recheck_delivery": {
+    "a2": {"fresh_run_store": true, "context_packs": 1, "gate_decisions": 2, "writer_knowledge_base_searches": 0, "reviewers": 0, "save_backend": "isolated_obsidian", "readback": "verified"},
+    "b2": {"fresh_run_store": true, "context_packs": 1, "gate_decisions": 2, "writer_knowledge_base_searches": 0, "reviewers": 0, "save_backend": "feishu", "feishu_documents_created": 1, "readback": "verified", "length_requested": 5000, "length_actual_chinese_characters": 3097, "length_deviation": -1903},
+    "same_name_ip_different_knowledge_bases_isolated": true,
+    "cross_knowledge_base_reads": 0,
+    "distribution": {"generated_after_saved": true, "platforms_complete": true, "body_digest_unchanged": true, "wechat_main_title_unchanged": true, "saved_to_backend": false, "draftbox": false, "published": false}
+  },
+  "verification": {
+    "automated_tests_passed": 64,
+    "skill_count": 6,
+    "candidate_probe": "ready",
+    "candidate_privacy_scan": "pass",
+    "candidate_credentials_copied": false,
+    "candidate_legacy_v1_replaced": false,
+    "customer_data_or_credentials_committed": false,
+    "repository_private": true,
+    "tag_count": 0,
+    "release_count": 0
+  },
+  "merge": {
+    "pull_request_number": 1,
+    "feature_reviewed_remote_head": "4de3e3075c186b41f7439dba1922b47ca252705f",
+    "origin_main_before_merge": "4180177ab535656f650331687645a790684ba8fe",
+    "origin_main_merge_commit": "47c59f0c7639913b7fd9f0c7968a1985bd779b03",
+    "feature_head_matched_reviewed_revision_before_merge": true,
+    "main_drift_before_merge": false
+  },
+  "stop_boundary": {
+    "tag_created": false,
+    "release_created": false,
+    "global_skill_directory_written": false,
+    "legacy_v1_replaced": false,
+    "draftbox": false,
+    "content_published": false,
+    "p9_started": false
+  }
+}

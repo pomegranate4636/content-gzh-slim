@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：A2/B2 全新 recheck 已完成，正等待唯一 Review 的一次复核；原始 A/B 首次失败保持可回查
+- 当前：完成；唯一 Review 的一次复核 PASS，已按授权合并 main，停止
 - 授权：`EXECUTE_PHASE: P8`（本次任务明确授予）
 - 固定基线：`feature/content-gzh-slim` 的本地、`origin` 与远端分支均为 `a601132f5f48d1bb4be8e1a9d923aa5c54ec6469`
 - 上游结论：P7 独立 PM Review PASS；未合并 main、未打 Tag、未建 Release、未全局安装、未发布内容
@@ -33,7 +33,7 @@
 - 不写入 `~/.codex/skills`，不替换或调用 `shu-gongzhonghao-v1`，不改客户 01—05，不复制登录凭据。
 - 不把真实客户内容、知识库路径、链接 token、Run Artifact、正文或凭据写入 Git；回执仅包含脱敏计数、状态和摘要哈希。
 - P8 最多一次独立 PM Review；若 CHANGES REQUESTED，最多一次最小修复和一次复核。仅处理真实业务失败、串库/IP、越权读取、Gate 绕过、已确认正文/标题破坏、敏感数据泄漏或超复杂度。
-- 若唯一独立 P8 Review PASS，用户已授权以可审计的非破坏方式合并并推送 `main`；仍不打 Tag、不建 Release、不写入全局 Skill、不替换 V1、不进入草稿箱或发布。
+- 唯一独立 P8 Review 的一次复核已 PASS，已通过可审计 PR 合并并推送 `main`；未打 Tag、未建 Release、未写入全局 Skill、未替换 V1、未进入草稿箱或发布。
 
 ## 执行顺序
 
@@ -53,4 +53,4 @@
 ## 本阶段当前未完成项
 
 - 干净安装已通过；原始 A/B 首次失败、唯一 Review 的 CHANGES REQUESTED 与一轮最小修复均已入回执。
-- A2/B2 已从全新 RunStore 连续完成，Obsidian/飞书回读与保存后分发均已完成；约 5000 字实际 3097 个中文字符，仅作为诊断。仅剩一次 Review 复核；若 PASS，才可合并 main。
+- A2/B2 已从全新 RunStore 连续完成，Obsidian/飞书回读与保存后分发均已完成；约 5000 字实际 3097 个中文字符，仅作为诊断。唯一 Review 复核已 PASS，PR 已合并 main；不启动 P9 或额外美化。
