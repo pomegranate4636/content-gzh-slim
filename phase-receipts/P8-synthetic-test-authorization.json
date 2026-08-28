@@ -1,0 +1,29 @@
+{
+  "phase": "P8",
+  "status": "authorized_synthetic_isolation_scope_before_real_runs",
+  "date": "2026-08-29",
+  "authorization": {
+    "two_new_test_knowledge_bases": true,
+    "content_scope": "synthetic_non_customer_non_private_only",
+    "shared_ip_name": "P8测试IP",
+    "run_a_backend": "new_isolated_obsidian_with_readback",
+    "run_b_backend": "one_new_real_feishu_create_only_document_with_readback",
+    "feishu_preflight": "read_only_current_user_identity_permission_and_controlled_target_required",
+    "synthetic_topics_references_and_user_thoughts": true,
+    "distribution_before_exact_later_request": false,
+    "merge_release_global_install_v1_replacement_draftbox_publish": false
+  },
+  "gate_policy": {
+    "run_a_gate_a": "must_stop_for_current_task_user_exact_confirmation",
+    "run_a_gate_b": "must_stop_for_current_task_user_exact_confirmation",
+    "run_b_gate_a": "must_stop_for_current_task_user_exact_confirmation",
+    "run_b_gate_b": "must_stop_for_current_task_user_exact_confirmation",
+    "pm_agent_history_or_authorization_may_replace_gate": false
+  },
+  "privacy": {
+    "test_content_or_paths_committed": false,
+    "run_artifacts_committed": false,
+    "feishu_tokens_or_credentials_committed": false
+  },
+  "next_action": "create_private_synthetic_catalogs_a_b_then_start_run_a_and_stop_at_gate_a"
+}
