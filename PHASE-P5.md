@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：唯一修复轮已完成；PM Recheck pending
+- 当前：PM Recheck PASS；P5 completed
 - 授权：`EXECUTE_PHASE: P5`
 - 上游 Gate：P4 completed，用户以精确决定 `确认正文和标题` 批准 Gate B
 
@@ -43,6 +43,7 @@
 - 开发测试：49 项通过（P1—P4 39 项回归，P5 10 项）
 - 后端验证：Obsidian 注入隔离根与 Feishu fake client 均通过 create-only / 回读
 - 临时真实验证：WorkBuddy 成稿只保存到 `/tmp` 隔离 Obsidian 映射，回读一致，Run 为 `saved`
-- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED；待唯一 Recheck，不得写为 PASS
+- PM Review：总控已执行唯一 1 次，结论 CHANGES REQUESTED
 - P5 修复轮：1 次，已用完修复预算；只修推荐标题授权与 01—05 分隔目录保护
-- P6：未授权、未执行
+- PM Recheck：唯一 1 次，结论 PASS；49 项回归与 5 个 Skill 校验通过
+- P6：已授权，尚未产生开发候选
