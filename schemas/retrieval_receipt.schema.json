@@ -25,12 +25,12 @@
           "source_ref": {"type": ["string", "null"]},
           "candidate_status": {"type": "string"},
           "gate_a_status": {"enum": ["proposed", "not_proposed"]},
-          "final_selection_status": {"const": "pending_gate_a"},
+          "final_selection_status": {"enum": ["pending_gate_a", "selected", "not_selected"]},
           "selected_use": {"type": ["string", "null"]},
           "not_selected_reason": {"type": ["string", "null"]},
           "snippet_count": {"type": "integer", "minimum": 0},
           "character_count": {"type": "integer", "minimum": 0},
-          "in_context_pack": {"const": false}
+          "in_context_pack": {"type": "boolean"}
         }
       }
     },
@@ -45,7 +45,7 @@
         "04_method_candidates": {"type": "integer", "minimum": 0, "maximum": 2},
         "references_prepared": {"type": "integer", "minimum": 0, "maximum": 5},
         "characters_read": {"type": "integer", "minimum": 0},
-        "context_packs": {"const": 0}
+        "context_packs": {"type": "integer", "minimum": 0, "maximum": 1}
       }
     }
   }

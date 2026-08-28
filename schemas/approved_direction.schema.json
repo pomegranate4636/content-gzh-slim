@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ApprovedDirectionV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "run_id", "input_digest", "knowledge_base_identity", "ip_identity",
+    "task_input", "gate_receipt", "direction_digest", "retrieval_receipt_digest",
+    "approved_option", "frozen_candidates"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "pattern": "^run_[0-9a-f]{24}$"},
+    "input_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "knowledge_base_identity": {"$ref": "knowledge_base_ref.schema.json"},
+    "ip_identity": {"$ref": "ip_ref.schema.json"},
+    "task_input": {"$ref": "task_input.schema.json"},
+    "gate_receipt": {
+      "type": "object",
+      "required": ["gate", "decision", "at"],
+      "properties": {"gate": {"const": "A"}, "decision": {"const": "确认方向"}, "at": {"type": "string"}}
+    },
+    "direction_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "retrieval_receipt_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "approved_option": {"type": "object"},
+    "frozen_candidates": {"type": "object"}
+  }
+}

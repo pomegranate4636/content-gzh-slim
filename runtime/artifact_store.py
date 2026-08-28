@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -50,3 +51,28 @@ class ArtifactStore:
             return
         with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
             handle.write(payload)
+
+    def replace_json_if_matches(
+        self,
+        run_id: str,
+        name: str,
+        expected: dict[str, Any],
+        replacement: dict[str, Any],
+    ) -> None:
+        path = self._path(run_id, name)
+        existing = self.read_json(run_id, name)
+        if _canonical(existing) == _canonical(replacement):
+            return
+        if _canonical(existing) != _canonical(expected):
+            raise ArtifactStoreError(f"artifact changed unexpectedly; refusing to replace: {name}")
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=path.parent,
+            prefix=f".{name}-",
+            suffix=".tmp",
+            delete=False,
+        ) as handle:
+            handle.write(_canonical(replacement) + "\n")
+            temporary = Path(handle.name)
+        os.replace(temporary, path)

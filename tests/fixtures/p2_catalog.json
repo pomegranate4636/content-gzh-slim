@@ -25,7 +25,27 @@
             "core_stance": "工具上线不等于业务结果自动发生",
             "style_boundary": "不承诺未经验证的增长数字",
             "business_direction": "帮助企业梳理人机协同流程"
-          }
+          },
+          "confirmed_fragments": [
+            {
+              "fragment_id": "ip-a-judgment",
+              "fragment_type": "confirmed_judgment",
+              "text": "工具上线不等于业务结果自动发生，先把人机协同流程接起来。",
+              "status": "confirmed"
+            },
+            {
+              "fragment_id": "ip-a-action",
+              "fragment_type": "confirmed_action",
+              "text": "先选一个低风险流程跑最小闭环，再看哪里需要继续补。",
+              "status": "confirmed"
+            },
+            {
+              "fragment_id": "ip-a-boundary",
+              "fragment_type": "promise_boundary",
+              "text": "没有统一口径或证据的增长数字不写进文章。",
+              "status": "confirmed"
+            }
+          ]
         },
         {
           "name": "有限示例",
@@ -34,7 +54,15 @@
           "anchors": {
             "identity": "虚构的流程顾问",
             "target_audience": "需要改进服务流程的团队"
-          }
+          },
+          "confirmed_fragments": [
+            {
+              "fragment_id": "ip-limited-boundary",
+              "fragment_type": "promise_boundary",
+              "text": "当前只确认身份和受众，不补写个人经历。",
+              "status": "confirmed"
+            }
+          ]
         }
       ],
       "business_assets": [

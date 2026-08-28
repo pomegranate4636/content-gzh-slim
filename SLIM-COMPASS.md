@@ -92,4 +92,4 @@ IP：
 
 ## 8. 当前阶段
 
-P2 开发候选已完成，当前停在 fixture Gate A 与总控 PM Review 之前。P2 不读取真实知识库、不批准 Gate A，也不创建 Article Context Pack。P3 未授权、未执行。
+P3 开发候选已完成：专用 Gate A 批准后只从冻结候选生成唯一 `article_context_v1.json`，当前等待总控 PM Review。P3 不创建 Writer、标题、保存或分发能力；P4 未授权、未执行。
