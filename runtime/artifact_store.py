@@ -1,4 +1,4 @@
-"""Create-only P2 artifact storage with identical retry verification."""
+"""Create-only artifact storage with identical retry verification."""
 
 from __future__ import annotations
 
@@ -39,6 +39,13 @@ class ArtifactStore:
             raise ArtifactStoreError(f"artifact must be an object: {name}")
         return value
 
+    def read_text(self, run_id: str, name: str) -> str:
+        path = self._path(run_id, name)
+        try:
+            return path.read_text(encoding="utf-8")
+        except OSError as exc:
+            raise ArtifactStoreError(f"artifact is unreadable: {name}") from exc
+
     def write_json_once_or_verify(self, run_id: str, name: str, value: dict[str, Any]) -> None:
         path = self._path(run_id, name)
         payload = _canonical(value) + "\n"
@@ -47,6 +54,18 @@ class ArtifactStore:
         except FileExistsError:
             existing = self.read_json(run_id, name)
             if _canonical(existing) != _canonical(value):
+                raise ArtifactStoreError(f"artifact already exists with different content: {name}")
+            return
+        with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+            handle.write(payload)
+
+    def write_text_once_or_verify(self, run_id: str, name: str, value: str) -> None:
+        path = self._path(run_id, name)
+        payload = value.rstrip() + "\n"
+        try:
+            descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        except FileExistsError:
+            if self.read_text(run_id, name) != payload:
                 raise ArtifactStoreError(f"artifact already exists with different content: {name}")
             return
         with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
