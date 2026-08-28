@@ -8,6 +8,10 @@ from typing import Any
 from .approved_direction import canonical_digest
 from .context_contract import CONTEXT_ROOT_FIELDS
 
+_FORBIDDEN_SECTION_MARKER = re.compile(
+    r"(?m)^(?:分析|状态|来源清单|保存说明|推荐标题|Top 3)\s*(?:[:：]|$)"
+)
+
 
 class DraftContractError(ValueError):
     """Raised when P4 identity or article-body boundaries are violated."""
@@ -88,8 +92,7 @@ def validate_draft_body(body: Any, context: dict[str, Any]) -> str:
     first_line = normalized.splitlines()[0].strip()
     if first_line.startswith("# ") or re.match(r"^(标题|题目|Title)\s*[:：]", first_line, re.I):
         raise DraftContractError("Writer output must not contain an article title")
-    forbidden_sections = ("分析：", "状态：", "来源清单", "保存说明", "推荐标题：", "Top 3")
-    if any(marker in normalized for marker in forbidden_sections):
+    if _FORBIDDEN_SECTION_MARKER.search(normalized):
         raise DraftContractError("Writer output contains analysis, title, status, source, or save material")
 
     for required in context.get("must_keep", []):

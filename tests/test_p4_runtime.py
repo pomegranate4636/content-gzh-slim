@@ -122,6 +122,16 @@ class P4RuntimeTests(unittest.TestCase):
                 with self.assertRaises(DraftContractError):
                     P4Pipeline(temporary).run_initial(run_id, body, self._headlines())
 
+    def test_draft_allows_status_colon_inside_normal_prose(self) -> None:
+        body = "读者需要回答：它现在是什么状态：仍要回到记录核对。\n\n" + self._draft()
+        with tempfile.TemporaryDirectory() as temporary:
+            run_id, _ = self._context_ready_run(temporary)
+            result = P4Pipeline(temporary).run_initial(
+                run_id, body, self._headlines()
+            )
+
+        self.assertEqual(result["draft"], body.strip())
+
     def test_headline_contract_requires_exact_top3_and_recommended_member(self) -> None:
         invalid_candidates = []
         two = self._headlines()
