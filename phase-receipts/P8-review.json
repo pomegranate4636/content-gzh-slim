@@ -1,0 +1,48 @@
+{
+  "phase": "P8",
+  "review_type": "single_independent_read_only_pm_review",
+  "date": "2026-08-29",
+  "reviewed_revision": "a1022f22e7fd757315437dc3e3a1ec324228fe9d",
+  "result": "CHANGES_REQUESTED",
+  "review_rounds": 1,
+  "scope": {
+    "business_failure": true,
+    "cross_knowledge_base_or_ip": true,
+    "unauthorized_read": true,
+    "state_machine_gate_bypass": true,
+    "approved_body_or_title_breakage": true,
+    "credentials_or_customer_data_in_git": true,
+    "complexity_budget": true
+  },
+  "verification": {
+    "automated_tests_passed": 63,
+    "skill_count": 6,
+    "run_a_cross_knowledge_base_reads": 0,
+    "run_b_cross_knowledge_base_reads": 0,
+    "runtime_waiting_state_bypass_observed": false,
+    "customer_data_or_credentials_committed": false,
+    "global_skill_directory_written": false,
+    "legacy_v1_replaced": false
+  },
+  "findings": [
+    {
+      "id": "P8-R01",
+      "severity": "blocking",
+      "summary": "Run A and Run B both failed on their first attempts, so P8 cannot claim two continuous first-pass Runs or the required saved/distribution evidence.",
+      "repairable_without_new_run_authorization": false
+    },
+    {
+      "id": "P8-R02",
+      "severity": "blocking",
+      "summary": "Draft validation rejects a normal in-body Chinese status-colon phrase anywhere in prose, rather than only a forbidden status section marker.",
+      "repairable_without_new_run_authorization": true
+    }
+  ],
+  "authorized_repair": {
+    "maximum_rounds": 1,
+    "planned_scope": "anchor forbidden section markers to standalone line starts and add one regression test",
+    "must_not_represent_resumed_or_new_runs_as_first_attempt_passes": true
+  },
+  "merge_eligible": false,
+  "next_action": "one_minimal_repair_then_one_recheck; preserve_p8_failure_if_continuous_runs_remain_incomplete"
+}
