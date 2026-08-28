@@ -1,6 +1,6 @@
 {
   "phase": "P2",
-  "status": "development_candidate_pm_review_pending",
+  "status": "pm_review_pass_awaiting_user_authorized_real_gate_a_sample",
   "candidate_date": "2026-08-28",
   "branch": "feature/content-gzh-slim",
   "scope": [
@@ -21,14 +21,17 @@
     "fixture_gate_a_smoke": "passed and stopped at waiting_direction"
   },
   "pm_review": {
-    "status": "pending_total_controller_review",
-    "rounds_used": 0,
+    "status": "pass",
+    "conclusion": "PASS",
+    "rounds_used": 1,
     "development_self_check_counted_as_pm_review": false
   },
   "repair": {
     "rounds_used": 0,
-    "maximum_after_pm_review": 1
+    "maximum_after_pm_review": 1,
+    "repair_budget_used": false
   },
+  "current_wait": "user_authorization_for_real_gate_a_sample",
   "deferred_issues": [],
   "carried_deferred_issues_unchanged": [
     "P1-D01",

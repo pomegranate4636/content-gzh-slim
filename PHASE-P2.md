@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：Development candidate ready; PM Review pending
+- 当前：PM Review PASS；等待用户授权真实 Gate A 样本
 - 授权：`EXECUTE_PHASE: P2`
 - 上游 Gate：P1 PASS
 
@@ -48,6 +48,8 @@
 - 候选收据：`phase-receipts/P2-candidate.json`
 - 开发测试：21 项通过（含 10 项 P1 回归）
 - Skill 校验：`content-gzh-slim`、`content-gzh-analyzer` 均通过
-- PM Review：待总控执行，当前开发自检不计入 PM Review
+- PM Review：总控已执行 1 次，结论 PASS
+- P2 修复轮：0 次，未使用修复预算
 - Gate A：仅生成 fixture 预览，未批准
+- 真实 Gate A 样本：等待用户明确授权
 - P3：未授权、未执行
