@@ -2,7 +2,7 @@
 
 ## 状态
 
-- 当前：Run A 已到 `waiting_direction`；仅本阶段合成验收可由获授权 PM 代理作出 Gate 决定
+- 当前：A2/B2 全新 recheck 已完成，正等待唯一 Review 的一次复核；原始 A/B 首次失败保持可回查
 - 授权：`EXECUTE_PHASE: P8`（本次任务明确授予）
 - 固定基线：`feature/content-gzh-slim` 的本地、`origin` 与远端分支均为 `a601132f5f48d1bb4be8e1a9d923aa5c54ec6469`
 - 上游结论：P7 独立 PM Review PASS；未合并 main、未打 Tag、未建 Release、未全局安装、未发布内容
@@ -52,5 +52,5 @@
 
 ## 本阶段当前未完成项
 
-- 干净安装已通过；原始 A/B 首次失败和唯一 Review 的 CHANGES REQUESTED 已入回执。
-- 仅允许一轮正文合同最小修复，然后以全新 A2/B2 做唯一 recheck。只有 A2/B2 连续成功、两个后端回读、保存后分发及边界检查均通过，Review 才可 PASS 并合并 main。
+- 干净安装已通过；原始 A/B 首次失败、唯一 Review 的 CHANGES REQUESTED 与一轮最小修复均已入回执。
+- A2/B2 已从全新 RunStore 连续完成，Obsidian/飞书回读与保存后分发均已完成；约 5000 字实际 3097 个中文字符，仅作为诊断。仅剩一次 Review 复核；若 PASS，才可合并 main。
