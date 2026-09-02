@@ -7,6 +7,15 @@
 - 固定基线：`feature/content-gzh-slim` 的本地、`origin` 与远端分支均为 `a601132f5f48d1bb4be8e1a9d923aa5c54ec6469`
 - 上游结论：P7 独立 PM Review PASS；未合并 main、未打 Tag、未建 Release、未全局安装、未发布内容
 
+## 2026-09-02：content-source-v1 联合改造补充验收
+
+- P8 原验收记录继续作为历史证据，本次不改写原 Run 或原收据。
+- 新版已在隔离 Obsidian 完成 Manifest 推导目标、两次 Gate、create-only 保存和回读，保持未发布。
+- 新版已由 ZSK 在飞书真实创建私有隔离知识库及基础 Manifest/Profile 索引；公众号使用临时 Registry、明确无 IP，完成两次测试授权 Gate、create-only 保存和回读，保持未发布。
+- 口播与公众号共享同一公共合同，但不互相导入运行代码；口播遇飞书 binding 准确停止。
+- 当前树与完整 Git 历史的凭据、个人信息和真实飞书对象扫描通过；唯一飞书 URL 历史命中是测试域名。
+- Public、匿名克隆和本机发布副本状态以 `project-state.json` 的当前字段为准；完成前不得把候选状态说成已发布。
+
 ## 唯一目标
 
 在不重设计或扩大 P1—P7 的前提下，验证该候选对新用户和不同客户知识库的可交付性。所有真实数据、正文、链接 token、Run Artifact 与凭据仅留在临时私有位置；本仓库只保存脱敏的阶段收据。

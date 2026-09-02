@@ -197,15 +197,21 @@ class FrozenFixtureProjector:
 
         missing_evidence = _string_list(selection.get("missing_evidence"), "missing_evidence")
         preview = selection.get("save_target_preview")
+        manifest_preview = knowledge_base.get("save_target")
+        if isinstance(manifest_preview, dict):
+            if preview is not None and preview != manifest_preview:
+                raise FrozenProjectionError("save target differs from the frozen Manifest")
+            preview = manifest_preview
         if not isinstance(preview, dict):
             raise FrozenProjectionError("save_target_preview must be an object")
         if preview.get("backend") != run["knowledge_base_identity"]["backend"]:
             raise FrozenProjectionError("save preview backend must match current knowledge base")
         if preview.get("status") != "preview_only_not_writable":
             raise FrozenProjectionError("P3 save target must remain a non-writable preview")
-        if not isinstance(preview.get("target_ref"), str) or not preview["target_ref"].startswith(
-            "fixture://"
-        ):
+        target_ref = preview.get("target_ref")
+        if not isinstance(target_ref, str) or not target_ref.strip():
+            raise FrozenProjectionError("P3 save preview target_ref is invalid")
+        if not isinstance(manifest_preview, dict) and not target_ref.startswith("fixture://"):
             raise FrozenProjectionError("P3 fixture save preview must use fixture://")
 
         excluded_business = []
