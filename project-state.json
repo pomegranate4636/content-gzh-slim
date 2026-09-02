@@ -1,15 +1,20 @@
 {
   "project": "content-gzh-slim",
   "schema_version": 1,
-  "repository_visibility": "private",
-  "current_phase": "P8",
-  "current_status": "p8_complete_review_recheck_pass_main_merged_no_release_no_publish",
+  "repository_visibility": "public_pending_security_audit",
+  "current_phase": "content-source-v1-release",
+  "current_status": "release_candidate_verified_before_main_merge",
   "implementation_started": true,
   "installed": true,
   "published": false,
-  "authorized_phase": "P8",
+  "authorized_phase": "content-source-v1-release",
   "next_phase": null,
   "next_phase_authorized": false,
+  "content_source_v1_security_audit": "pass_current_tree_and_full_git_history",
+  "content_source_v1_obsidian_e2e": "pass_manifest_derived_create_only_save_readback_unpublished",
+  "content_source_v1_feishu_e2e": "pass_zsk_bootstrap_temporary_registry_two_gates_create_only_save_readback_unpublished",
+  "content_source_v1_real_customer_data_written": false,
+  "content_source_v1_publication_status": "pending_main_merge_and_anonymous_clone_verification",
   "master_spec": "CONTENT-GZH-SLIM-SPEC.md",
   "entry_skill": "content-gzh-slim",
   "skill_budget": {
@@ -236,6 +241,10 @@
     "distribution_pack_is_optional_after_save",
     "legacy_v1_remains_untouched",
     "complete_p1_to_p6_before_non_blocking_bug_polish",
-    "one_repair_round_maximum_per_phase_review"
+    "one_repair_round_maximum_per_phase_review",
+    "content_source_v1_optional_confirmed_defaults",
+    "primary_is_default_not_exclusive",
+    "real_obsidian_and_feishu_source_adapters",
+    "manifest_derived_save_target_only"
   ]
 }

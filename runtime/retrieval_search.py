@@ -1,4 +1,4 @@
-"""Bounded fixture-only 05→03→04 candidate retrieval for P2."""
+"""Bounded 05→03→04 candidate retrieval from a frozen source catalog."""
 
 from __future__ import annotations
 
@@ -59,8 +59,8 @@ class ControlledFixtureRetriever:
         for score, _, asset in ranked[:limit]:
             ref = asset.get("ref")
             excerpt = asset.get("excerpt")
-            if not isinstance(ref, str) or not ref.startswith("fixture://"):
-                raise RetrievalError(f"fixture {role} ref must use fixture://")
+            if not isinstance(ref, str) or not ref.startswith(("fixture://", "content-source://", "obsidian://", "feishu://")):
+                raise RetrievalError(f"{role} ref must use a controlled source scheme")
             if not isinstance(excerpt, str) or not excerpt.strip():
                 raise RetrievalError(f"fixture {role} excerpt is required")
             candidates.append(

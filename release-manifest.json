@@ -1,0 +1,375 @@
+{
+  "integrity": {
+    "hash_algorithm": "sha256"
+  },
+  "package": {
+    "id": "content-gzh-slim",
+    "version": "1.0.0"
+  },
+  "runtime": {
+    "file_count": 70,
+    "files": [
+      {
+        "bytes": 495,
+        "path": "runtime/__init__.py",
+        "sha256": "774edf0b5d03431fcd93e717fb980048e4c397cd039d7ea016e662fd33d58da4"
+      },
+      {
+        "bytes": 2893,
+        "path": "runtime/analysis_contract.py",
+        "sha256": "9939a357af783759da934c6f4d1e180de2a135446ca563aea2561318db890115"
+      },
+      {
+        "bytes": 4900,
+        "path": "runtime/approved_direction.py",
+        "sha256": "de75078a4bae3940d8e0a3bad3e2aafc23d9fd92486c07b5d0fc2d7e3d97cc75"
+      },
+      {
+        "bytes": 3687,
+        "path": "runtime/artifact_store.py",
+        "sha256": "91adf1df82e1ea34f611a1337e7a8ff7a0b2cdf5d650be9cb7dc20e75ee71954"
+      },
+      {
+        "bytes": 46257,
+        "path": "runtime/content_source.py",
+        "sha256": "1f82dec8ac6709d4c1a40e03c6b0855c0cc40519bb370c408b28d22df9bab67a"
+      },
+      {
+        "bytes": 4856,
+        "path": "runtime/context_contract.py",
+        "sha256": "0405c9a709b90a6de879901106c4a2cc6dbbc84ad245af052f9d82ea2ff5146e"
+      },
+      {
+        "bytes": 2642,
+        "path": "runtime/contracts.py",
+        "sha256": "e9f7df0775c9288b860e23b05efd5e047ad4f1505e737703fd835a098bcc666d"
+      },
+      {
+        "bytes": 6163,
+        "path": "runtime/distribution_contract.py",
+        "sha256": "60033b1dee21afe0a32d91d0514fc88f79b3b7726b293930bfeb43d3951b3a38"
+      },
+      {
+        "bytes": 4207,
+        "path": "runtime/distribution_service.py",
+        "sha256": "548a6c26ccfc7827bae3d8dcbcb0073f903f660724b2e4baf92de02a841f9f0f"
+      },
+      {
+        "bytes": 5597,
+        "path": "runtime/draft_contract.py",
+        "sha256": "95380fd5167b32000bdc628283445b03a4d062eb9bd1a568a8524f490044c3df"
+      },
+      {
+        "bytes": 1890,
+        "path": "runtime/entry.py",
+        "sha256": "aa7a1628cc62ed5e8757bacb8ada9c6152b23dd24e7a96fbaee87141dcf61428"
+      },
+      {
+        "bytes": 2465,
+        "path": "runtime/feishu_adapter.py",
+        "sha256": "59e64ceb60f88b05486eb9b9a61de201d56547a04ab11d2822d271f273aadacc"
+      },
+      {
+        "bytes": 3127,
+        "path": "runtime/fixture_adapter.py",
+        "sha256": "d0539be40ef31ab7d49422a4733b732f26538d9897cb4e24b0a9e00d53f8fb18"
+      },
+      {
+        "bytes": 11507,
+        "path": "runtime/frozen_projection.py",
+        "sha256": "508a6f36eedb276d5c0e7674eff912024d11268fb32851eb81c2adf914a66a7b"
+      },
+      {
+        "bytes": 8502,
+        "path": "runtime/gate_a.py",
+        "sha256": "2c8a44c0279b148e5e95af248a2f0ccede5b4bda648e1b352646f000269d335d"
+      },
+      {
+        "bytes": 2049,
+        "path": "runtime/gate_b.py",
+        "sha256": "aef16dcd49488177d332b70ded6a64b74ed6e9c14cf42e1b3da09ff2bc42cf97"
+      },
+      {
+        "bytes": 2766,
+        "path": "runtime/headline_contract.py",
+        "sha256": "63f0ee8c701d624c1fae530de339a8741ba8bceeed724bf427f960d07e48362e"
+      },
+      {
+        "bytes": 15585,
+        "path": "runtime/host_cli.py",
+        "sha256": "4f46b7a846b3bc2a4a88e2a105b8eff6922e61791283c1d7b29ac8c5f2d67143"
+      },
+      {
+        "bytes": 7418,
+        "path": "runtime/lark_cli_client.py",
+        "sha256": "212dab7a2b9860a81393fa3ec52aec5260ae578b1f1835a0f83f804f2e1738d7"
+      },
+      {
+        "bytes": 4040,
+        "path": "runtime/obsidian_adapter.py",
+        "sha256": "707680aa75c600d926f5b6e1444171e699720ddc705cc25a41fc2fa18c9d0577"
+      },
+      {
+        "bytes": 1554,
+        "path": "runtime/p2_fixture_entry.py",
+        "sha256": "00ca2e9ab3242a3fc9ea64b3a3d7ffe648f076ffe7a6d474a1f8cb8ba289ef15"
+      },
+      {
+        "bytes": 2977,
+        "path": "runtime/p2_pipeline.py",
+        "sha256": "0e4056d2de2f0ece907beddaebae9576d8727895b437c9649a34e74635b12c52"
+      },
+      {
+        "bytes": 1331,
+        "path": "runtime/p3_fixture_entry.py",
+        "sha256": "1dbfa8bf4b4ff2ee9d8a44d7656b9b35258144abda087b380ed9cac0b4d4294a"
+      },
+      {
+        "bytes": 4002,
+        "path": "runtime/p3_pipeline.py",
+        "sha256": "36b22cf4de5ea49fa6a324641e9ecde6f7f3deb32317c8d9393454252b548355"
+      },
+      {
+        "bytes": 1548,
+        "path": "runtime/p4_fixture_entry.py",
+        "sha256": "3b6df3f800e3b7ecaaaadf3e96f1f6c69db15529252ca252d1f9963aaf8bc858"
+      },
+      {
+        "bytes": 5157,
+        "path": "runtime/p4_pipeline.py",
+        "sha256": "347793166afeeca26635b4c08494517182f9f9581565a67c7337886a6e8185dc"
+      },
+      {
+        "bytes": 831,
+        "path": "runtime/path_boundary.py",
+        "sha256": "26f2cea242412478b2aecfcc02d9dd40e7a436ed74d43321d7a8486128dd64a8"
+      },
+      {
+        "bytes": 2270,
+        "path": "runtime/receipt_finalizer.py",
+        "sha256": "a0c2750bdd0276cbe36e65e3d5d1ad12f2176317c20fc4b8488fc8e9e1e37a90"
+      },
+      {
+        "bytes": 2174,
+        "path": "runtime/reference_prep.py",
+        "sha256": "53c6aa921884f12affd202ff4165ffe7b2604288e17ea962e3c870c2ce4f3c20"
+      },
+      {
+        "bytes": 3959,
+        "path": "runtime/retrieval_receipt.py",
+        "sha256": "b81db5b45c90a1f2dc8781a82ce8046cb14c09771a05afdf9cd27cc3946fbd3f"
+      },
+      {
+        "bytes": 7364,
+        "path": "runtime/retrieval_search.py",
+        "sha256": "9626577a9d5a00baa9d1567ea4c969dbc8811a4c1fac59560621a0f98f12bc35"
+      },
+      {
+        "bytes": 7988,
+        "path": "runtime/run_store.py",
+        "sha256": "98c3fb64f8a946d8c455a95662cddc3c7d60b76f74430d63fbb47c631b204c32"
+      },
+      {
+        "bytes": 7339,
+        "path": "runtime/save_contract.py",
+        "sha256": "875e743173ecc3cd3444b79891ed9b2afa4314a7d41f77b6b96ecbc0b243b6f2"
+      },
+      {
+        "bytes": 4785,
+        "path": "runtime/save_service.py",
+        "sha256": "808d5f016d8a17a32359f08943ca4ed5d2236fa5fa086a9a0b40d0d3622c4e37"
+      },
+      {
+        "bytes": 1969,
+        "path": "runtime/state_machine.py",
+        "sha256": "14e6de529d5b7142cf8fe0a73e4729884f27894984bcecba03ab693144db71d7"
+      },
+      {
+        "bytes": 2560,
+        "path": "schemas/analysis.schema.json",
+        "sha256": "38c28235fa91762e9bf360bd0029db34b929b35bfa26eb16cddb3e91fd42e8e3"
+      },
+      {
+        "bytes": 1212,
+        "path": "schemas/approved_direction.schema.json",
+        "sha256": "6d5c1d9afe5ccbc639f6f28be3084561820da5661ffa4d4440b6d18b27eff748"
+      },
+      {
+        "bytes": 857,
+        "path": "schemas/approved_final.schema.json",
+        "sha256": "7a22fc58e565e5be7c8711a2001393cedcdf13ee7c13e27e7cbeded9178d966d"
+      },
+      {
+        "bytes": 1515,
+        "path": "schemas/article_context.schema.json",
+        "sha256": "6d9a4964c335a6da93725777109476af31c0cefb38a283068e130c49dae87e02"
+      },
+      {
+        "bytes": 1191,
+        "path": "schemas/content-profile-index.schema.json",
+        "sha256": "6445c2282065feda1bcfafe744b653c6e6e29c5fa559a17c57afab35d427d35a"
+      },
+      {
+        "bytes": 1663,
+        "path": "schemas/content-source-manifest.schema.json",
+        "sha256": "b6e72d724d9f02167288c6b76c0afb84fac69294406d47a19cc90127f94fcc26"
+      },
+      {
+        "bytes": 990,
+        "path": "schemas/direction.schema.json",
+        "sha256": "8940fd25d0e57a48e26e22a68c1f1de950c1a7e6c46ae74c3e49c31047102c55"
+      },
+      {
+        "bytes": 1120,
+        "path": "schemas/distribution.schema.json",
+        "sha256": "3b37a7d3026ef83d195343c0e2469c67f59bce81580ede6b2d05438376f59ce2"
+      },
+      {
+        "bytes": 1379,
+        "path": "schemas/headline.schema.json",
+        "sha256": "8b7e2ee54141e655cdea1d660e97a3ab8bd5c4766f058759bf73026ac4d3523c"
+      },
+      {
+        "bytes": 790,
+        "path": "schemas/ip_ref.schema.json",
+        "sha256": "20833eb8db33b49c77132f4ea50f9d28c84e589543f56538ea609bbc8d5bb6af"
+      },
+      {
+        "bytes": 1409,
+        "path": "schemas/knowledge-base-registry.schema.json",
+        "sha256": "d50a9772afb1e2b7bf70e2f750d86834caf76b8291a35ec6db44ac1c4eb0c3dd"
+      },
+      {
+        "bytes": 515,
+        "path": "schemas/knowledge_base_ref.schema.json",
+        "sha256": "56e31262fadefd7a5443c32c3f6d8a9bbe7eac0b220057bbabc540bb96024a29"
+      },
+      {
+        "bytes": 903,
+        "path": "schemas/reference_snapshot.schema.json",
+        "sha256": "bdc5fe94063c8b7ca839a76138ff7f868dd9ddf03c89a123eb8d883ae4fa0344"
+      },
+      {
+        "bytes": 2437,
+        "path": "schemas/retrieval_receipt.schema.json",
+        "sha256": "04ac46717cbe5e5c1df25f128fea68ef4214e4a88187729b65d4a47be2df637c"
+      },
+      {
+        "bytes": 2069,
+        "path": "schemas/run.schema.json",
+        "sha256": "b821b763b0fe2ccb73a6da4f62161050416c8af0d1f53f83ade7da22dcfb9351"
+      },
+      {
+        "bytes": 1066,
+        "path": "schemas/save_receipt.schema.json",
+        "sha256": "982ca1b811d15f1b4640c049527277984333097b3ad785ef54648fe4e7eba003"
+      },
+      {
+        "bytes": 978,
+        "path": "schemas/task_input.schema.json",
+        "sha256": "8b7dd743028537102c8d6c0019654c3e471235ffde7765699c9e91424c152003"
+      },
+      {
+        "bytes": 875,
+        "path": "schemas/task_request.schema.json",
+        "sha256": "8c8820d63551eb18c02c6d4f007eb7f348e6873336350b7f9fe53e30cb768952"
+      },
+      {
+        "bytes": 370,
+        "path": "scripts/content-gzh-slim",
+        "sha256": "ee2359d67899aff196b9259b6fa062988b4525459f15570511beed4c8c49b9d2"
+      },
+      {
+        "bytes": 1104,
+        "path": "skills/content-gzh-analyzer/SKILL.md",
+        "sha256": "96fcbdc2a2684fe54258818f0068a9fb7336e530b1cefc96f6c3cad30b1927fb"
+      },
+      {
+        "bytes": 43,
+        "path": "skills/content-gzh-analyzer/agents/openai.yaml",
+        "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+      },
+      {
+        "bytes": 2720,
+        "path": "skills/content-gzh-analyzer/references/analysis-contract.md",
+        "sha256": "2f71d2f00881c76b6320aff319977089acb88b105927fa1d2df4f6228cda3245"
+      },
+      {
+        "bytes": 988,
+        "path": "skills/content-gzh-context-retriever/SKILL.md",
+        "sha256": "551a5f0c2d3d61c99c3dbf4e2077e846273f4ba720e91ba48c4f85cf76ba3303"
+      },
+      {
+        "bytes": 43,
+        "path": "skills/content-gzh-context-retriever/agents/openai.yaml",
+        "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+      },
+      {
+        "bytes": 1911,
+        "path": "skills/content-gzh-context-retriever/references/context-contract.md",
+        "sha256": "7ece90e37a0c3f415692b82b90a577045553e93d19d59e7c349d3061c3509c0a"
+      },
+      {
+        "bytes": 1059,
+        "path": "skills/content-gzh-distribution-pack/SKILL.md",
+        "sha256": "1142c4518b88db6bcb46c685708103a5f0c7acf197ea0945f2b87e302f748cf6"
+      },
+      {
+        "bytes": 43,
+        "path": "skills/content-gzh-distribution-pack/agents/openai.yaml",
+        "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+      },
+      {
+        "bytes": 829,
+        "path": "skills/content-gzh-headline/SKILL.md",
+        "sha256": "1502e5f188825830ab33d69f4b0952c003b6044b179f1aa4d9ed59337a5e5a4f"
+      },
+      {
+        "bytes": 43,
+        "path": "skills/content-gzh-headline/agents/openai.yaml",
+        "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+      },
+      {
+        "bytes": 4045,
+        "path": "skills/content-gzh-slim/SKILL.md",
+        "sha256": "a003679e281b987fe4c69eb41f7e47d7302bd4cd15ca84d9aac131d252e50206"
+      },
+      {
+        "bytes": 1660,
+        "path": "skills/content-gzh-slim/references/runtime-commands.md",
+        "sha256": "adacc2548e8e9c7d17fe10a52ae8ef4a04590be54bc4d09c32070a9bdf758ab8"
+      },
+      {
+        "bytes": 1047,
+        "path": "skills/content-gzh-writer/SKILL.md",
+        "sha256": "c49b5e19f1628d814d0a94878df0cbff5f853d9cedaa7278860001fbdb788760"
+      },
+      {
+        "bytes": 43,
+        "path": "skills/content-gzh-writer/agents/openai.yaml",
+        "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+      },
+      {
+        "bytes": 448,
+        "path": "skills/content-gzh-writer/references/ganhuo.md",
+        "sha256": "87f59b8e0393734989ef1ceda993f352f6b03498287469b85320f87c8f2fc3e8"
+      },
+      {
+        "bytes": 454,
+        "path": "skills/content-gzh-writer/references/huati.md",
+        "sha256": "635b3c69ab49a3d2582bedc99f21ee9548c37c6dbc5df8937251618be9d8b06b"
+      }
+    ],
+    "skill_count": 6,
+    "skills": [
+      "content-gzh-analyzer",
+      "content-gzh-context-retriever",
+      "content-gzh-distribution-pack",
+      "content-gzh-headline",
+      "content-gzh-slim",
+      "content-gzh-writer"
+    ],
+    "tree_sha256": "c3195c2b95b60493442e6834fa5ca8798dde574f3b39068ddb01fc11e3d71a34"
+  },
+  "schema_version": "content-gzh-slim-release-v1"
+}
