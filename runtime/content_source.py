@@ -32,6 +32,26 @@ class ContentSourceError(RuntimeError):
     """Raised when a real source cannot be resolved and frozen safely."""
 
 
+def _lark_cli_environment() -> dict[str, str]:
+    """Avoid inheriting the known dead local proxy while retaining valid proxies."""
+    environment = dict(os.environ)
+    for name in (
+        "ALL_PROXY", "HTTP_PROXY", "HTTPS_PROXY", "GIT_HTTP_PROXY", "GIT_HTTPS_PROXY",
+        "all_proxy", "http_proxy", "https_proxy", "git_http_proxy", "git_https_proxy",
+    ):
+        value = environment.get(name)
+        if not value:
+            continue
+        try:
+            parsed = urlsplit(value)
+            is_dead_proxy = parsed.hostname in {"127.0.0.1", "localhost", "::1"} and parsed.port == 9
+        except ValueError:
+            is_dead_proxy = False
+        if is_dead_proxy:
+            environment.pop(name, None)
+    return environment
+
+
 def default_registry_path() -> Path:
     configured = os.environ.get("CODEX_HOME")
     root = Path(configured).expanduser() if configured else Path.home() / ".codex"
@@ -230,6 +250,7 @@ class LarkContentSourceClient:
             check=False,
             capture_output=True,
             text=True,
+            env=_lark_cli_environment(),
         )
         if completed.returncode != 0:
             raise ContentSourceError(f"lark-cli read failed: {(completed.stderr or completed.stdout).strip()}")
