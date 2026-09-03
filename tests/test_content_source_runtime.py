@@ -5,9 +5,11 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 from runtime.content_source import (
     ContentSourceError,
+    LarkContentSourceClient,
     apply_configuration,
     plan_configuration,
     resolve_real_source,
@@ -27,6 +29,24 @@ def canonical(value: dict) -> str:
 
 
 class ContentSourceRuntimeTests(unittest.TestCase):
+    def test_lark_client_drops_only_known_dead_local_proxy(self) -> None:
+        completed = mock.Mock(returncode=0, stdout='{"data": {}}', stderr='')
+        with mock.patch.dict(
+            "runtime.content_source.os.environ",
+            {
+                "ALL_PROXY": "http://127.0.0.1:9",
+                "HTTPS_PROXY": "http://localhost:9",
+                "HTTP_PROXY": "http://proxy.example:8080",
+            },
+            clear=True,
+        ), mock.patch("runtime.content_source.subprocess.run", return_value=completed) as run:
+            LarkContentSourceClient(binary="lark-cli")._call(["wiki", "nodes", "list"])
+
+        environment = run.call_args.kwargs["env"]
+        self.assertNotIn("ALL_PROXY", environment)
+        self.assertNotIn("HTTPS_PROXY", environment)
+        self.assertEqual(environment["HTTP_PROXY"], "http://proxy.example:8080")
+
     def temporary_root(self):
         parent = Path("/private/tmp") if Path("/private/tmp").is_dir() else None
         return tempfile.TemporaryDirectory(prefix="content-gzh-source-", dir=parent)
