@@ -4,11 +4,16 @@
   },
   "package": {
     "id": "content-gzh-slim",
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "runtime": {
-    "file_count": 70,
+    "file_count": 74,
     "files": [
+      {
+        "bytes": 9775,
+        "path": "install.py",
+        "sha256": "76324c974e94523b33882bfb6b09a9653dcf4ff4b9b7170a5401fb1a0c0bc811"
+      },
       {
         "bytes": 495,
         "path": "runtime/__init__.py",
@@ -95,9 +100,9 @@
         "sha256": "63f0ee8c701d624c1fae530de339a8741ba8bceeed724bf427f960d07e48362e"
       },
       {
-        "bytes": 15585,
+        "bytes": 15830,
         "path": "runtime/host_cli.py",
-        "sha256": "4f46b7a846b3bc2a4a88e2a105b8eff6922e61791283c1d7b29ac8c5f2d67143"
+        "sha256": "bb3f761679c91d09367240b5225a065310630d6d8fef733eece1c0cd6f5014c8"
       },
       {
         "bytes": 7407,
@@ -358,6 +363,21 @@
         "bytes": 1279,
         "path": "skills/content-gzh-writer/SKILL.md",
         "sha256": "8dc8cb511c2f8837f84582f9f3d2d4171b164d4f8a2032c7f1928a1f8f63a981"
+      },
+      {
+        "bytes": 6259,
+        "path": "tools/build_universal_package.py",
+        "sha256": "47061280ca63a4a9083fa0be6ac8321d4eec20d4f92033b0506ea204556c331f"
+      },
+      {
+        "bytes": 2456,
+        "path": "workbuddy/SKILL.md",
+        "sha256": "52b4873772bc6d0d969899998805b5cb3500ad44c3772336bd030b099b91bdd9"
+      },
+      {
+        "bytes": 343,
+        "path": "workbuddy/workbuddy.json",
+        "sha256": "27382c675cdb1f28241eb53df986c4a4697d062c06947b1b8d47cb936bec10ad"
       }
     ],
     "skill_count": 6,
@@ -369,7 +389,7 @@
       "content-gzh-slim",
       "content-gzh-writer"
     ],
-    "tree_sha256": "4ab5ee5397482a4417f345201ac346358144cbca42018765eda7236dcaf22afc"
+    "tree_sha256": "1d9608e6b05eb2b3247b578b4d38f60e6d4ade053003487d309efd691a25d891"
   },
   "schema_version": "content-gzh-slim-release-v1"
 }

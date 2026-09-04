@@ -91,10 +91,16 @@ class UniversalPackageTests(unittest.TestCase):
                 self.assertEqual(manifest["version"], (ROOT / "VERSION").read_text().strip())
                 self.assertEqual(manifest["hosts"], ["codex", "workbuddy"])
                 self.assertEqual(manifest["operating_systems"], ["macos", "windows"])
-                self.assertEqual(manifest["source_revision"], subprocess.run(
-                    ["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
+                git_revision = subprocess.run(
+                    ["git", "rev-parse", "HEAD"], cwd=ROOT, check=False,
                     capture_output=True, text=True, encoding="utf-8"
-                ).stdout.strip())
+                )
+                expected_revision = (
+                    git_revision.stdout.strip()
+                    if git_revision.returncode == 0
+                    else json.loads((ROOT / "UNIVERSAL-PACKAGE-MANIFEST.json").read_text(encoding="utf-8"))["source_revision"]
+                )
+                self.assertEqual(manifest["source_revision"], expected_revision)
                 for relative, expected in manifest["files"].items():
                     import hashlib
 
@@ -112,6 +118,50 @@ class UniversalPackageTests(unittest.TestCase):
             )
             self.assertEqual(probe.returncode, 0, probe.stdout + probe.stderr)
             self.assertEqual(json.loads(probe.stdout)["status"], "ready")
+
+    def test_workbuddy_activation_is_self_contained_and_probes_without_git(self) -> None:
+        installer = _load("install.py", "content_gzh_installer_workbuddy")
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            root = Path(temporary)
+            package = root / "package"
+            package.mkdir()
+            installer._build(package)
+            skills_root = root / ".workbuddy" / "skills"
+            with mock.patch.object(installer, "_activation_mode", return_value="copy"):
+                mode = installer._activate(skills_root, package, host="workbuddy")
+            public = skills_root / "content-gzh-slim"
+            probe = subprocess.run(
+                [sys.executable, "-B", str(public / "scripts" / "content-gzh-slim"), "probe"],
+                cwd=public,
+                check=False,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="strict",
+            )
+            installed = {path.name for path in skills_root.iterdir() if path.is_dir()}
+
+        self.assertEqual(mode, "copy")
+        self.assertEqual(probe.returncode, 0, probe.stdout + probe.stderr)
+        self.assertEqual(json.loads(probe.stdout)["status"], "ready")
+        self.assertEqual(installed, {
+            "content-gzh-slim", "content-gzh-analyzer", "content-gzh-context-retriever",
+            "content-gzh-writer", "content-gzh-headline", "content-gzh-distribution-pack",
+        })
+
+    def test_release_manifest_covers_host_adapters_and_builder(self) -> None:
+        manifest = json.loads((ROOT / "release-manifest.json").read_text(encoding="utf-8"))
+        paths = {item["path"] for item in manifest["runtime"]["files"]}
+        self.assertIn("workbuddy/SKILL.md", paths)
+        self.assertIn("workbuddy/workbuddy.json", paths)
+        self.assertIn("install.py", paths)
+        self.assertIn("tools/build_universal_package.py", paths)
+
+    def test_universal_builder_rejects_embedded_credentials(self) -> None:
+        builder = _load("tools/build_universal_package.py", "content_gzh_universal_builder")
+        payload = b'{"access_' + b'token": "real-secret-value"}'
+        failures = builder._privacy_failures({"bad.json": payload})
+        self.assertEqual(len(failures), 1)
 
     def test_ci_runs_universal_package_on_windows_and_macos(self) -> None:
         workflow = (ROOT / ".github" / "workflows" / "universal-package.yml").read_text(

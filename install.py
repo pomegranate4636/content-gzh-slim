@@ -34,17 +34,35 @@ def _copy(source: Path, destination: Path) -> None:
     shutil.copytree(source, destination, ignore=shutil.ignore_patterns("__pycache__", "*.pyc", ".DS_Store"))
 
 
-def _package_manifest(root: Path) -> dict:
+def _source_revision() -> str:
+    completed = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="strict",
+    )
+    if completed.returncode == 0:
+        return completed.stdout.strip()
+    universal = ROOT / "UNIVERSAL-PACKAGE-MANIFEST.json"
+    if universal.is_file():
+        return json.loads(universal.read_text(encoding="utf-8"))["source_revision"]
+    raise RuntimeError("source revision is unavailable")
+
+
+def _package_manifest(root: Path, *, skill_root: str = ".agents/skills") -> dict:
     files = {}
     for path in sorted(item for item in root.rglob("*") if item.is_file()):
         if path.name == "PACKAGE-MANIFEST.json":
             continue
         files[path.relative_to(root).as_posix()] = _sha(path)
-    revision = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True).stdout.strip()
     return {
         "schema_version": 1,
         "package": f"content-gzh-slim-{(ROOT / 'VERSION').read_text(encoding='utf-8').strip()}",
-        "source_revision": revision,
+        "source_revision": _source_revision(),
+        "skill_root": skill_root,
         "skills": list(SKILLS),
         "public_entry": "content-gzh-slim",
         "internal_skill_count": 5,
@@ -67,6 +85,20 @@ def _build(destination: Path) -> None:
     bin_root.mkdir()
     shutil.copy2(ROOT / "scripts" / "content-gzh-slim", bin_root / "content-gzh-slim")
     (bin_root / "content-gzh-slim").chmod(0o755)
+    workbuddy_root = destination / "workbuddy"
+    _copy(ROOT / "workbuddy", workbuddy_root)
+    _copy(ROOT / "runtime", workbuddy_root / "runtime")
+    _copy(ROOT / "schemas", workbuddy_root / "schemas")
+    _copy(ROOT / "skills", workbuddy_root / "skills")
+    workbuddy_scripts = workbuddy_root / "scripts"
+    workbuddy_scripts.mkdir()
+    shutil.copy2(ROOT / "scripts" / "content-gzh-slim", workbuddy_scripts / "content-gzh-slim")
+    (workbuddy_scripts / "content-gzh-slim").chmod(0o755)
+    workbuddy_manifest = _package_manifest(workbuddy_root, skill_root="skills")
+    (workbuddy_root / "PACKAGE-MANIFEST.json").write_text(
+        json.dumps(workbuddy_manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
     manifest = _package_manifest(destination)
     (destination / "PACKAGE-MANIFEST.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -123,7 +155,7 @@ def _remove_created(path: Path) -> None:
         shutil.rmtree(path)
 
 
-def _activate(skills_root: Path, package: Path) -> str:
+def _activate(skills_root: Path, package: Path, *, host: str = "codex") -> str:
     """Atomically expose all skills, rolling back every new entry on failure."""
     skills_root.mkdir(parents=True, exist_ok=True)
     mode = _activation_mode(skills_root)
@@ -131,7 +163,7 @@ def _activate(skills_root: Path, package: Path) -> str:
     planned: list[tuple[Path, Path]] = []
     for name in SKILLS:
         link = skills_root / name
-        wanted = wanted_root / name
+        wanted = package / "workbuddy" if host == "workbuddy" and name == "content-gzh-slim" else wanted_root / name
         if link.exists() or link.is_symlink():
             matches = link.is_symlink() and link.resolve() == wanted.resolve()
             matches = matches or (not link.is_symlink() and _same_tree(link, wanted))
@@ -140,7 +172,7 @@ def _activate(skills_root: Path, package: Path) -> str:
             continue
         planned.append((link, wanted))
 
-    staging = skills_root / f".content-gzh-activate-{uuid.uuid4().hex}"
+    staging = skills_root / f".cg-a-{uuid.uuid4().hex[:8]}"
     created: list[Path] = []
     try:
         staging.mkdir()
@@ -163,17 +195,31 @@ def _activate(skills_root: Path, package: Path) -> str:
     return mode
 
 
+def _default_agent_home(host: str) -> Path:
+    environment_name = "CODEX_HOME" if host == "codex" else "WORKBUDDY_HOME"
+    default_name = ".codex" if host == "codex" else ".workbuddy"
+    configured = os.environ.get(environment_name)
+    return Path(configured).expanduser() if configured else Path.home() / default_name
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Install Content 公众号 Slim without overwriting local drift")
-    parser.add_argument("--codex-home", type=Path, default=Path(os.environ.get("CODEX_HOME", Path.home() / ".codex")))
+    parser.add_argument("--host", choices=("codex", "workbuddy"), default="codex")
+    parser.add_argument("--agent-home", type=Path)
+    parser.add_argument("--codex-home", type=Path, help="backward-compatible alias for --agent-home with --host codex")
     parser.add_argument("--package-name", default="content-gzh-slim-main")
     parser.add_argument("--activate", action="store_true")
     args = parser.parse_args(argv)
+    if args.agent_home and args.codex_home:
+        parser.error("use only one of --agent-home and --codex-home")
+    if args.codex_home and args.host != "codex":
+        parser.error("--codex-home cannot be used with --host workbuddy")
     verified = subprocess.run([sys.executable, "-B", str(ROOT / "tools" / "verify.py")], cwd=ROOT, check=False)
     if verified.returncode != 0:
         print("release verification failed; nothing installed", file=sys.stderr)
         return 2
-    skills_root = args.codex_home.expanduser().resolve() / "skills"
+    agent_home = args.agent_home or args.codex_home or _default_agent_home(args.host)
+    skills_root = agent_home.expanduser().resolve() / "skills"
     packages = skills_root / ".packages"
     packages.mkdir(parents=True, exist_ok=True)
     target = packages / args.package_name
@@ -189,11 +235,11 @@ def main(argv: list[str] | None = None) -> int:
             os.replace(candidate, target)
     if args.activate:
         try:
-            mode = _activate(skills_root, target)
+            mode = _activate(skills_root, target, host=args.host)
         except (OSError, ValueError) as exc:
             print(f"activation failed; rolled back new Skill entries: {exc}", file=sys.stderr)
             return 2
-        print(f"activation mode: {mode}")
+        print(f"activation mode: {mode}; host: {args.host}")
     probe = subprocess.run([sys.executable, "-B", str(target / "bin" / "content-gzh-slim"), "probe"], check=False)
     return probe.returncode
 
