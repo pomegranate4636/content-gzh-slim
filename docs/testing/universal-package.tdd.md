@@ -31,6 +31,8 @@ The subsequent dual-host installer run exposed the same path-budget problem one 
 
 The first native GitHub Actions matrix run passed on macOS but failed Windows release verification because checkout converted `install.py` line endings and invalidated its release hash. The repository and ZIP now include `.gitattributes` with an LF checkout contract so identical Git blobs produce identical verified bytes on both runners.
 
+The second native matrix run completed every Windows verification check, then failed only while printing the Chinese product label to a `cp1252` console. The machine-facing success message is now ASCII-safe; Skill names and Chinese content remain unchanged.
+
 ## GREEN evidence
 
 Command:
@@ -39,7 +41,7 @@ Command:
 py -X utf8 -B tools\verify.py
 ```
 
-Windows result: PASS, version 1.1.0, 6 Skills, 74 release-manifest files, 89 tests.
+Windows result: PASS, version 1.1.0, 6 Skills, 74 release-manifest files, 90 tests.
 
 The WorkBuddy integration test builds an isolated package, activates it in copy mode, runs the active root launcher, and requires `probe` to return `ready`. The universal ZIP test verifies the WorkBuddy root surface, Codex six-Skill tree, file hashes, source revision, privacy flags, extraction, and probe.
 
@@ -55,12 +57,13 @@ The WorkBuddy integration test builds an isolated package, activates it in copy 
 | Copy activation uses short direct staging leaves | `test_copy_activation_stages_each_skill_directly_under_skills_root` | regression | PASS |
 | Package candidate uses one short `.packages` leaf | `test_package_candidate_uses_one_short_leaf_under_packages` | regression | PASS |
 | Windows and macOS check out hash-stable LF bytes | `test_ci_runs_universal_package_on_windows_and_macos` | CI contract | PASS |
+| Verification success output is safe on ASCII consoles | `test_verify_success_message_is_ascii_console_safe` | regression | PASS |
 | Embedded credential assignments fail the build | `test_universal_builder_rejects_embedded_credentials` | security | PASS |
 | GitHub CI names Windows and macOS native runners | `test_ci_runs_universal_package_on_windows_and_macos` | structure | PASS |
 
 ## Coverage and remaining evidence
 
-`coverage.py` is not installed. Python standard-library `trace` ran all 85 tests from an earlier full pass and showed most runtime modules above 80%, but subprocess-driven CLI modules are undercounted; it is not claimed as an 80% aggregate coverage result. The authoritative local evidence is the 89-test Windows release verification.
+`coverage.py` is not installed. Python standard-library `trace` ran all 85 tests from an earlier full pass and showed most runtime modules above 80%, but subprocess-driven CLI modules are undercounted; it is not claimed as an 80% aggregate coverage result. The authoritative local evidence is the 90-test Windows release verification.
 
 Actual macOS runtime evidence is pending the GitHub Actions `macos-latest` job. WorkBuddy UI upload recognition is also pending and must not be inferred from isolated filesystem activation.
 

@@ -65,7 +65,7 @@ def main() -> int:
     cli = _run_utf8([sys.executable, "-B", str(ROOT / "scripts" / "content-gzh-slim"), "--help"], env=env)
     if cli.returncode != 0 or "content-gzh-slim installed-host runtime" not in cli.stdout:
         raise RuntimeError("CLI smoke test failed")
-    print(f"PASS: Content 公众号 Slim {version}, 6 skills / {len(files)} deliverable files verified.")
+    print(f"PASS: Content GZH Slim {version}, 6 skills / {len(files)} deliverable files verified.")
     return 0
 
 
