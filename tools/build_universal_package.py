@@ -15,7 +15,15 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORIES = (".github", "runtime", "schemas", "scripts", "skills", "tests", "tools", "workbuddy")
-ROOT_FILES = ("install.py", "VERSION", "LICENSE", "README.md", "release-manifest.json", "SHA256SUMS")
+ROOT_FILES = (
+    ".gitattributes",
+    "install.py",
+    "VERSION",
+    "LICENSE",
+    "README.md",
+    "release-manifest.json",
+    "SHA256SUMS",
+)
 IGNORED_NAMES = {"__pycache__", ".pytest_cache", ".DS_Store"}
 IGNORED_SUFFIXES = {".pyc", ".pyo"}
 TEXT_SUFFIXES = {"", ".md", ".py", ".json", ".yaml", ".yml", ".txt"}

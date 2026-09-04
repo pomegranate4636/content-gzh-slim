@@ -29,6 +29,8 @@ Running the complete verifier from that extracted ZIP then found two packaging-c
 
 The subsequent dual-host installer run exposed the same path-budget problem one stage earlier: the package candidate used both a long temporary directory and the final package name. Candidate construction now uses one short leaf directly under `.packages`, with cleanup preserved on every exit path.
 
+The first native GitHub Actions matrix run passed on macOS but failed Windows release verification because checkout converted `install.py` line endings and invalidated its release hash. The repository and ZIP now include `.gitattributes` with an LF checkout contract so identical Git blobs produce identical verified bytes on both runners.
+
 ## GREEN evidence
 
 Command:
@@ -52,6 +54,7 @@ The WorkBuddy integration test builds an isolated package, activates it in copy 
 | Extracted revision lookup never invokes Git | `test_extracted_package_revision_fallback_does_not_invoke_git` | regression | PASS |
 | Copy activation uses short direct staging leaves | `test_copy_activation_stages_each_skill_directly_under_skills_root` | regression | PASS |
 | Package candidate uses one short `.packages` leaf | `test_package_candidate_uses_one_short_leaf_under_packages` | regression | PASS |
+| Windows and macOS check out hash-stable LF bytes | `test_ci_runs_universal_package_on_windows_and_macos` | CI contract | PASS |
 | Embedded credential assignments fail the build | `test_universal_builder_rejects_embedded_credentials` | security | PASS |
 | GitHub CI names Windows and macOS native runners | `test_ci_runs_universal_package_on_windows_and_macos` | structure | PASS |
 
