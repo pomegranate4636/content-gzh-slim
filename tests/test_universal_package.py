@@ -220,6 +220,7 @@ class UniversalPackageTests(unittest.TestCase):
         )
         self.assertIn("windows-latest", workflow)
         self.assertIn("macos-latest", workflow)
+        self.assertIn("workflow_dispatch:", workflow)
         self.assertIn("test_universal_package", workflow)
         self.assertIn("build_universal_package.py", workflow)
 
