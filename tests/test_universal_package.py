@@ -174,6 +174,14 @@ class UniversalPackageTests(unittest.TestCase):
         self.assertEqual(len(staged), len(installer.SKILLS))
         self.assertTrue(all(path.parent == skills_root for path in staged))
 
+    def test_package_candidate_uses_one_short_leaf_under_packages(self) -> None:
+        installer = _load("install.py", "content_gzh_installer_short_package_staging")
+        packages = Path("/customer/.workbuddy/skills/.packages")
+        candidate = installer._package_staging_path(packages)
+
+        self.assertEqual(candidate.parent, packages)
+        self.assertLessEqual(len(candidate.name), 12)
+
     def test_release_manifest_covers_host_adapters_and_builder(self) -> None:
         manifest = json.loads((ROOT / "release-manifest.json").read_text(encoding="utf-8"))
         paths = {item["path"] for item in manifest["runtime"]["files"]}
