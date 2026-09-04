@@ -78,6 +78,7 @@ class UniversalPackageTests(unittest.TestCase):
                 self.assertIn("install.py", names)
                 self.assertIn("scripts/content-gzh-slim", names)
                 self.assertIn("runtime/host_cli.py", names)
+                self.assertIn(".github/workflows/universal-package.yml", names)
                 for name in (
                     "content-gzh-slim",
                     "content-gzh-analyzer",
@@ -150,6 +151,28 @@ class UniversalPackageTests(unittest.TestCase):
             "content-gzh-slim", "content-gzh-analyzer", "content-gzh-context-retriever",
             "content-gzh-writer", "content-gzh-headline", "content-gzh-distribution-pack",
         })
+
+    def test_copy_activation_stages_each_skill_directly_under_skills_root(self) -> None:
+        installer = _load("install.py", "content_gzh_installer_short_staging")
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            skills_root = root / "skills"
+            wanted_root = root / "package" / ".agents" / "skills"
+            for name in installer.SKILLS:
+                (wanted_root / name).mkdir(parents=True, exist_ok=True)
+            staged: list[Path] = []
+
+            def fake_copy(_source: Path, destination: Path) -> None:
+                staged.append(destination)
+                destination.mkdir()
+
+            with mock.patch.object(installer, "_activation_mode", return_value="copy"), mock.patch.object(
+                installer, "_copy", side_effect=fake_copy
+            ):
+                installer._activate(skills_root, root / "package")
+
+        self.assertEqual(len(staged), len(installer.SKILLS))
+        self.assertTrue(all(path.parent == skills_root for path in staged))
 
     def test_release_manifest_covers_host_adapters_and_builder(self) -> None:
         manifest = json.loads((ROOT / "release-manifest.json").read_text(encoding="utf-8"))
