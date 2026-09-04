@@ -21,6 +21,8 @@ Initial result: 4 errors. The repository had no WorkBuddy root Skill, host-home 
 
 The first WorkBuddy activation integration run then exposed `WinError 206` on a long Windows path. The privacy regression also exposed a JSON-key quoting gap in the first scanner expression. Both failures were preserved as regression tests before the final GREEN run.
 
+The first final-ZIP installation attempt found a third release-only failure: the upload root contained `SKILL.md`, but the archive omitted the committed `workbuddy/SKILL.md` source path required by `release-manifest.json`. The build now retains both the WorkBuddy upload surface and its Git-tracked source mirror.
+
 ## GREEN evidence
 
 Command:

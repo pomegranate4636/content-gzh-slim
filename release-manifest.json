@@ -365,9 +365,9 @@
         "sha256": "8dc8cb511c2f8837f84582f9f3d2d4171b164d4f8a2032c7f1928a1f8f63a981"
       },
       {
-        "bytes": 6259,
+        "bytes": 6272,
         "path": "tools/build_universal_package.py",
-        "sha256": "47061280ca63a4a9083fa0be6ac8321d4eec20d4f92033b0506ea204556c331f"
+        "sha256": "3581c7bbf5094ddbcd71b4d288e2294017485816da93ab0ce1494dbe39064f50"
       },
       {
         "bytes": 2456,
@@ -389,7 +389,7 @@
       "content-gzh-slim",
       "content-gzh-writer"
     ],
-    "tree_sha256": "1d9608e6b05eb2b3247b578b4d38f60e6d4ade053003487d309efd691a25d891"
+    "tree_sha256": "0bf6537854449f70bf8d57c2dd80d5688bb775164197c80de73633e27a1a8a43"
   },
   "schema_version": "content-gzh-slim-release-v1"
 }
