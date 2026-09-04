@@ -165,6 +165,24 @@ class UniversalPackageTests(unittest.TestCase):
         failures = builder._privacy_failures({"bad.json": payload})
         self.assertEqual(len(failures), 1)
 
+    def test_extracted_package_revision_fallback_does_not_invoke_git(self) -> None:
+        revision = "a" * 40
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            extracted = Path(temporary)
+            (extracted / "UNIVERSAL-PACKAGE-MANIFEST.json").write_text(
+                json.dumps({"source_revision": revision}), encoding="utf-8"
+            )
+            builder = _load("tools/build_universal_package.py", "content_gzh_builder_no_git")
+            installer = _load("install.py", "content_gzh_installer_no_git")
+            with mock.patch.object(builder, "ROOT", extracted), mock.patch.object(
+                builder, "_git", side_effect=AssertionError("git must not run")
+            ):
+                self.assertEqual(builder._source_revision(), revision)
+            with mock.patch.object(installer, "ROOT", extracted), mock.patch.object(
+                installer.subprocess, "run", side_effect=AssertionError("git must not run")
+            ):
+                self.assertEqual(installer._source_revision(), revision)
+
     def test_ci_runs_universal_package_on_windows_and_macos(self) -> None:
         workflow = (ROOT / ".github" / "workflows" / "universal-package.yml").read_text(
             encoding="utf-8"
