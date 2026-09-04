@@ -73,6 +73,8 @@ class UniversalPackageTests(unittest.TestCase):
                 names = set(archive.namelist())
                 self.assertIn("SKILL.md", names)
                 self.assertIn("workbuddy.json", names)
+                self.assertIn("workbuddy/SKILL.md", names)
+                self.assertIn("workbuddy/workbuddy.json", names)
                 self.assertIn("install.py", names)
                 self.assertIn("scripts/content-gzh-slim", names)
                 self.assertIn("runtime/host_cli.py", names)
