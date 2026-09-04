@@ -65,10 +65,10 @@ The WorkBuddy integration test builds an isolated package, activates it in copy 
 
 `coverage.py` is not installed. Python standard-library `trace` ran all 85 tests from an earlier full pass and showed most runtime modules above 80%, but subprocess-driven CLI modules are undercounted; it is not claimed as an 80% aggregate coverage result. The authoritative local evidence is the 90-test Windows release verification.
 
-Actual macOS runtime evidence is pending the GitHub Actions `macos-latest` job. WorkBuddy UI upload recognition is also pending and must not be inferred from isolated filesystem activation.
+GitHub Actions run `33858137947` passed the full contract, release verification, and universal build on both `windows-latest` and `macos-latest` for source revision `36afb3632cae0d1bc4c8e9f11601846aaea43398`. WorkBuddy UI upload recognition is still pending and must not be inferred from isolated filesystem activation.
 
 ## Loop decision
 
-- Decision: `proposal` until GitHub Windows/macOS CI completes, then `writeback` if both pass.
+- Decision: `writeback`; native Windows/macOS CI and isolated Codex/WorkBuddy activation passed.
 - Writeback targets: installer host contract, WorkBuddy root Skill, deterministic package builder, release manifest, CI matrix, and this regression record.
 - Next reuse key: `universal_codex_workbuddy_windows_macos_release_zip`.
