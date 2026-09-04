@@ -75,6 +75,7 @@ class UniversalPackageTests(unittest.TestCase):
                 self.assertIn("workbuddy.json", names)
                 self.assertIn("workbuddy/SKILL.md", names)
                 self.assertIn("workbuddy/workbuddy.json", names)
+                self.assertIn(".gitattributes", names)
                 self.assertIn("install.py", names)
                 self.assertIn("scripts/content-gzh-slim", names)
                 self.assertIn("runtime/host_cli.py", names)
@@ -215,9 +216,11 @@ class UniversalPackageTests(unittest.TestCase):
                 self.assertEqual(installer._source_revision(), revision)
 
     def test_ci_runs_universal_package_on_windows_and_macos(self) -> None:
+        attributes = (ROOT / ".gitattributes").read_text(encoding="utf-8")
         workflow = (ROOT / ".github" / "workflows" / "universal-package.yml").read_text(
             encoding="utf-8"
         )
+        self.assertIn("* text=auto eol=lf", attributes)
         self.assertIn("windows-latest", workflow)
         self.assertIn("macos-latest", workflow)
         self.assertIn("workflow_dispatch:", workflow)
