@@ -10,9 +10,9 @@
     "file_count": 74,
     "files": [
       {
-        "bytes": 9960,
+        "bytes": 10063,
         "path": "install.py",
-        "sha256": "882af28f1fd9709e8376701a58d28a96270bde30975b65e9ae3c7bda4cea060c"
+        "sha256": "672ca3518fee3ee79222f94d1ff738adf2ae407f1bd68f5a59b64e96df875c4e"
       },
       {
         "bytes": 495,
@@ -389,7 +389,7 @@
       "content-gzh-slim",
       "content-gzh-writer"
     ],
-    "tree_sha256": "01a6bcb91a5fd61ff7f160702b02e6feacbf8dd6af26b3d053c4542628b0311d"
+    "tree_sha256": "2af18ed6b779fa566decbcf4369cf59f061e78121f5c6233cc03572f88c86b1b"
   },
   "schema_version": "content-gzh-slim-release-v1"
 }

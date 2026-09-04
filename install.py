@@ -11,7 +11,6 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
-import tempfile
 import uuid
 
 
@@ -204,6 +203,10 @@ def _default_agent_home(host: str) -> Path:
     return Path(configured).expanduser() if configured else Path.home() / default_name
 
 
+def _package_staging_path(packages: Path) -> Path:
+    return packages / f".cgp{uuid.uuid4().hex[:6]}"
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Install Content 公众号 Slim without overwriting local drift")
     parser.add_argument("--host", choices=("codex", "workbuddy"), default="codex")
@@ -225,8 +228,8 @@ def main(argv: list[str] | None = None) -> int:
     packages = skills_root / ".packages"
     packages.mkdir(parents=True, exist_ok=True)
     target = packages / args.package_name
-    with tempfile.TemporaryDirectory(prefix="content-gzh-install-", dir=packages) as directory:
-        candidate = Path(directory) / args.package_name
+    candidate = _package_staging_path(packages)
+    try:
         candidate.mkdir()
         _build(candidate)
         if target.exists() or target.is_symlink():
@@ -235,6 +238,9 @@ def main(argv: list[str] | None = None) -> int:
                 return 2
         else:
             os.replace(candidate, target)
+    finally:
+        if candidate.exists() or candidate.is_symlink():
+            _remove_created(candidate)
     if args.activate:
         try:
             mode = _activate(skills_root, target, host=args.host)
