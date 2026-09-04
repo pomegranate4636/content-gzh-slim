@@ -38,4 +38,4 @@ The same command after implementation ran five test methods and passed. The full
 
 - RED checkpoint: `ef73308`
 - GREEN checkpoint: `6a99d7a`
-- No merge, build, install, tag, release, external save, or publication occurred.
+- At the TDD checkpoint no build or installation had occurred. A later explicit user authorization produced and installed local package `content-gzh-slim-1.0.1` from source revision `2abc24fef9774fcd2f10612087e3130cbc7bb190`; no tag, external Release, external save, or content publication occurred.

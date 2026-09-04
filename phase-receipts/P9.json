@@ -1,6 +1,6 @@
 {
   "phase": "P9",
-  "status": "source_implemented_and_regression_passed_not_built_or_installed",
+  "status": "source_regression_build_install_and_readback_passed",
   "date": "2026-09-04",
   "authorization": "EXECUTE_PHASE: P9",
   "scope": [
@@ -14,7 +14,7 @@
     "must_keep_contract_change",
     "reviewer_or_gate_addition",
     "customer_knowledge_base_mutation",
-    "build_install_tag_release_or_publish"
+    "tag_external_release_or_publish"
   ],
   "tdd": {
     "red_commit": "ef73308",
@@ -27,9 +27,14 @@
   },
   "verification": {
     "git_diff_check": "pass",
-    "release_verifier": "blocked_release_manifest_not_rebuilt_without_build_authorization",
-    "release_candidate_claimed": false,
-    "installed": false,
+    "release_verifier": "pass_1_0_1_6_skills_70_deliverable_files",
+    "package": "content-gzh-slim-1.0.1",
+    "package_source_revision": "2abc24fef9774fcd2f10612087e3130cbc7bb190",
+    "activation_mode": "copy",
+    "probe": "ready",
+    "old_version_deleted_after_verified_install": true,
+    "release_candidate_claimed": true,
+    "installed": true,
     "published": false
   },
   "loop": {
