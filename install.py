@@ -173,26 +173,27 @@ def _activate(skills_root: Path, package: Path, *, host: str = "codex") -> str:
             continue
         planned.append((link, wanted))
 
-    staging = skills_root / f".cg-a-{uuid.uuid4().hex[:8]}"
+    staged_entries: list[tuple[Path, Path]] = []
     created: list[Path] = []
     try:
-        staging.mkdir()
-        for link, wanted in planned:
-            staged = staging / link.name
+        for index, (link, wanted) in enumerate(planned):
+            staged = skills_root / f".cg{index}{uuid.uuid4().hex[:4]}"
             if mode == "symlink":
                 staged.symlink_to(os.path.relpath(wanted, skills_root), target_is_directory=True)
             else:
                 _copy(wanted, staged)
-        for link, _wanted in planned:
-            os.replace(staging / link.name, link)
+            staged_entries.append((link, staged))
+        for link, staged in staged_entries:
+            os.replace(staged, link)
             created.append(link)
     except BaseException:
         for link in reversed(created):
             _remove_created(link)
         raise
     finally:
-        if staging.exists() or staging.is_symlink():
-            _remove_created(staging)
+        for _link, staged in staged_entries:
+            if staged.exists() or staged.is_symlink():
+                _remove_created(staged)
     return mode
 
 

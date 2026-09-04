@@ -10,9 +10,9 @@
     "file_count": 74,
     "files": [
       {
-        "bytes": 9852,
+        "bytes": 9960,
         "path": "install.py",
-        "sha256": "3e0cf7203dfc61812d1d7d719e6bfee690766be6c690ba4345a1671e83945432"
+        "sha256": "882af28f1fd9709e8376701a58d28a96270bde30975b65e9ae3c7bda4cea060c"
       },
       {
         "bytes": 495,
@@ -365,9 +365,9 @@
         "sha256": "8dc8cb511c2f8837f84582f9f3d2d4171b164d4f8a2032c7f1928a1f8f63a981"
       },
       {
-        "bytes": 6375,
+        "bytes": 6386,
         "path": "tools/build_universal_package.py",
-        "sha256": "ae18efa5ac1fe145554a6d1bf72aa3674da79982a9dfd514131af272e082814c"
+        "sha256": "b783819be1cd1061b7d5a022825757d254a6f2de259ba9c903f13bd9a5d3d678"
       },
       {
         "bytes": 2456,
@@ -389,7 +389,7 @@
       "content-gzh-slim",
       "content-gzh-writer"
     ],
-    "tree_sha256": "ed8202e99f08cdd63d07197fbd81e1c9e1e85722980cd821ab1a5aef84942721"
+    "tree_sha256": "01a6bcb91a5fd61ff7f160702b02e6feacbf8dd6af26b3d053c4542628b0311d"
   },
   "schema_version": "content-gzh-slim-release-v1"
 }
