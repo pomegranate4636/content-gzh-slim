@@ -26,6 +26,11 @@ def _load_verify_module():
 
 
 class WindowsCompatibilityTests(unittest.TestCase):
+    def test_verify_success_message_is_ascii_console_safe(self) -> None:
+        source = (ROOT / "tools" / "verify.py").read_text(encoding="utf-8")
+        success_line = next(line for line in source.splitlines() if line.strip().startswith("print(f\"PASS:"))
+        self.assertTrue(success_line.isascii())
+
     def test_verify_subprocesses_request_utf8_text_decoding(self) -> None:
         verify = _load_verify_module()
         completed = subprocess.CompletedProcess([], 0, stdout="ok", stderr="")
