@@ -23,6 +23,8 @@ The first WorkBuddy activation integration run then exposed `WinError 206` on a 
 
 The first final-ZIP installation attempt found a third release-only failure: the upload root contained `SKILL.md`, but the archive omitted the committed `workbuddy/SKILL.md` source path required by `release-manifest.json`. The build now retains both the WorkBuddy upload surface and its Git-tracked source mirror.
 
+The next extracted-ZIP installation attempt found a fourth release-only failure: without a `.git` directory, the installer still invoked Git and decoded its localized Windows error as strict UTF-8. A regression now requires both the installer and package builder to read the embedded source revision without invoking Git when operating from an extracted release.
+
 ## GREEN evidence
 
 Command:
@@ -31,7 +33,7 @@ Command:
 py -X utf8 -B tools\verify.py
 ```
 
-Windows result: PASS, version 1.1.0, 6 Skills, 74 release-manifest files, 86 tests.
+Windows result: PASS, version 1.1.0, 6 Skills, 74 release-manifest files, 87 tests.
 
 The WorkBuddy integration test builds an isolated package, activates it in copy mode, runs the active root launcher, and requires `probe` to return `ready`. The universal ZIP test verifies the WorkBuddy root surface, Codex six-Skill tree, file hashes, source revision, privacy flags, extraction, and probe.
 
@@ -43,12 +45,13 @@ The WorkBuddy integration test builds an isolated package, activates it in copy 
 | WorkBuddy root frontmatter matches `VERSION` | `test_workbuddy_skill_frontmatter_matches_release_version` | contract | PASS |
 | ZIP contains both host surfaces and hash-valid files | `test_universal_zip_contains_both_host_surfaces_and_verified_manifest` | integration | PASS |
 | Extracted WorkBuddy package probes without Git | `test_workbuddy_activation_is_self_contained_and_probes_without_git` | integration | PASS |
+| Extracted revision lookup never invokes Git | `test_extracted_package_revision_fallback_does_not_invoke_git` | regression | PASS |
 | Embedded credential assignments fail the build | `test_universal_builder_rejects_embedded_credentials` | security | PASS |
 | GitHub CI names Windows and macOS native runners | `test_ci_runs_universal_package_on_windows_and_macos` | structure | PASS |
 
 ## Coverage and remaining evidence
 
-`coverage.py` is not installed. Python standard-library `trace` ran all 85 tests from the earlier full pass and showed most runtime modules above 80%, but subprocess-driven CLI modules are undercounted; it is not claimed as an 80% aggregate coverage result. The authoritative local evidence is the 86-test Windows release verification.
+`coverage.py` is not installed. Python standard-library `trace` ran all 85 tests from an earlier full pass and showed most runtime modules above 80%, but subprocess-driven CLI modules are undercounted; it is not claimed as an 80% aggregate coverage result. The authoritative local evidence is the 87-test Windows release verification.
 
 Actual macOS runtime evidence is pending the GitHub Actions `macos-latest` job. WorkBuddy UI upload recognition is also pending and must not be inferred from isolated filesystem activation.
 

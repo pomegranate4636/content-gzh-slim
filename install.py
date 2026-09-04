@@ -35,18 +35,19 @@ def _copy(source: Path, destination: Path) -> None:
 
 
 def _source_revision() -> str:
-    completed = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
-        cwd=ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="strict",
-    )
-    if completed.returncode == 0:
-        return completed.stdout.strip()
     universal = ROOT / "UNIVERSAL-PACKAGE-MANIFEST.json"
+    if (ROOT / ".git").exists():
+        completed = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="strict",
+        )
+        if completed.returncode == 0:
+            return completed.stdout.strip()
     if universal.is_file():
         return json.loads(universal.read_text(encoding="utf-8"))["source_revision"]
     raise RuntimeError("source revision is unavailable")

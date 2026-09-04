@@ -34,16 +34,19 @@ def _git(arguments: list[str], *, check: bool = True) -> subprocess.CompletedPro
 
 
 def _source_revision() -> str:
-    completed = _git(["rev-parse", "HEAD"], check=False)
-    if completed.returncode == 0:
-        return completed.stdout.strip()
     manifest = ROOT / "UNIVERSAL-PACKAGE-MANIFEST.json"
+    if (ROOT / ".git").exists():
+        completed = _git(["rev-parse", "HEAD"], check=False)
+        if completed.returncode == 0:
+            return completed.stdout.strip()
     if manifest.is_file():
         return json.loads(manifest.read_text(encoding="utf-8"))["source_revision"]
     raise RuntimeError("source revision is unavailable")
 
 
 def _is_dirty() -> bool:
+    if not (ROOT / ".git").exists():
+        return False
     completed = _git(["status", "--porcelain"], check=False)
     if completed.returncode == 0:
         return bool(completed.stdout.strip())
