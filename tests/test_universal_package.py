@@ -99,6 +99,19 @@ class UniversalPackageTests(unittest.TestCase):
                     import hashlib
 
                     self.assertEqual(hashlib.sha256(archive.read(relative)).hexdigest(), expected)
+                extracted = Path(temporary) / "extracted"
+                archive.extractall(extracted)
+            probe = subprocess.run(
+                [sys.executable, "-B", str(extracted / "scripts" / "content-gzh-slim"), "probe"],
+                cwd=extracted,
+                check=False,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="strict",
+            )
+            self.assertEqual(probe.returncode, 0, probe.stdout + probe.stderr)
+            self.assertEqual(json.loads(probe.stdout)["status"], "ready")
 
     def test_ci_runs_universal_package_on_windows_and_macos(self) -> None:
         workflow = (ROOT / ".github" / "workflows" / "universal-package.yml").read_text(
