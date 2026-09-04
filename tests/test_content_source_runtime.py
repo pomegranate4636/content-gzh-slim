@@ -10,6 +10,7 @@ from unittest import mock
 from runtime.content_source import (
     ContentSourceError,
     LarkContentSourceClient,
+    _feishu_documents,
     apply_configuration,
     plan_configuration,
     resolve_real_source,
@@ -71,6 +72,10 @@ class ContentSourceRuntimeTests(unittest.TestCase):
                 f"aliases: [\"{name}老师\"]\n"
                 "---\n\n"
                 f"# {name} Profile\n\n## 确认事实\n\n- {name}只讲可核验的业务事实。\n- {name}面向企业负责人。\n- {name}不承诺未经验证的结果。\n"
+                f"\n## 表达方式\n\n- {name}说话亲切、明确、不端着。\n"
+                f"\n## 专业判断\n\n- {name}认为流程断点比工具参数更值得优先检查。\n"
+                f"\n## 读者连接\n\n- {name}理解负责人买了工具却看不到结果的焦虑。\n"
+                f"\n## 业务边界\n\n- {name}不会把未经核验的结果写成承诺。\n"
             )
             path = vault / "05-IP-Profile" / f"{name}.md"
             payload = text.encode("utf-8")
@@ -125,7 +130,58 @@ class ContentSourceRuntimeTests(unittest.TestCase):
             self.assertEqual(len(entry["profiles"]), 1)
             self.assertEqual(len(entry["business_assets"]), 1)
             self.assertEqual(len(entry["content_method_assets"]), 1)
+            profile = entry["profiles"][0]
+            fragment_types = {item["fragment_type"] for item in profile["confirmed_fragments"]}
+            self.assertIn("identity_fact", fragment_types)
+            self.assertIn("expression_style", fragment_types)
+            self.assertIn("professional_judgment", fragment_types)
+            self.assertIn("reader_empathy", fragment_types)
+            self.assertIn("business_boundary", fragment_types)
+            self.assertEqual(
+                profile["anchors"]["expression_style"],
+                "甲说话亲切、明确、不端着。",
+            )
             verify_source_snapshot(snapshot)
+
+    def test_feishu_content_root_recurses_two_levels_but_not_three(self) -> None:
+        class FakeClient:
+            tree = {
+                "root": [
+                    {"node_token": "folder-1", "has_child": True, "obj_type": "docx", "obj_token": "folder-doc", "title": "公众号对标"},
+                ],
+                "folder-1": [
+                    {"node_token": "article-1", "has_child": False, "obj_type": "docx", "obj_token": "article-doc", "title": "江景房判断方法"},
+                    {"node_token": "folder-2", "has_child": True, "obj_type": "docx", "obj_token": "folder-2-doc", "title": "更深目录"},
+                ],
+                "folder-2": [
+                    {"node_token": "too-deep", "has_child": False, "obj_type": "docx", "obj_token": "too-deep-doc", "title": "江景房深层文章"},
+                ],
+            }
+
+            def list_children(self, *, space_id, parent_node_token):
+                return self.tree.get(parent_node_token, [])
+
+            def fetch_markdown(self, token):
+                return f"# {token}\n\n内容"
+
+        documents = _feishu_documents(
+            FakeClient(), space_id="1", parent_ref="root", query="江景房", limit=5
+        )
+
+        self.assertEqual([item[0] for item in documents], ["article-doc"])
+
+    def test_ganhuo_guide_requires_persona_judgment_and_executable_verification(self) -> None:
+        guide = (
+            Path(__file__).parents[1]
+            / "skills"
+            / "content-gzh-writer"
+            / "references"
+            / "ganhuo.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("读者真实处境", guide)
+        self.assertIn("IP 的明确判断", guide)
+        self.assertIn("用户可执行的核验动作", guide)
+        self.assertIn("不要求每个自然段机械重复", guide)
 
     def test_explicit_second_ip_creates_distinct_identity(self) -> None:
         with self.temporary_root() as directory:
